@@ -98,3 +98,5 @@
 
 ### update 6/1/2020
 - airport info page UI created
+- airport info page tab seperation completed
+- first tab of airport info completed
