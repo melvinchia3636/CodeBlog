@@ -1,0 +1,38 @@
+{% load static %}
+{% include 'base/navbar.html' %}
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Flight Tracker</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'flight-tracker/main.css' %}">
+	<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+</head>
+<body>
+	<h1 class='title'>Browse Airport by Country</h1>
+	<div class='searchbox-container'>
+		<i data-feather='search' class='search-box-icon'></i>
+		<input type='text' class='search-box' placeholder='Search'>
+	</div>
+	<div class='table'>
+		{% for alpha, alpha_countries in countries.items %}
+			<div class='table-row-index'>
+				<a class='alphabetic-index'>{{ alpha }}</a>
+			</div>
+			{% for country in alpha_countries %}
+			<div class='table-row'>
+				<img src='{% static country.2 %}' class='flag-icon'>
+				<a class='table-cell table-cell-name' href='{% url "country" country=country.0 %}'>{{country.0}}</a>
+				<div class='table-cell table-cell-count'>{{country.1}}</div>
+			</div>
+			{% endfor %}
+		{% endfor %}
+	</div>
+	<script type="text/javascript">
+		feather.replace()
+	</script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Poppins:wght@200;300;400&display=swap');
+
+body {
+	background: #3AAFA9;
+	overflow: none;
+}
+
+.center-container {
+	margin-top: 10em;
+	text-align: center;
+}
+
+.title-text {
+	color: white;
+	font-family: 'Montserrat', sans-serif;
+	margin-bottom: 50px;
+	font-weight: 700;
+	font-size: 40px
+}
+
+.search-box-icon {
+	color: white;
+	margin-top: -3px;
+}
+
+.searchbox-container {
+	border: 2px solid white;
+	width: 700px;
+	margin: 0 auto;
+	text-align: left;
+	padding: 0 0 5px 20px;
+	border-radius: 50px;
+}
+
+.search-box {
+	outline-style: none;
+	outline: none;
+	border: none;
+	height: 40px;
+	width: 610px;
+	background-color: rgba(0, 0, 0, 0);
+	border-radius: 10px;
+	margin-left: 10px;
+	font-size: 20px;
+	position: relative;
+	top: 2px;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 200;
+	color: white;
+}
+
+/* all */
+::-webkit-input-placeholder { /* Webkit */
+   color: #FFFFFF;
+}
+
+:-moz-placeholder { /* Firefox 18-4 */
+   color: #FFFFFF;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #FFFFFF;
+}
+
+:-ms-input-placeholder {  /*  IE10+  */
+   color: #FFFFFF;
+}
+
+.posts-container {
+	display: grid;
+	grid-template-columns: auto auto auto;
+	align-items: center;
+	grid-column-gap: 30px;
+	grid-row-gap: 30px;
+	justify-content: center;
+	margin-top: 80px;
+	margin-bottom: 40px;
+}
+
+.post-card-wrapper {
+	position: relative;
+	height: 430px;
+}
+
+.post-thumbnail {
+	width: 350px;
+	border-radius: 5px 5px 0 0;
+	height: 200px;
+}
+
+.post-card {
+	background: white;
+	width: 350px;
+	height: 430px;
+	border-radius: 5px;
+	box-shadow: 5px 8px 5px #2B7A78;
+}
+
+.post-title {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 500;
+	font-size: 20px;
+	padding-top: 10px;
+	margin: 10px 30px;
+}
+
+
+.metadata {
+	color: #555555;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 15px;
+	margin-top: 10px;
+	margin-bottom: 50px;
+}
+
+
+.learn-more {
+	border: 2px solid #2B7A78;
+	border-radius: 50px;
+	text-decoration: none;
+	padding: 10px 30px;
+	color: #2B7A78;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 500;
+	transition: 0.1s;
+	transition-timing-function: ease-in;
+}
+
+.learn-more:hover {
+	color: white;
+	background: #2B7A78;
+}

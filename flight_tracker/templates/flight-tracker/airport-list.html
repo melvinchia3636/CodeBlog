@@ -1,0 +1,41 @@
+{% load static %}
+{% include 'base/navbar.html' %}
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Flight Tracker</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'flight-tracker/airport-list/main.css' %}">
+	<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+</head>
+<body>
+	<h1 class='title'>{{airport_count}} Airports in {{country}}</h1>
+	<div class='searchbox-container'>
+		<i data-feather='search' class='search-box-icon'></i>
+		<input type='text' class='search-box' placeholder='Search'>
+	</div>
+	<div class='table'>
+		{% for alpha, alpha_airports in airport_list.items %}
+			<div class='table-row-index'>
+				<a class='alphabetic-index'>{{ alpha }}</a>
+				<p class='title-icao'>ICAO</p>
+				<p class='title-iata'>IATA</p>
+			</div>
+			{% for airport in alpha_airports %}
+			<div class='table-row'>
+				<span data-feather='map-pin' class='map-icon'></span>
+				<div class='table-cell table-cell-iata' href=''>{{airport.1.0}}</div>
+				<div class='table-cell table-cell-icao' href=''>{{airport.1.1}}</div>
+				<a class='table-cell table-cell-name' href='{% url "airport" iata=airport.1.0 %}'>{{airport.0}}</a>
+			</div>
+			{% endfor %}
+		{% endfor %}
+	</div>
+	<script type="text/javascript">
+		feather.replace()
+	</script>
+</body>
+</html>
