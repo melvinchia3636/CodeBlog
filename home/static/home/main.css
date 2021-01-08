@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;500&family=Lato:wght@500;700&family=Roboto:wght@300;500;700&Montserrat:wght@600&display=swap');
 
 html {
-	height: auto;
+	height: 200%;
 }
 
 body {
@@ -47,30 +47,32 @@ body::-webkit-scrollbar {
 .welcome-text {
 	color: white;
 	font-family: 'Montserrat', sans-serif;
-	font-size: 3vw;
+	font-size: 2vw;
 	text-align: center;
 	padding-bottom: 10px;
 	font-weight: 300;
-	width: 100vw;
-	margin-left: -50vw;
-	margin-right: -50vw;
-	left: 50%;
-	right: 50%;
 	position: relative;
 }
 
 .homepage-banner {
 	color: white;
 	font-family: 'Poppins', sans-serif;
-	font-size: 8vw;
+	font-size: 6vw;
 	text-align: center;
 	font-weight: 500;
-	width: 100vw;
-	padding-bottom: 10px;
+	width: 100%;
+}
+
+.more-intro {
+	text-align: center;
+	color: white;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 30px;
+	margin-bottom: 60px;
 }
 
 .get-ready {
-	font-size: 30px;
+	font-size: 3vw;
 	font-weight: 300;
 	font-family: 'Montserrat', sans-serif;
 	color: white;
@@ -78,20 +80,28 @@ body::-webkit-scrollbar {
 	padding-bottom: 60px;
 }
 
+.intro-list-wrapper {
+	position: absolute;
+	left: 50%;
+	top: 125%;
+	transform: translateX(-50%);
+}
+
 .intro-list-item {
-	color: white;
-	border: 2px solid white;
+	color: #2b7a78;
 	border-radius: 10px;
-	margin: 3vw;
-	margin-top: 16em;
+	background: white;
+	box-shadow: 5px 5px 5px #2b7a78
 }
 
 .intro-list {
-	display: flex;
+	display: grid;
   	justify-content: center;
   	list-style: none;
   	padding-left: 0;
   	margin-bottom: 10em;
+  	grid-template-columns: auto auto auto;
+  	grid-gap: 30px;
 }
 
 
@@ -113,40 +123,59 @@ body::-webkit-scrollbar {
 	margin-left: 40px;
 	margin-right: 40px;
 	font-family: 'Poppins', sans-serif;
-	font-weight: 200;
-	margin-bottom: 40px
+	font-weight: 300;
+	padding-bottom: 40px
 }
 
-@media only screen and (min-width : 0px) {
-    .homepage-top-container {
-		margin-top: 250px;
-		text-align: center;
-		width: 100vw;
+.homepage-top-container {
+	top: 50%;
+	text-align: center;
+	width: 100%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	left: 50%;
+}
+
+@media all and (max-width: 671px) {
+	.welcome-text {
+		font-size: 4vw !important;
 	}
+
 	.homepage-banner {
-		font-size: 10vw;
-		margin-left: -50vw;
-  		margin-right: -50vw;
-  		left: 50%;
-  		right: 50%;
-  		position: relative;
+		font-size: 10vw !important;
 	}
-	.join-btn {
-		font-size: 3vw;
+
+	.get-ready {
+		font-size: 5vw !important;
 	}
+}
+
+@media all and (max-width: 950px) {
+	.welcome-text {
+		font-size: 4vw !important;
+	}
+
+	.homepage-banner {
+		font-size: 10vw !important;
+	}
+
+	.get-ready {
+		font-size: 5vw !important;
+	}
+}
+
+@media only screen and (max-width : 861px) {
 	.intro-list {
 		display: block;
 	  	justify-content: center;
 	  	list-style: none;
 	  	padding-left: 0;
-	  	margin-top: 23em;
+	  	padding-top: 3em;
 	}
 	.intro-list-item {
-		color: white;
-		border: 2px solid white;
 		border-radius: 10px;
 		margin: 5vw;
-		margin-top: 5em;
+		margin-top: 3em;
 	}
 	.intro-list-item-container {
 		width:90vw;
@@ -157,165 +186,13 @@ body::-webkit-scrollbar {
 
 	.intro-list-item-title {
 		font-size: 40px;
-		font-family: 'Poppins', sans-serif;
 		margin-top: 10px;
-		font-weight: 300;
 	}
 
 	.intro-list-item-desc {
 		margin-left: 40px;
 		margin-right: 40px;
-		font-family: 'Poppins', sans-serif;
-		font-weight: 200;
 		margin-bottom: 40px
-	}
-	.code-icon {
-		font-size: 10vw;
-	}
-}
-
-/* Extra Small Devices, Phones */ 
-@media only screen and (min-width : 480px) {
-    .homepage-top-container {
-		margin-top: 250px;
-		text-align: center;
-		width: 100vw;
-	}
-	.homepage-banner {
-		font-size: 10vw;
-		width: 100vw;
-		margin-left: -50vw;
-  		margin-right: -50vw;
-  		left: 50%;
-  		right: 50%;
-  		position: relative;
-	}
-	.code-icon {
-		font-size: 10vw;
-	}
-	.join-btn {
-		font-size: 3vw;
-	}
-	.intro-list {
-		display: block;
-	  	justify-content: center;
-	  	list-style: none;
-	  	padding-left: 0;
-	  	margin-top: 25em;
-	}
-	.intro-list-item {
-		color: white;
-		border: 2px solid white;
-		border-radius: 10px;
-		margin: 5vw;
-		margin-top: 5em;
-	}
-	.intro-list-item-container {
-		width:85vw;
-		height: auto;
-		text-align: center;
-		padding-top: 45px;
-	}
-
-	.intro-list-item-title {
-		font-size: 40px;
-		font-family: 'Poppins', sans-serif;
-		margin-top: 10px;
-		font-weight: 300;
-	}
-
-	.intro-list-item-desc {
-		margin-left: 40px;
-		margin-right: 40px;
-		font-family: 'Poppins', sans-serif;
-		font-weight: 200;
-		margin-bottom: 40px
-	}
-	body {
-		height: auto;
-	}
-}
-
-/* Small Devices, Tablets */
-@media only screen and (min-width : 768px) {
-	.homepage-top-container {
-		margin-top: 290px;
-		text-align: center;
-		width: 100vw;
-	}
-	.join-btn {
-		font-size: 2.5vw;
-	}
-	.homepage-banner {
-		font-size: 10vw;
-		width: 100vw;
-	}
-	.code-icon {
-		font-size: 10vw;
-	}
-	.intro-list-item {
-		color: white;
-		border: 2px solid white;
-		border-radius: 10px;
-		margin: 3vw;
-		margin-top: 2em;
-	}
-
-	.intro-list {
-		display: flex;
-	  	justify-content: center;
-	  	list-style: none;
-	  	padding-left: 0;
-	}
-
-
-	.intro-list-item-container {
-		width: 25vw;
-		height: auto;
-		text-align: center;
-		padding-top: 45px;
-	}
-
-	.intro-list-item-title {
-		font-size: 40px;
-		font-family: 'Poppins', sans-serif;
-		margin-top: 10px;
-		font-weight: 300;
-	}
-
-	.intro-list-item-desc {
-		margin-left: 40px;
-		margin-right: 40px;
-		font-family: 'Poppins', sans-serif;
-		font-weight: 200;
-		margin-bottom: 40px
-	}
-}
-
-
-/* Medium Devices, Desktops */
-@media only screen and (min-width : 992px) {
-	.homepage-top-container {
-		margin-top: 280px;
-		text-align: center;
-		width: 100vw;
-	}
-	.join-btn {
-		font-size: 2vw;
-	}
-	.homepage-banner {
-		font-size: 5vw;
-	}
-}
-
-@media only screen and (min-width : 2560px) {
-	.homepage-top-container {
-		margin-top: 330px;
-		text-align: center;
-		width: 100vw;
-	}
-	.join-btn {
-		padding: 40px 60px;
 	}
 }
 

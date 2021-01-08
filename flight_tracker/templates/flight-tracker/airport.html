@@ -106,6 +106,14 @@
 						</div>
 					</div>
 				</div>
+				<div class='image-card'>
+				{% if images %}
+					<div class='image-cover'>
+						<p class='image-cover-text'>View More</p>
+					</div>
+					<img src='{{ images.0 }}' class='airport-image'>
+				{% endif %}
+				</div>
 			</div>
 		</div>
 		<div class='content-container'>
@@ -154,6 +162,16 @@
 		    "width": activeWidth + "px"
 		  });
 		});
+	</script>
+	<script type="text/javascript">
+		$('.image-cover').hover(function() {
+			$('.image-cover-text').css('color', 'white')
+			this.style['background'] = 'rgba(0, 0, 0, 0.8)'
+			
+		}, function() {
+			$('.image-cover-text').css('color', 'rgba(255, 255, 255, 0)')
+			this.style['background'] = 'rgba(0, 0, 0, 0)'
+		})
 	</script>
 </body>
 </html>

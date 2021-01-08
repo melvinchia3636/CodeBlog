@@ -59,6 +59,9 @@ def get_airport_data(iata):
 		'wind': {
 			'direction': raw['weather']['wind']['direction']['degree'] if raw['weather'] and raw['weather']['wind']['direction']['degree'] else 'N/A',
 			'speed': raw['weather']['wind']['speed']['kmh'] if raw['weather'] and raw['weather']['wind']['speed']['kmh'] else 'N/A'
-		}
+		},
+		'images': [
+			'https://cdn.jetphotos.com/full/{}/{}'.format(*i['src'].split('/')[-2:]) for i in raw['details']['airportImages']['large']
+		] if raw['details']['airportImages'] else []
 	}
 	return result
