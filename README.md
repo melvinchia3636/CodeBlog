@@ -67,7 +67,7 @@
 - daily cases, daily recovered and daily death graph scrapper created
 - binded number, graph and table into UI
 
-### update 2/1/2020
+### update 2/1/2021
 - created tool card for covid19 data analysis
 - binded covid 19 analysis app to it's tool card
 - binded IDEAS page to corresponding navbar button
@@ -76,7 +76,7 @@
 - user uplaoded media storage created
 - prototype UI of Code Syntax Highlighter created (which contains cool new stuff I never done before)
 
-### update 3/1/2020
+### update 3/1/2021
 - Code Syntax Highlighter 80% completed
   - upload file
   - select lexer and theme
@@ -84,19 +84,26 @@
   - download styled file
 - deployed website to heroku (https://codeblog-official.herokuapp.com)
 
-### update 4/1/2020
+### update 4/1/2021
 - new app created: **Flight Tracker**
 - homepage of flight tracker created
 - countries scraper created
 - airport list scraper prototype created
 
-### update 5/1/2020
+### update 5/1/2021
 - fixed bugs for airport list scraper
 - alphabetic indexing created in browse country page
 - airport list of every country created
 - airport info page prototype of prototype created
 
-### update 6/1/2020
+### update 6/1/2021
 - airport info page UI created
 - airport info page tab seperation completed
 - first tab of airport info completed
+
+### update 7/1/2021
+- homepage responsivity completed
+- airport image added to the flight tracker
+
+### update 8/1/2021
+- starting working on flight tracker responsivity
