@@ -31,7 +31,7 @@ body {
 	outline: none;
 	border: none;
 	height: 40px;
-	width: 610px;
+	width: auto;
 	background-color: rgba(0, 0, 0, 0);
 	border-radius: 10px;
 	margin-left: 10px;
@@ -72,7 +72,7 @@ body {
 	height: 80px;
 	font-family: 'Montserrat';
 	border-radius: 5px;
-	width: 900px;
+	width: auto;
 	text-align: left;
 	position: relative;
 }
@@ -88,6 +88,10 @@ body {
 	transform: translateY(-50%);
 	color: black;
 	text-decoration: none;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	width: 40vw;
 	transition: 0.2s
 }
 
@@ -108,7 +112,7 @@ body {
 .table-row-index {
 	height: 80px;
 	font-family: 'Montserrat';
-	width: 900px;
+	width: calc(80vw - 200px);
 	text-align: left;
 	position: relative;
 }
@@ -134,11 +138,12 @@ body {
 
 .table-cell-icao {
 	position: absolute;
-	left: 90%;
+	right: 45px;
 	top: 51%;
 	transform: translateY(-50%);
 	color: black;
 	text-decoration: none;
+	width: 50px;
 }
 
 .map-icon {
@@ -160,10 +165,56 @@ body {
 
 .title-icao {
 	position: absolute;
-	left: 90%;
+	right: 45px;
 	top: 80%;
 	transform: translateY(-50%);
 	color: white;
 	text-decoration: none;
 	font-weight: 600;
+	width: 50px;
+}
+
+@media all and (max-width: 1201px) {
+	.table-row {
+		height: 80px;
+		width: calc(100vw - 100px)
+	}
+	.flag-icon {
+		top: 50%;
+	}
+	.table-cell-name {
+		top: 35%;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+		width: 40vw;
+	}
+	.table-cell-count {
+		top: 65%;
+		left: 90px;
+		font-size: 15px;
+	}
+	.searchbox-container {
+		width: 80vw;
+	}
+	.title-icao, .title-iata {
+		display: none;
+	}
+	.table-cell-icao, .table-cell-iata {
+		font-size: 15px;
+	}
+	.table-cell-iata {
+		left: 60px;
+		top: 70%;
+	}
+	.table-cell-icao {
+		left: 100px;
+		top: 70%;
+	}
+}
+
+@media all and (max-width: 400px) {
+	.search-box {
+		width: 70%;
+	}
 }

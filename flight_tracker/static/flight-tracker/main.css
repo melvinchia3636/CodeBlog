@@ -19,7 +19,7 @@ body {
 
 .searchbox-container {
 	border: 2px solid white;
-	width: 700px;
+	width: 50vw;
 	margin: 50px auto;
 	text-align: left;
 	padding: 0 0 5px 20px;
@@ -31,7 +31,7 @@ body {
 	outline: none;
 	border: none;
 	height: 40px;
-	width: 610px;
+	width: auto;
 	background-color: rgba(0, 0, 0, 0);
 	border-radius: 10px;
 	margin-left: 10px;
@@ -64,7 +64,7 @@ body {
 	display: grid;
 	grid-gap: 10px;
 	justify-content: center;
-	margin-top: 50px;
+	margin: 50px 0;
 }
 
 .table-row {
@@ -72,23 +72,32 @@ body {
 	height: 80px;
 	font-family: 'Montserrat';
 	border-radius: 5px;
-	width: 700px;
+	width: calc(80vw - 200px);
 	text-align: left;
 	position: relative;
 }
 
+.data-wrapper {
+	height: 80px;
+}
+
 .table-cell {
 	font-size: 20px;
+	padding: 0px !important;
 }
 
 .table-cell-name {
-	position: absolute;
-	left: 90px;
-	top: 51%;
-	transform: translateY(-50%);
 	color: black;
 	text-decoration: none;
-	transition: 0.2s
+	transition: 0.2s;
+	position: absolute;
+	top: 50%;
+	left: 90px;
+	transform: translateY(-50%);
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	width: calc(70% - 150px);
 }
 
 .table-cell-name:hover {
@@ -96,9 +105,15 @@ body {
 }
 
 .table-cell-count {
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.right-wrapper {
 	position: absolute;
-	right: 20px;
-	top: 51%;
+	top: 50%;
+	right: 10px;
+	width: 140px;
 	transform: translateY(-50%)
 }
 
@@ -109,13 +124,13 @@ body {
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%);
-	left: 15px;
+	left: 20px;
 }
 
 .table-row-index {
 	height: 80px;
 	font-family: 'Montserrat';
-	width: 700px;
+	width: 50vw;
 	text-align: left;
 	position: relative;
 }
@@ -128,4 +143,64 @@ body {
 	color: white;
 	text-decoration: none;
 	font-weight: 600;
+}
+
+@media all and (max-width: 951px) {
+	.table-row {
+		width: calc(100vw - 150px)
+	}
+}
+
+@media all and (max-width: 701px) {
+	.table {
+		grid-gap: 5px;
+	}
+	.table-row {
+		height: 50px;
+		width: calc(100vw - 150px)
+	}
+	.flag-icon {
+		top: 50%;
+		left: 10px;
+	}
+	.data-wrapper {
+		width: 35vw;
+		height: 50px;
+	}
+	.table-cell-name {
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+		font-size: 15px;
+		position: absolute;
+		top: 50%;
+		left: 60px;
+		transform: translateY(-50%);
+		width: 200px;
+	}
+	.table-cell-count {
+		font-size: 15px;
+	}
+	.searchbox-container {
+		width: 80vw;
+		height: 40px;
+	}
+	.flag-icon {
+		width: 32px;
+		height: 32px;
+	}
+	.search-box {
+		font-size: 15px;
+		margin-top: 0;
+	}
+	.right-wrapper {
+		width: 110px;
+		right: 5px;
+	}
+}
+
+@media all and (max-width: 400px) {
+	.search-box {
+		width: 80%;
+	}
 }
