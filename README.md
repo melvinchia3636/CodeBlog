@@ -111,3 +111,6 @@
 ### update 17/1/2021
 - responsivity of flight-tracker main page and airport list page completed
 - UI renovation v3
+
+### update 19/1/2021
+- continuing UI renovation v3
