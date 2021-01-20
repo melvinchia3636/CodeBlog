@@ -114,3 +114,8 @@
 
 ### update 19/1/2021
 - continuing UI renovation v3
+- starting making collapse navbar
+
+### update 20/1/2021
+- continuing UI renovation v3
+- continuing making collapse navbar
