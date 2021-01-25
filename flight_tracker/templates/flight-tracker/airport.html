@@ -1,5 +1,6 @@
 {% load static %}
 {% include 'base/navbar.html' %}
+{% load airport_custom_functions %}
 
 <!doctype html>
 <html>
@@ -9,7 +10,35 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Flight Tracker</title>
 	<link rel="stylesheet" type="text/css" href="{% static 'flight-tracker/airport/main.css' %}">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+	<style>
+		{% if images|length > 1 %}
+			#slideset2 {
+				height: 40em;
+				position: relative;
+				overflow: hidden
+			}
+
+			#slideset2 > * {
+				position: absolute;
+				top: 0;
+				left: 100%;
+				animation: {% widthratio images|length 1 4 %}s autoplay2 infinite ease-in-out
+			}
+
+			@keyframes autoplay2 {
+				0% {left: 100%}
+				4% {left: 0%}
+				33.33% {left: 0%}
+				37.33% {left: -100%}
+				100% {left: -100%}
+			}
+			{% for index in images|get_range %}
+				#slideset2 > *:nth-child({{ index }}) {animation-delay: {% widthratio index|add:"-1" 1 4 %}s}
+			{% endfor %}
+		{% endif %}
+	</style>
 </head>
 <body>
 	<div class="wrapper">
@@ -107,20 +136,45 @@
 					</div>
 				</div>
 				<div class='image-card'>
-				{% if images %}
-					<div class='image-cover'>
-						<p class='image-cover-text'>View More</p>
+					<div id='slideset2'>
+						{% if images %}
+							{% for image in images %}
+								<img src='{{ image }}' class='airport-image'>
+							{% endfor %}
+						{% endif %}
 					</div>
-					<img src='{{ images.0 }}' class='airport-image'>
-				{% endif %}
 				</div>
 			</div>
 		</div>
 		<div class='content-container'>
-			SECTION 2
+			{% if departures %}
+				{{ departures }}
+			{% else %}
+				<p>No Data to be Shown</p>
+			{% endif %}
 		</div>
 		<div class='content-container'>
-			SECTION 3
+			{% if arrivals %}
+				<div class='arrival-table-container'>
+					<table class='arrival-table'>
+						<th></th>
+						<tbody>
+							{% for arrival in arrivals %}
+								<tr>
+									<td>{{ arrival.0 }}</td>
+									<td style='font-weight: 400'>{{ arrival.1 }}</td>
+									<td>{{ arrival.2.name }} <span style='font-family: "Lato"; font-weight: 500;font-size: 12px'>( </span><a style='text-decoration: none; color: #2b7a78; font-size: 12px' href='{% url "airport" iata=arrival.2.iata %}'>{{ arrival.2.iata }}</a><span style='font-family: "Lato"; font-weight: 500;font-size: 12px'> )</span></td>
+									<td style='font-weight: 400'>{% if arrival.3 %}{{ arrival.3 }}{% endif %}</td>
+									<td>{% if arrival.4 %}{{ arrival.4 }}{% endif %}</td>
+									<td>{{ arrival.5 }}</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			{% else %}
+				<p>No Data to be Shown</p>
+			{% endif %}
 		</div>
 		<div class='content-container'>
 			SECTION 4
@@ -162,16 +216,6 @@
 		    "width": activeWidth + "px"
 		  });
 		});
-	</script>
-	<script type="text/javascript">
-		$('.image-cover').hover(function() {
-			$('.image-cover-text').css('color', 'white')
-			this.style['background'] = 'rgba(0, 0, 0, 0.8)'
-			
-		}, function() {
-			$('.image-cover-text').css('color', 'rgba(255, 255, 255, 0)')
-			this.style['background'] = 'rgba(0, 0, 0, 0)'
-		})
 	</script>
 </body>
 </html>

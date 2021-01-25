@@ -1,20 +1,27 @@
 {% load static %}
 {% include 'base/navbar.html' %}
 
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="keywords" content="Codeblog, Flight Tracker, Airport">
+	<meta name="description" content="Get your hands on live flight status and information of any airport around the world. Powered by FlightRadar24.com :)">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Flight Tracker</title>
 	<link rel="stylesheet" type="text/css" href="{% static 'flight-tracker/main.css' %}">
 	<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 </head>
 <body>
-	<h1 class='title'>Browse Airport by Country</h1>
+	<div class='title-container'>
+		<h1 class='title'>Flight Tracker    <span class='powered-by-text'>by FlightRadar24.com</span></h1>
+		<br>
+		<h4 class='powered-by-text-down'>by FlightRadar24.com</h4>
+	</div>
 	<div class='searchbox-container'>
 		<i data-feather='search' class='search-box-icon'></i>
-		<input type='text' class='search-box' placeholder='Search'>
+		<input type='text' class='search-box' placeholder='Search country'>
 	</div>
 	<div class='table'>
 		{% for alpha, alpha_countries in countries.items %}
@@ -24,9 +31,15 @@
 			{% for country in alpha_countries %}
 			<div class='table-row'>
 				<img src='{% static country.2 %}' class='flag-icon'>
-				<div class='data-wrapper'>
-					<a class='table-cell table-cell-name' href='{% url "country" country=country.0 %}'>{{country.0}}</a>
+				<div class='data-wrapper-big'>
+					<div class='table-cell table-cell-name'>
+						<a class='link-text' href='{% url "country" country=country.0 %}'>{{country.0}}</a>
+					</div>
 					<div class='right-wrapper'><span class='table-cell table-cell-count'>{{country.1}}</span></div>
+				</div>
+				<div class='data-wrapper-small'>
+					<div class='link-wrapper'><a class='link-text' href='{% url "country" country=country.0 %}'>{{country.0}}</a></div>
+					<span class='table-cell table-cell-count'>{{country.1}}</span>
 				</div>
 			</div>
 			{% endfor %}

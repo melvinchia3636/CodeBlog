@@ -81,7 +81,7 @@
 		                reader.readAsText(file, "UTF-8");
 		                reader.onload = function(evt) {
 		                    $.ajax({
-		                        url: 'code-syntax-highlight/get-formatted-code',
+		                        url: './get-formatted-code',
 		                        type: 'POST',
 		                        data: {
 		                            'text': evt.target.result,

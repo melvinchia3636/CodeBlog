@@ -1,26 +1,42 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;500&family=Lato:wght@500;700&family=Roboto:wght@300;500;700&Montserrat:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&family=Lato:wght@500;700&family=Roboto:wght@300;500;700&Montserrat:wght@600&display=swap');
 
-.navbar.non-alpha { 
-	background-color: rgba(255,255,255,0.95);
-	box-shadow: 0 1px 2px #ddd;
-	transition: background-color 0.5s ease 0s;
+body {
+	margin: 0;
+	padding: 0;
 }
 
-.navbar {
+.cb-nav.non-alpha { 
+	background-color: rgba(255,255,255,0.95);
+	box-shadow: 0 1px 2px #ddd;
+	transition: background-color 0.5s ease 0s, width 0.5s ease 0s, height 0.5s ease 0s;
+}
+
+.cb-nav {
 	background: rgba(255,255,255,0);
-	transition: background-color 0.5s ease 0s;
+	transition: background-color 0.5s ease 0s, width 0.5s ease 0s, height 0.5s ease 0s;
+	height: 100px;
+	width: 100%;
+}
+
+.navbrand-wrapper {
+	height: 100px;
+	width: 100%;
+	display: grid;
+	grid-template-columns: auto auto;
+	justify-content: left;
+	align-items: center;
 }
 
 .navbar-brand {
-	margin-left: 30px;
-	margin-top: 0.7em;
-	margin-bottom: 0.5em;
-	margin-right: 0;
 	color: white;
 	font-family: 'Poppins', sans-serif;
 	font-size: 2.5vw !important;
 	font-weight: 500;
 	transition: color 0.5s ease 0s, margin-top 0.5s ease 0s, margin-bottom 0.5s ease 0s;
+	position: relative;
+	display: inline-block;
+	padding: 0 !important;
+	margin-left: 20px
 }
 
 .navbar-brand:hover {
@@ -28,14 +44,36 @@
 }
 
 .navbar-brand.non-alpha { 
-	margin-top: 0.1em;
-	margin-bottom: 0.1em;
-	color: #2B7A78;
+	color: black;
 	transition: color 0.5s ease 0s, margin-top 0.5s ease 0s, margin-bottom 0.5s ease 0s;
 }
 
+.collapse-btn {
+	background: none;
+	border-style: none;
+	position: relative;
+	display: none;
+	height: 32px;
+	margin-left: 20px
+}
+
+.collapse-btn:focus {
+	border-style: none;
+	outline-style: none;
+}
+
+.collapse-icon.non-alpha {
+	color: rgb(20, 20, 20)
+}
+
+.collapse-icon {
+	color: white;
+	width: 32px;
+	height: 32px
+}
+
 .navbar-right {
-	margin-right: 2em;
+	margin-right: 4em;
 	margin-top: 0.4em;
 	transition: margin-top 0.5s ease 0s
 }
@@ -62,13 +100,13 @@
 
 .nav-signup-btn:hover {
 	background: white;
-	color: #2B7A78;
+	color: black;
 	transition: 0.2s;
 }
 
 .nav-signup-btn.non-alpha {
 	border-width: 2px;
-	background-color: #2B7A78;
+	background-color: black;
 	color: white;
 	transition: background-color 0.5s ease 0s;
 }
@@ -89,12 +127,12 @@
 }
 
 .homenav-item-container {
-	margin-top: 0.7em;
 	transition: margin-top 0.5s ease 0s;
 	display: flex;
 	position: absolute;
 	left: 50%;
-	transform: translateX(-50%);
+	transform: translate(-50%, -50%);
+	top: 50%
 }
 
 .homenav-item-container.non-alpha {
@@ -103,7 +141,7 @@
 }
 
 .homenav-item.non-alpha {
-	color: #2B7A78;
+	color: black;
 	margin-top: 0.2em;
 	transition: color 0.5s ease 0s, margin-top 0.5s ease 0s
 }
@@ -132,10 +170,14 @@
 	font-family: 'Montserrat', sans-serif;
 	color: white;
 	text-decoration: none;
-	font-size: 20px;
+	font-size: 24px;
 	transition: color 0.5s ease 0s;
 	display: block;
 	font-weight: 500;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	right: 60px
 }
 
 .login-link:hover {
@@ -144,14 +186,36 @@
 }
 
 .login-link.non-alpha { 
-	color: #2B7A78;
+	color: black;
 	transition: color 0.5s ease 0s;
 }
 
-@media all and (max-width: 1440px) {
+@media all and (max-width: 1441px) {
 	.homenav-item-container {
-		visibility: hidden;
-		display: none !important;
+		display: none !important
+	}
+	.nav-expand.homenav-item-container {
+		display: initial !important;
+	}
+	.nav-expand.cb-nav {
+		height: 100%;
+		width: 100%;
+		background: white;
+	}
+	.nav-expand.navbar-brand {
+		color: rgb(20, 20, 20);
+	}
+	.collapse-btn {
+		display: inline-block;
+	}
+	.nav-expand.collapse-icon {
+		color: rgb(20, 20, 20)
+	}
+	.nav-expand.homenav-item {
+		color:rgb(20, 20, 20)
+	}
+	.nav-expand.homenav-item-container li {
+		margin-top: 30px;
 	}
 }
 

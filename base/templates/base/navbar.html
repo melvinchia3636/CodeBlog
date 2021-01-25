@@ -6,17 +6,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" /> 
 
 {% block navbar %}
-	<nav class='navbar fixed-top'>
-		<a class='navbar-brand' href="{% url 'home' %}">&#60;/&#62; CODEBLOG</a>
+	<nav class='cb-nav fixed-top'>
+		<div class='navbrand-wrapper'>
+			<button class='collapse-btn'><span class='collapse-icon' data-feather='menu'></span></button>
+			<a class='navbar-brand' href="{% url 'home' %}">&#60;/&#62; CODEBLOG</a>
+		</div>
 		<ul class="nav homenav-item-container">
 			<li>
 			<a href="{% url 'home' %}" class='homenav-item'>HOME</a>
 			</li>
 			<li>
-			<a href="#" class='homenav-item'>BLOG</a>
+			<a href="#" class='homenav-item'>SHARE</a>
 			</li>
 			<li>
-			<a href="{% url 'ideas' %}" class='homenav-item'>IDEAS</a>
+			<a href="{% url 'ideas' %}" class='homenav-item'>TUTORIALS</a>
 			</li>
 			<li>
 			<a href="{% url 'browse-tools' %}" class='homenav-item'>TOOLS</a>
@@ -29,33 +32,40 @@
 			<li>
 				<a href='#' class='login-link'>SIGN IN</a>
 			</li>
-			<li>
-				<a href='#' class='nav-signup-btn'>JOIN US</a>
-			</li>
 		</ul>
 	</nav>
+	
 {% endblock %}
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
 	<script type="text/javascript">
+		window.onresize = adjustMargin
+		var is_collapse = true;
+		window.onload = adjustMargin
 		$(window).scroll(function() {
 			if($(this).scrollTop() > 100) {
-				$('.navbar').addClass('non-alpha');
+				$('.cb-nav').addClass('non-alpha');
 				$('.navbar-brand').addClass('non-alpha');
 				$('.login-link').addClass('non-alpha');
 				$('.homenav-item').addClass('non-alpha');
 				$('.nav-signup-btn').addClass('non-alpha');
 				$('.homenav-item-container').addClass('non-alpha');
-				$('.navbar-right').addClass('non-alpha');
+				$('.navbar-right, .collapse-icon').addClass('non-alpha');
 			} else {
-				$('.navbar').removeClass('non-alpha');
+				$('.cb-nav').removeClass('non-alpha');
 				$('.navbar-brand').removeClass('non-alpha');
 				$('.login-link').removeClass('non-alpha');
 				$('.homenav-item').removeClass('non-alpha');
 				$('.nav-signup-btn').removeClass('non-alpha');
 				$('.homenav-item-container').removeClass('non-alpha');
-				$('.navbar-right').removeClass('non-alpha');
+				$('.navbar-right, .collapse-icon').removeClass('non-alpha');
 			}
 		});
+		$('.collapse-btn').click(function(){
+			$('.cb-nav, .collapse-icon, .navbar-brand, .homenav-item-container').toggleClass('nav-expand');
+			$('.homenav-item-container').children('li').children().toggleClass('nav-expand')
+		})
+		function adjustMargin() {
+			$('.left-container').css('margin-top', (window.innerHeight-$('.left-container').height())/2)
+		}
 	</script>

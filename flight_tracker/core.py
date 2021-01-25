@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 from bs4.element import NavigableString
 import os
 import json
+import time
 
 ua = UserAgent()
 headers = {'User-Agent': ua.random}
@@ -34,6 +35,25 @@ def get_airports(country):
 def get_airport_data(iata):
 	headers = {'User-Agent': ua.chrome}
 	raw = requests.get('https://api.flightradar24.com/common/v1/airport.json?code='+iata, headers=headers).json()['result']['response']['airport']['pluginData']
+	schedule_data = raw['schedule'] 
+	arrival_data = [
+    	[
+        	time.strftime('%I:%M %p', time.localtime(i['time']['scheduled']['arrival'])),
+			i["identification"]['number']['default'],
+			{
+				'name': i['airport']['origin']['position']['region']['city'],
+				'iata': i['airport']['origin']['code']['iata'] 
+			},
+			i['airline']['short'] if i['airline'] else None,
+			i['aircraft']['model']['code'] if i['aircraft'] else None,
+			{
+				'text': i['status']['text'],
+				'status': i['status']['generic']['status']['color']
+			}
+		]
+    	for i in [i['flight'] for i in schedule_data['arrivals']['data']]
+	]
+	departure_data = [i['flight'] for i in schedule_data['departures']['data']]
 	result = {
 		'name': raw['details']['name'],
 		'code': {
@@ -62,6 +82,9 @@ def get_airport_data(iata):
 		},
 		'images': [
 			'https://cdn.jetphotos.com/full/{}/{}'.format(*i['src'].split('/')[-2:]) for i in raw['details']['airportImages']['large']
-		] if raw['details']['airportImages'] else []
+		] if raw['details']['airportImages'] else [],
+		'arrivals': arrival_data,
+		'departures': departure_data
 	}
 	return result
+    

@@ -4,6 +4,6 @@ from . import views
 
 urlpatterns = [
     path('', views.home, name='flight-tracker'),
-    path('/country/<str:country>', views.airportlist, name='country'),
-    path('/airport/<str:iata>', views.airport, name='airport'),
+    path('country/<str:country>', views.airportlist, name='country'),
+    path('airport/<str:iata>', views.airport, name='airport'),
 ]
