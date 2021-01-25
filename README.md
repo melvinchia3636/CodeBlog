@@ -119,3 +119,7 @@
 ### update 20/1/2021
 - continuing UI renovation v3
 - continuing making collapse navbar
+
+### update 25/1/2021
+- arrival data cleanup completed
+- arrival table mostly completed
