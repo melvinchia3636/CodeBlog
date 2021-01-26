@@ -148,29 +148,53 @@
 		</div>
 		<div class='content-container'>
 			{% if departures %}
-				{{ departures }}
+				<div class='main-wrapper'>
+					<div class='arrival-table-container'>
+						<table class='arrival-table'>
+							<th></th>
+							<tbody id='departure-table'>
+								{% for departure in departures %}
+									<tr>
+										<td>{{ departure.0 }}</td>
+										<td style='font-weight: 400'>{{ departure.1 }}</td>
+										<td>{{ departure.2.name }} <span style='font-family: "Lato"; font-weight: 500;font-size: 12px'>( </span><a style='text-decoration: none; color: #2b7a78; font-size: 12px' href='{% url "airport" iata=departure.2.iata %}'>{{ departure.2.iata }}</a><span style='font-family: "Lato"; font-weight: 500;font-size: 12px'> )</span></td>
+										<td style='font-weight: 400'>{% if departure.3 %}{{ departure.3 }}{% endif %}</td>
+										<td>{% if departure.4 %}{{ departure.4 }}{% endif %}</td>
+										<td>{{ departure.5.text }}</td>
+										<td><div class='status-indicator {{ departure.5.status }}'></div></td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+					<div class='load-btn-wrapper'><button class='load-btn' onclick='load_flight("departure")'>LOAD MORE</button></div>
+				</div> 
 			{% else %}
 				<p>No Data to be Shown</p>
 			{% endif %}
 		</div>
 		<div class='content-container'>
 			{% if arrivals %}
-				<div class='arrival-table-container'>
-					<table class='arrival-table'>
-						<th></th>
-						<tbody>
-							{% for arrival in arrivals %}
-								<tr>
-									<td>{{ arrival.0 }}</td>
-									<td style='font-weight: 400'>{{ arrival.1 }}</td>
-									<td>{{ arrival.2.name }} <span style='font-family: "Lato"; font-weight: 500;font-size: 12px'>( </span><a style='text-decoration: none; color: #2b7a78; font-size: 12px' href='{% url "airport" iata=arrival.2.iata %}'>{{ arrival.2.iata }}</a><span style='font-family: "Lato"; font-weight: 500;font-size: 12px'> )</span></td>
-									<td style='font-weight: 400'>{% if arrival.3 %}{{ arrival.3 }}{% endif %}</td>
-									<td>{% if arrival.4 %}{{ arrival.4 }}{% endif %}</td>
-									<td>{{ arrival.5 }}</td>
-								</tr>
-							{% endfor %}
-						</tbody>
-					</table>
+				<div class='main-wrapper'>
+					<div class='arrival-table-container'>
+						<table class='arrival-table'>
+							<th></th>
+							<tbody id='arrival-table'>
+								{% for arrival in arrivals %}
+									<tr>
+										<td>{{ arrival.0 }}</td>
+										<td style='font-weight: 400'>{{ arrival.1 }}</td>
+										<td>{{ arrival.2.name }} <span style='font-family: "Lato"; font-weight: 500;font-size: 12px'>( </span><a style='text-decoration: none; color: #2b7a78; font-size: 12px' href='{% url "airport" iata=arrival.2.iata %}'>{{ arrival.2.iata }}</a><span style='font-family: "Lato"; font-weight: 500;font-size: 12px'> )</span></td>
+										<td style='font-weight: 400'>{% if arrival.3 %}{{ arrival.3 }}{% endif %}</td>
+										<td>{% if arrival.4 %}{{ arrival.4 }}{% endif %}</td>
+										<td>{{ arrival.5.text }}</td>
+										<td><div class='status-indicator {{ arrival.5.status }}'></div></td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+					<div class='load-btn-wrapper'><button class='load-btn' onclick='load_flight("arrival")'>LOAD MORE</button></div>
 				</div>
 			{% else %}
 				<p>No Data to be Shown</p>
@@ -202,10 +226,6 @@
 		}
 		document.getElementsByClassName('content-container')[0].style['display'] = 'block'
 		$(".tabs").on("click","a",function(e){
-		  for (container of document.getElementsByClassName('content-container')) {
-		  	container.style['display'] = 'none'
-		  }
-		  document.getElementsByClassName('content-container')[$(this).attr('id')].style['display'] = 'block'
 		  e.preventDefault();
 		  $('.tabs a').removeClass("active");
 		  $(this).addClass('active');
@@ -215,7 +235,81 @@
 		    "left":itemPos.left + "px", 
 		    "width": activeWidth + "px"
 		  });
+		  for (container of document.getElementsByClassName('content-container')) {
+		  	container.style['display'] = 'none'
+		  }
+		  document.getElementsByClassName('content-container')[$(this).attr('id')].style['display'] = 'block'
 		});
+	</script>
+	<script>
+		var departure_page_limit = {{ arrivals_page_limit.total }};
+		var arrival_page_limit = {{ departures_page_limit.total }};
+		var current_departure_page = current_arrival_page = 1;
+		function load_flight(type) {
+			if (type=='arrival') {
+				$.ajax({
+					url: '{% url "next_page" %}',
+					type: 'POST',
+					data: {
+						'page': current_arrival_page + 1,
+						'iata': "{{ code.iata }}",
+						'AorD': "arrivals"
+					},
+					success: function(data) {
+						response_data = JSON.parse(data);
+						table = document.getElementById('arrival-table')
+						for (row of response_data) {
+							table.innerHTML += `
+								<tr>
+									<td>${row[0]}</td>
+									<td style='font-weight: 400'>${row[1]}</td>
+									<td>${row[2].name} <span style='font-family: "Lato"; font-weight: 500;font-size: 12px'>( </span><a style='text-decoration: none; color: #2b7a78; font-size: 12px' href='#'>${row[2].iata}</a><span style='font-family: "Lato"; font-weight: 500;font-size: 12px'> )</span></td>
+									<td style='font-weight: 400'>${row[3]}</td>
+									<td>${row[4]}</td>
+									<td>${row[5].text}</td>
+									<td><div class='status-indicator ${row[5].status}'></div></td>
+								</tr>
+							`
+						}
+						current_arrival_page ++;
+						if (current_arrival_page == arrival_page_limit) {
+							$('.load-btn-wrapper').css('display', 'none')
+						}
+					}
+				})
+			} else if (type=='departure') {
+				$.ajax({
+					url: '{% url "next_page" %}',
+					type: 'POST',
+					data: {
+						'page': current_departure_page + 1,
+						'iata': "{{ code.iata }}",
+						'AorD': "departures"
+					},
+					success: function(data) {
+						response_data = JSON.parse(data);
+						table = document.getElementById('departure-table')
+						for (row of response_data) {
+							table.innerHTML += `
+								<tr>
+									<td>${row[0]}</td>
+									<td style='font-weight: 400'>${row[1]}</td>
+									<td>${row[2].name} <span style='font-family: "Lato"; font-weight: 500;font-size: 12px'>( </span><a style='text-decoration: none; color: #2b7a78; font-size: 12px' href='#'>${row[2].iata}</a><span style='font-family: "Lato"; font-weight: 500;font-size: 12px'> )</span></td>
+									<td style='font-weight: 400'>${row[3]}</td>
+									<td>${row[4]}</td>
+									<td>${row[5].text}</td>
+									<td><div class='status-indicator ${row[5].status}'></div></td>
+								</tr>
+							`
+						}
+						current_departure_page ++;
+						if (current_departure_page == departure_page_limit) {
+							$('.load-btn-wrapper').css('display', 'none')
+						}
+					}
+				})
+			}
+		}
 	</script>
 </body>
 </html>

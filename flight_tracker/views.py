@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .core import get_countries, get_airports, get_airport_data
-import re
+from .core import get_countries, get_airports, get_airport_data, next_page
+import re, json
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 def home(response):
@@ -15,3 +16,8 @@ def airportlist(response, country=None):
 def airport(response, iata=None):
 	result = get_airport_data(iata.lower())
 	return render(response, 'flight-tracker/airport.html', result)
+
+@csrf_exempt
+def get_next(response):
+    data = next_page(response.POST['iata'], response.POST['page'], response.POST['AorD'])
+    return HttpResponse(json.dumps(data))

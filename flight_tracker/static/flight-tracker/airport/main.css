@@ -149,6 +149,48 @@ body {
 .arrival-table-container {
   background: white;
   padding: 0 10px;
+  border-radius: 5px;
+}
+
+.status-indicator {
+  width:  15px;
+  height: 15px;
+  border-radius: 50%;
+}
+
+.status-indicator.red {
+  background: rgb(255, 108, 108)
+}
+
+.status-indicator.yellow {
+  background: rgb(255, 230, 90)
+}
+
+.status-indicator.green {
+  background: rgb(78, 251, 121)
+}
+
+.status-indicator.gray {
+  background: rgb(184, 184, 184)
+}
+
+.load-btn {
+  border: none;
+  border-radius: 5px;
+  color: white;
+  background:  #2b7a78;
+  padding: 10px 0;
+  width: 100%;
+  margin-top: 10px;
+  font-family: "Poppins";
+  letter-spacing: 3px;
+  font-weight: 500
+}
+
+.load-btn-wrapper {
+  height: 50px
+}
+
+.main-wrapper {
   display: inline-block;
-  border-radius: 10px;
 }

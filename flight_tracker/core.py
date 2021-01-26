@@ -53,7 +53,23 @@ def get_airport_data(iata):
 		]
     	for i in [i['flight'] for i in schedule_data['arrivals']['data']]
 	]
-	departure_data = [i['flight'] for i in schedule_data['departures']['data']]
+	departure_data = [
+    	[
+        	time.strftime('%I:%M %p', time.localtime(i['time']['scheduled']['departure'])),
+			i["identification"]['number']['default'],
+			{
+				'name': i['airport']['destination']['position']['region']['city'],
+				'iata': i['airport']['destination']['code']['iata'] 
+			},
+			i['airline']['short'] if i['airline'] else None,
+			i['aircraft']['model']['code'] if i['aircraft'] else None,
+			{
+				'text': i['status']['text'],
+				'status': i['status']['generic']['status']['color']
+			}
+		]
+    	for i in [i['flight'] for i in schedule_data['departures']['data']]
+	]
 	result = {
 		'name': raw['details']['name'],
 		'code': {
@@ -84,7 +100,32 @@ def get_airport_data(iata):
 			'https://cdn.jetphotos.com/full/{}/{}'.format(*i['src'].split('/')[-2:]) for i in raw['details']['airportImages']['large']
 		] if raw['details']['airportImages'] else [],
 		'arrivals': arrival_data,
-		'departures': departure_data
+		'departures': departure_data,
+		'arrivals_page_limit': schedule_data['arrivals']['page'],
+		'departures_page_limit': schedule_data['departures']['page']
 	}
 	return result
     
+def next_page(iata, page, AorD):
+	headers = {'User-Agent': ua.chrome}
+	orgiOrDest = {'arrivals': 'origin', 'departures': 'destination'}
+	raw = requests.get('https://api.flightradar24.com/common/v1/airport.json?page={}&code={}'.format(page, iata), headers=headers).json()['result']['response']['airport']['pluginData']
+	schedule_data = raw['schedule'] 
+	data = [
+    	[
+        	time.strftime('%I:%M %p', time.localtime(i['time']['scheduled'][AorD[:-1]])),
+			i["identification"]['number']['default'],
+			{
+				'name': i['airport'][orgiOrDest[AorD]]['position']['region']['city'],
+				'iata': i['airport'][orgiOrDest[AorD]]['code']['iata']
+			},
+			i['airline']['short'] if i['airline'] else None,
+			i['aircraft']['model']['code'] if i['aircraft'] else None,
+			{
+				'text': i['status']['text'],
+				'status': i['status']['generic']['status']['color']
+			}
+		]
+    	for i in [i['flight'] for i in schedule_data[AorD]['data']]
+	]
+	return data
