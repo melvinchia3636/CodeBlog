@@ -123,3 +123,6 @@
 ### update 25/1/2021
 - arrival data cleanup completed
 - arrival table mostly completed
+
+### update 26/1/2021
+- "load more" button on arrival and departure page completed
