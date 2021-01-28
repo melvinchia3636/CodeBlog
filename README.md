@@ -130,3 +130,7 @@
 ### update 27/1/2021
 - reviews data scraper of airport tracker completed
 - prototype of reviews data API completed
+
+### update 28.1/2021
+- UI for reviews tab of airport tracker completed
+- raw reviews data successfully loaded into frontend UI
