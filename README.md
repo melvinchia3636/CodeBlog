@@ -126,3 +126,7 @@
 
 ### update 26/1/2021
 - "load more" button on arrival and departure page completed
+
+### update 27/1/2021
+- reviews data scraper of airport tracker completed
+- prototype of reviews data API completed
