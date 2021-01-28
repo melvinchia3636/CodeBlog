@@ -201,7 +201,7 @@
 			{% endif %}
 		</div>
 		<div class='content-container'>
-			SECTION 4
+			<div class='reviews-container'></div>
 		</div>
 		<div class='content-container'>
 			SECTION 5
@@ -210,9 +210,6 @@
 			SECTION 6
 		</div>
 	</div>
-	<script type="text/javascript">
-		feather.replace()
-	</script>
 	<script type="text/javascript">
 		var tabs = $('.tabs');
 		var activeItem = tabs.find('.active');
@@ -238,7 +235,34 @@
 		  for (container of document.getElementsByClassName('content-container')) {
 		  	container.style['display'] = 'none'
 		  }
-		  document.getElementsByClassName('content-container')[$(this).attr('id')].style['display'] = 'block'
+		  var current = $(this).attr('id')
+		  document.getElementsByClassName('content-container')[current].style['display'] = 'block'
+		  if ($(this).attr('id') == 3) {
+			  $.ajax({
+				  url: '{% url "review" iata=code.iata %}',
+				  type: 'POST', 
+				  success: function(response) {
+					  for (item of JSON.parse(response)) {
+						  container = $('.reviews-container').append(
+							  $("<div class='review-container'></div>").append(
+								  item.fbid ? $("<img class='review-image' src='https://www.flightradar24.com/myfr24/profileimage?id="+item.fbid.toString()+"'></img>") : $('<span class="review-image default" data-feather="user"></span')
+							  ).append(
+								  $("<div class='review-title'></div>").text(item.name)
+							  ).append(
+								  $("<div class='review-rating'></div>").append(
+									  $('<span class="rating-star full" data-feather="star"></span>'.repeat(item.overall_rating)+
+									  '<span class="rating-star" data-feather="star"></span>'.repeat(5-item.overall_rating))
+								  )
+							  ).append(
+								  $("<div class='review-content'></div>").text(item.content)
+							  )
+							)
+							feather.replace()
+					  	}
+					  //document.getElementsByClassName('content-container')[current].innerHTML += response
+				  }
+			  })
+		  }
 		});
 	</script>
 	<script>
@@ -310,6 +334,9 @@
 				})
 			}
 		}
+	</script>
+	<script type="text/javascript">
+		feather.replace()
 	</script>
 </body>
 </html>

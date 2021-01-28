@@ -37,8 +37,8 @@ def get_airport_data(iata):
 	raw = requests.get('https://api.flightradar24.com/common/v1/airport.json?code='+iata, headers=headers).json()['result']['response']['airport']['pluginData']
 	schedule_data = raw['schedule'] 
 	arrival_data = [
-    	[
-        	time.strftime('%I:%M %p', time.localtime(i['time']['scheduled']['arrival'])),
+		[
+			time.strftime('%I:%M %p', time.localtime(i['time']['scheduled']['arrival'])),
 			i["identification"]['number']['default'],
 			{
 				'name': i['airport']['origin']['position']['region']['city'],
@@ -51,11 +51,11 @@ def get_airport_data(iata):
 				'status': i['status']['generic']['status']['color']
 			}
 		]
-    	for i in [i['flight'] for i in schedule_data['arrivals']['data']]
+		for i in [i['flight'] for i in schedule_data['arrivals']['data']]
 	]
 	departure_data = [
-    	[
-        	time.strftime('%I:%M %p', time.localtime(i['time']['scheduled']['departure'])),
+		[
+			time.strftime('%I:%M %p', time.localtime(i['time']['scheduled']['departure'])),
 			i["identification"]['number']['default'],
 			{
 				'name': i['airport']['destination']['position']['region']['city'],
@@ -68,7 +68,7 @@ def get_airport_data(iata):
 				'status': i['status']['generic']['status']['color']
 			}
 		]
-    	for i in [i['flight'] for i in schedule_data['departures']['data']]
+		for i in [i['flight'] for i in schedule_data['departures']['data']]
 	]
 	result = {
 		'name': raw['details']['name'],
@@ -105,15 +105,15 @@ def get_airport_data(iata):
 		'departures_page_limit': schedule_data['departures']['page']
 	}
 	return result
-    
+	
 def next_page(iata, page, AorD):
 	headers = {'User-Agent': ua.chrome}
 	orgiOrDest = {'arrivals': 'origin', 'departures': 'destination'}
 	raw = requests.get('https://api.flightradar24.com/common/v1/airport.json?page={}&code={}'.format(page, iata), headers=headers).json()['result']['response']['airport']['pluginData']
 	schedule_data = raw['schedule'] 
 	data = [
-    	[
-        	time.strftime('%I:%M %p', time.localtime(i['time']['scheduled'][AorD[:-1]])),
+		[
+			time.strftime('%I:%M %p', time.localtime(i['time']['scheduled'][AorD[:-1]])),
 			i["identification"]['number']['default'],
 			{
 				'name': i['airport'][orgiOrDest[AorD]]['position']['region']['city'],
@@ -126,6 +126,23 @@ def next_page(iata, page, AorD):
 				'status': i['status']['generic']['status']['color']
 			}
 		]
-    	for i in [i['flight'] for i in schedule_data[AorD]['data']]
+		for i in [i['flight'] for i in schedule_data[AorD]['data']]
 	]
+	return data
+
+def get_review(iata, page=1, sortBy='date'):
+	ua = UserAgent()
+	headers = {'user-agent': ua.random, 'x-requested-with': 'XMLHttpRequest'}
+	raw_data = requests.get('https://www.flightradar24.com/data/airports/{}/reviews?page={}&orderBy={}'.format(iata, page, sortBy), headers=headers).json()
+	data = [
+		{
+			'content': i['content'],
+			'date': i['date'],
+			'overall_rating': i['overall_rating'],
+			'fbid': i['facebook_id'],
+			'name': i['name'],
+			'total_reviews': i['total_reviews'],
+			'subratings': [tuple(j.values())[-2:] for j in i['subratings']] if 'subratings' in i else None
+		} 
+		for i in raw_data['data']]
 	return data

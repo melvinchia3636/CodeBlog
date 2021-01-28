@@ -1,6 +1,7 @@
+from django import http
 from django.shortcuts import render
 from django.http import HttpResponse
-from .core import get_countries, get_airports, get_airport_data, next_page
+from .core import *
 import re, json
 from django.views.decorators.csrf import csrf_exempt
 
@@ -21,3 +22,8 @@ def airport(response, iata=None):
 def get_next(response):
     data = next_page(response.POST['iata'], response.POST['page'], response.POST['AorD'])
     return HttpResponse(json.dumps(data))
+
+@csrf_exempt
+def review(response, iata):
+	data = get_review(iata, response.POST['page'] if 'page' in response.POST else 1)
+	return HttpResponse(json.dumps(data))
