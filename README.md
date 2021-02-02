@@ -131,6 +131,10 @@
 - reviews data scraper of airport tracker completed
 - prototype of reviews data API completed
 
-### update 28.1/2021
+### update 28/1/2021
 - UI for reviews tab of airport tracker completed
 - raw reviews data successfully loaded into frontend UI
+
+### update 3/2/2021
+- UI component of subrating of flight tracker reviews completed
+- future projects tools card added
