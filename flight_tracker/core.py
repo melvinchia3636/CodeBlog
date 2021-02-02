@@ -35,14 +35,14 @@ def get_airports(country):
 def get_airport_data(iata):
 	headers = {'User-Agent': ua.chrome}
 	raw = requests.get('https://api.flightradar24.com/common/v1/airport.json?code='+iata, headers=headers).json()['result']['response']['airport']['pluginData']
-	schedule_data = raw['schedule'] 
+	schedule_data = raw['schedule']  
 	arrival_data = [
 		[
 			time.strftime('%I:%M %p', time.localtime(i['time']['scheduled']['arrival'])),
 			i["identification"]['number']['default'],
 			{
-				'name': i['airport']['origin']['position']['region']['city'],
-				'iata': i['airport']['origin']['code']['iata'] 
+				'name': i['airport']['origin']['position']['region']['city'] if i['airport']['origin'] else None,
+				'iata': i['airport']['origin']['code']['iata'] if i['airport']['origin'] else None
 			},
 			i['airline']['short'] if i['airline'] else None,
 			i['aircraft']['model']['code'] if i['aircraft'] else None,
@@ -58,8 +58,8 @@ def get_airport_data(iata):
 			time.strftime('%I:%M %p', time.localtime(i['time']['scheduled']['departure'])),
 			i["identification"]['number']['default'],
 			{
-				'name': i['airport']['destination']['position']['region']['city'],
-				'iata': i['airport']['destination']['code']['iata'] 
+				'name': i['airport']['destination']['position']['region']['city'] if i['airport']['destination'] else None,
+				'iata': i['airport']['destination']['code']['iata'] if i['airport']['destination'] else None
 			},
 			i['airline']['short'] if i['airline'] else None,
 			i['aircraft']['model']['code'] if i['aircraft'] else None,
