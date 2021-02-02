@@ -138,3 +138,4 @@
 ### update 3/2/2021
 - UI component of subrating of flight tracker reviews completed
 - future projects tools card added
+- static files are now put together in a folder
