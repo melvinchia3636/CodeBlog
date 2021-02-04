@@ -139,3 +139,9 @@
 - UI component of subrating of flight tracker reviews completed
 - future projects tools card added
 - static files are now put together in a folder
+- minor bug fixed
+
+### update 4/2/2021
+- UI renovation v3 continued
+- tools index is dumped into a JSON file
+- a little bit more future project ideas added
