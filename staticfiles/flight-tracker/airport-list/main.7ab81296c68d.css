@@ -1,0 +1,276 @@
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@600&family=Lato&family=Montserrat&display=swap');
+
+body {
+	background: #3AAFA9;
+    overflow-x: hidden;
+    text-align: center;
+}
+
+a:active, a:focus {
+    outline: none;
+}
+
+.title {
+	font-family: 'Montserrat';
+	margin-top: 180px;
+	color: white;
+}
+
+
+.search-box-icon {
+	color: white;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.searchbox-container {
+	border: 2px solid white;
+	width: calc(70vw - 200px);
+	margin: 50px auto;
+	text-align: left;
+	padding: 0 0 5px 15px;
+	border-radius: 50px;
+	position: relative;
+	height: 50px;
+}
+
+.search-box {
+	outline-style: none;
+	outline: none;
+	border: none;
+	height: 40px;
+	width: 85%;
+	background-color: rgba(0, 0, 0, 0);
+	border-radius: 10px;
+	margin-left: 10px;
+	font-size: 20px;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 200;
+	color: white;
+	padding: 0 !important;
+	position: absolute;
+	top: 50%;
+	left: 42px;
+	transform: translateY(-50%);
+}
+
+/* all */
+::-webkit-input-placeholder { /* Webkit */
+   color: #FFFFFF;
+}
+
+:-moz-placeholder { /* Firefox 18-4 */
+   color: #FFFFFF;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #FFFFFF;
+}
+
+:-ms-input-placeholder {  /*  IE10+  */
+   color: #FFFFFF;
+}
+
+.table {
+	display: grid;
+	grid-gap: 10px;
+	justify-content: center;
+	margin-top: 50px;
+}
+
+.table-row {
+	background-color: white;
+	height: 80px;
+	font-family: 'Montserrat';
+	border-radius: 5px;
+	width: auto;
+	text-align: left;
+	position: relative;
+}
+
+.table-cell {
+	font-size: 20px;
+}
+
+.table-cell-name {
+	position: absolute;
+	left: 60px;
+	top: 51%;
+	transform: translateY(-50%);
+	color: black;
+	text-decoration: none;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	width: 40vw;
+	transition: 0.2s
+}
+
+.table-cell-name:hover {
+	color: #2b7a78;
+}
+
+.table-row-index {
+	height: 80px;
+	font-family: 'Montserrat';
+	width: calc(80vw - 200px);
+	text-align: left;
+	position: relative;
+}
+
+.alphabetic-index {
+	position: absolute;
+	left: 20px;
+	top: 80%;
+	transform: translateY(-50%);
+	color: white;
+	text-decoration: none;
+	font-weight: 600;
+}
+
+.table-cell-iata {
+	position: absolute;
+	left: 80%;
+	top: 51%;
+	transform: translateY(-50%);
+	color: black;
+	text-decoration: none;
+}
+
+.table-cell-icao {
+	position: absolute;
+	right: 45px;
+	top: 51%;
+	transform: translateY(-50%);
+	color: black;
+	text-decoration: none;
+	width: 50px;
+}
+
+.map-icon {
+	position: absolute;
+	top: 51%;
+	left: 20px;
+	transform: translateY(-50%);
+}
+
+.title-iata {
+	position: absolute;
+	left: 80%;
+	top: 80%;
+	transform: translateY(-50%);
+	color: white;
+	text-decoration: none;
+	font-weight: 600;
+}
+
+.title-icao {
+	position: absolute;
+	right: 45px;
+	top: 80%;
+	transform: translateY(-50%);
+	color: white;
+	text-decoration: none;
+	font-weight: 600;
+	width: 50px;
+}
+
+@media all and (max-width: 1181px) {
+	.table {
+		grid-gap: 5px;
+	}
+	.table-row {
+		height: 80px;
+		width: calc(100vw - 250px)
+	}
+	.table-cell-name {
+		top: 35%;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+		width: 60vw;
+		font-size: 18px
+	}
+	.searchbox-container {
+		width: 80vw;
+	}
+	.title-icao, .title-iata {
+		display: none;
+	}
+	.table-cell-icao, .table-cell-iata {
+		font-size: 12px;
+		top: 70%
+	}
+	.table-cell-iata {
+		left: 60px;
+	}
+	.table-cell-icao {
+		left: 90px;
+	}
+	.alphabetic-index {
+		font-size: 12px;
+	}
+}
+
+@media all and (max-width: 721px) {
+	.table-row {
+		height: 50px;
+		width: calc(100vw - 50px);
+	}
+	.table-cell-name {
+		font-size: 12px;
+	}
+	.table-cell-icao, .table-cell-iata {
+		font-size: 8px;
+	}
+	.table-cell-name {
+		left: 45px
+	}
+	.table-cell-iata {
+		left: 45px;
+	}
+	.table-cell-icao {
+		left: 75px;
+	}
+	.alphabetic-index {
+		font-size: 12px;
+	}
+	.map-icon {
+		left: 12px
+	}
+}
+
+@media all and (max-width: 400px) {
+	.search-box {
+		width: 70%;
+	}
+}
+
+@media all and (max-width: 1281px) {
+	.searchbox-container {
+		width: calc(100vw - 150px);
+		height: 50px;
+	}
+}
+
+@media all and (max-width: 701px) {
+	.searchbox-container {
+		width: calc(100vw - 150px);
+		height: 40px;
+	}
+	.search-box {
+		font-size: 15px;
+	}
+}
+
+@media all and (max-width: 501px) {
+	.searchbox-container {
+		width: calc(100vw - 50px);
+		height: 40px;
+	}
+	.search-box {
+		font-size: 15px;
+		margin-top: 0;
+	}
+}

@@ -147,6 +147,7 @@
 			</div>
 		</div>
 		<div class='content-container'>
+			<h3 class='tab-header'>Departing Flights</h3>
 			{% if departures %}
 				<div class='main-wrapper'>
 					<div class='arrival-table-container'>
@@ -167,13 +168,14 @@
 							</tbody>
 						</table>
 					</div>
-					<div class='load-btn-wrapper'><button class='load-btn' onclick='load_flight("departure")'>LOAD MORE</button></div>
+					<div class='load-btn-wrapper' id='departure-load-btn'><button class='load-btn' onclick='load_flight("departure")'>LOAD MORE</button></div>
 				</div> 
 			{% else %}
 				<p>No Data to be Shown</p>
 			{% endif %}
 		</div>
 		<div class='content-container'>
+			<h3 class='tab-header'>Arriving Flights</h3>
 			{% if arrivals %}
 				<div class='main-wrapper'>
 					<div class='arrival-table-container'>
@@ -194,7 +196,7 @@
 							</tbody>
 						</table>
 					</div>
-					<div class='load-btn-wrapper'><button class='load-btn' onclick='load_flight("arrival")'>LOAD MORE</button></div>
+					<div class='load-btn-wrapper' id='arrival-load-btn'><button class='load-btn' onclick='load_flight("arrival")'>LOAD MORE</button></div>
 				</div>
 			{% else %}
 				<p>No Data to be Shown</p>
@@ -219,9 +221,6 @@
 		  "left": activeItem.position.left + "px", 
 		  "width": activeWidth + "px"
 		});
-		for (container of document.getElementsByClassName('content-container')) {
-		  container.style['display'] = 'none'
-		}
 		document.getElementsByClassName('content-container')[0].style['display'] = 'block'
 		$(".tabs").on("click","a",function(e){
 		  e.preventDefault();
@@ -286,8 +285,14 @@
 		var departure_page_limit = {{ arrivals_page_limit.total }};
 		var arrival_page_limit = {{ departures_page_limit.total }};
 		var current_departure_page = current_arrival_page = 1;
+		if (departure_page_limit == 1) {
+				$('#departure-load-btn').css('display', 'none')
+		};
+		if (arrival_page_limit == 1) {
+				$('#arrival-load-btn').css('display', 'none')
+		};
 		function load_flight(type) {
-			if (type=='arrival') {
+			if (type=='arrival' && arrival_page_limit != 1) {
 				$.ajax({
 					url: '{% url "next_page" %}',
 					type: 'POST',
@@ -318,7 +323,10 @@
 						}
 					}
 				})
-			} else if (type=='departure') {
+			} else {
+				$('#arrival-load-btn').css('display', 'none')
+			};
+			if (type=='departure' && departure_page_limit != 1) {
 				$.ajax({
 					url: '{% url "next_page" %}',
 					type: 'POST',

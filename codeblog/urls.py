@@ -27,7 +27,7 @@ urlpatterns = [
     path('', include('home.urls')),
     path('home/', include('home.urls')),
     path('youtube-comment-scraper/', include('comment_viewer.urls')),
-    path('browse-tools/', include('tools_index.urls')),
+    path('projects/', include('projects_index.urls')),
     path('covid19-stat/', include('covid19stat.urls')),
     path('code-syntax-highlight/', include('code_syntax_highlight.urls')),
     path('flight-tracker/', include('flight_tracker.urls')),

@@ -3,111 +3,183 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <link rel="stylesheet" type='text/css' href='{% static "home/main.css" %}'>
-    <script src="https://unpkg.com/feather-icons"></script>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+		<link rel="stylesheet" type='text/css' href='{% static "home/main.css" %}'>
+		<link href="{% static "home/perfect-scrollbar/css/perfect-scrollbar.css" %}" rel="stylesheet">
+		<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+		<script src="{% static "home/perfect-scrollbar/dist/perfect-scrollbar.js" %}"></script>
 
-    <title>&#60;/&#62; CODEBLOG</title>
-  </head>
-  <body>
-    <b class='top-banner-background'></b>
-    <div class='left-container'>
-        <div class='start-now'>
-            <p class='start-now-text'>Start your coding journey today</p>
-        </div>
-        <div class='subtitle'><p class='subtitle-text'>We provide you all kind of tools and resources you'll ever need</p></div>
-        <a class='join-btn' href='#'>
-            Get started
-        </a>
-    </div>
-    <div class='right-container'>
-        <div class="highlight homepage-icon"> <pre>
-<span class="k">class</span> <span class="nc">Code</span><span class="p">(</span><span class="nb">object</span>)<span class="sym">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="kw">self</span><span class="p">,</span> <span class="o">*</span><span class="kw">args</span><span class="p">,</span> <span class="o">**</span><span class="kw">kwargs</span>)<span class="sym">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">argument</span> <span class="sym">=</span> <span class="n">args</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">keyword</span> <span class="sym">=</span> <span class="n">kwargs</span>
-    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="kw">self</span>)<span class="sym">:</span>
-        <span class="k">return</span> <span class="s1">&#39;Learn Coding&#39;</span>
-    <span class="k">def</span> <span class="nf">do_something</span><span class="p">(</span><span class="kw">self</span><span class="p">,</span> <span class="kw">keyword</span>)<span class="sym">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Hello </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">keyword</span><span class="p">))</span>
+		<title>&#60;/&#62; CODEBLOG</title>
+ 	</head>
+	<body>
+		<b class='top-banner-background'></b>
+		<div class='left-container'>
+			<div class='start-now'>
+				<p class='start-now-text'>Start your coding journey today</p>
+			</div>
+			<div class='subtitle'><p class='subtitle-text'>We provide you all kind of tools and resources you'll ever need</p></div>
+			<a class='join-btn' href='#'>
+				Get started
+			</a>
+		</div>
+		<div class='right-container'>
+			<div class="highlight homepage-icon"> <pre>
+	<span class="k">class</span> <span class="nc">Code</span><span class="p">(</span><span class="nb">object</span>)<span class="sym">:</span>
+		<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="kw">self</span><span class="p">,</span> <span class="o">*</span><span class="kw">args</span><span class="p">,</span> <span class="o">**</span><span class="kw">kwargs</span>)<span class="sym">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">argument</span> <span class="sym">=</span> <span class="n">args</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">keyword</span> <span class="sym">=</span> <span class="n">kwargs</span>
+		<span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="kw">self</span>)<span class="sym">:</span>
+			<span class="k">return</span> <span class="s1">&#39;Learn Coding&#39;</span>
+		<span class="k">def</span> <span class="nf">sayHello</span><span class="p">(</span><span class="kw">self</span><span class="p">,</span> <span class="kw">keyword</span>)<span class="sym">:</span>
+			<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Hello </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">keyword</span><span class="p">))</span>
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-        <span class="n">my_class</span> <span class="o">=</span> <span class="n">Code</span><span class="p">()</span>
-        <span class="n">myclass</span><span class="o">.</span><span class="n">do_something</span><span class="p">()</span>
-</pre></div>
-    </div>
-    <div class='section-wrapper'>
-        <div class='section-title-wrapper'>
-            <h3 class='section-title'>What a good coder should be like?</h3>
-            <p class='section-desc'>
-                A coder, doesn't mean he or she is a good coder. So what attitudes a good coder should have? Well... The answer is quite simple - Hardworking, keep learning.
-            </p>
-        </div>
-        <div class='intro-list-wrapper'>
-            <ul class='intro-list' id='introlist'>
-                <li class='intro-list-item'>
-                    <div class='intro-list-item-container'>
-                        <p class='intro-list-item-title'>
-                            <svg style="width:24px;height:24px" viewBox="0 0 24 24" class='intro-list-icon'>
-                                <path fill="currentColor" d="M12 3L1 9L5 11.18V17.18L12 21L19 17.18V11.18L21 10.09V17H23V9L12 3M18.82 9L12 12.72L5.18 9L12 5.28L18.82 9M17 16L12 18.72L7 16V12.27L12 15L17 12.27V16Z" />
-                            </svg>
-                            Learn</p>
-                        <p class='intro-list-item-desc'>Coders should always learn cool tricks along their programming journey</p>
-                    </div>
-                </li>
-                <li class='intro-list-item'>
-                    <div class='intro-list-item-container'>
-                        <p class='intro-list-item-title'>
-                            <svg style="width:26px;height:26px" viewBox="0 0 26 26" class='intro-list-icon'>
-                            <path fill="currentColor" d="M8,3A2,2 0 0,0 6,5V9A2,2 0 0,1 4,11H3V13H4A2,2 0 0,1 6,15V19A2,2 0 0,0 8,21H10V19H8V14A2,2 0 0,0 6,12A2,2 0 0,0 8,10V5H10V3M16,3A2,2 0 0,1 18,5V9A2,2 0 0,0 20,11H21V13H20A2,2 0 0,0 18,15V19A2,2 0 0,1 16,21H14V19H16V14A2,2 0 0,1 18,12A2,2 0 0,1 16,10V5H14V3H16Z" />
-                            </svg>
-                            Code</p>
-                        <p class='intro-list-item-desc'>Coders should always write code, beautiful code, efficient code</p>
-                    </div>
-                </li>
-                <li class='intro-list-item'>
-                    <div class='intro-list-item-container'>
-                        <p class='intro-list-item-title'>
-                            <svg style="width:24px;height:24px" viewBox="0 0 24 24" class='intro-list-icon'>
-                                <path fill="currentColor" d="M17,12C17,14.42 15.28,16.44 13,16.9V21H11V16.9C8.72,16.44 7,14.42 7,12C7,9.58 8.72,7.56 11,7.1V3H13V7.1C15.28,7.56 17,9.58 17,12M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z" />
-                            </svg>
-                            Share</p>
-                        <p class='intro-list-item-desc'>Coders should always share their mind, and their way of thinking</p>
-                    </div>
-                </li>
-            </ul>
-            <!--<div class='more-intro'>More intro will be out soon</div>-->
-        </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-    <script>
-    feather.replace()
-    </script>
-    <script>
-        $(document).on("scroll", function() {
-            var page_top = $(document).scrollTop();
-            if (page_top > 300) {
-                $('.section-title').addClass('visible');
-                $('.section-desc').addClass('visible');
-                $('.intro-list-item').addClass('visible');
-            } else {
-                $('.section-title').removeClass('visible');
-                $('.section-desc').removeClass('visible');
-                $('.intro-list-item').removeClass('visible')
-            }
-        })
-        $(document).ready(function(){
-            $(this).scrollTop(0);
-        });
-    </script>
-  </body>
-  <script>
-    window.addEventListener("load", () => {
-    document.querySelector("body").classList.add("loaded"); 
-    });
-  </script>
+	<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+			<span class="n">my_class</span> <span class="o">=</span> <span class="n">Code</span><span class="p">()</span>
+			<span class="n">myclass</span><span class="o">.</span><span class="n">do_something</span><span class="p">(</span><span class="s1">&#39;World&#39;</span><span class="p">)</span>
+		</pre></div>
+		</div>
+		<div class='section-wrapper' style='top: 160%;'>
+			<div class='section-title-wrapper'>
+				<h3 class='section-title'>What a good coder should be like?</h3>
+				<p class='section-desc'>
+					A coder, doesn't mean he or she is a good coder. So what attitudes a good coder should have? Well... The answer is quite simple - Hardworking, keep learning.
+				</p>
+			</div>
+			<div class='intro-list-wrapper'>
+				<ul class='intro-list' id='introlist'>
+					<li class='intro-list-item'>
+						<div class='intro-list-item-container'>
+							<p class='intro-list-item-title'>
+								<svg style="width:24px;height:24px" viewBox="0 0 24 24" class='intro-list-icon'>
+									<path fill="currentColor" d="M12 3L1 9L5 11.18V17.18L12 21L19 17.18V11.18L21 10.09V17H23V9L12 3M18.82 9L12 12.72L5.18 9L12 5.28L18.82 9M17 16L12 18.72L7 16V12.27L12 15L17 12.27V16Z" />
+								</svg>
+								Learn</p>
+							<p class='intro-list-item-desc'>Coders should always learn cool tricks along their programming journey</p>
+						</div>
+					</li>
+					<li class='intro-list-item'>
+						<div class='intro-list-item-container'>
+							<p class='intro-list-item-title'>
+								<svg style="width:26px;height:26px" viewBox="0 0 26 26" class='intro-list-icon'>
+								<path fill="currentColor" d="M8,3A2,2 0 0,0 6,5V9A2,2 0 0,1 4,11H3V13H4A2,2 0 0,1 6,15V19A2,2 0 0,0 8,21H10V19H8V14A2,2 0 0,0 6,12A2,2 0 0,0 8,10V5H10V3M16,3A2,2 0 0,1 18,5V9A2,2 0 0,0 20,11H21V13H20A2,2 0 0,0 18,15V19A2,2 0 0,1 16,21H14V19H16V14A2,2 0 0,1 18,12A2,2 0 0,1 16,10V5H14V3H16Z" />
+								</svg>
+								Code</p>
+							<p class='intro-list-item-desc'>Coders should always write code, beautiful code, efficient code</p>
+						</div>
+					</li>
+					<li class='intro-list-item'>
+						<div class='intro-list-item-container'>
+							<p class='intro-list-item-title'>
+								<svg style="width:24px;height:24px" viewBox="0 0 24 24" class='intro-list-icon'>
+									<path fill="currentColor" d="M17,12C17,14.42 15.28,16.44 13,16.9V21H11V16.9C8.72,16.44 7,14.42 7,12C7,9.58 8.72,7.56 11,7.1V3H13V7.1C15.28,7.56 17,9.58 17,12M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z" />
+								</svg>
+								Share</p>
+							<p class='intro-list-item-desc'>Coders should always share their mind, and their way of thinking</p>
+						</div>
+					</li>
+				</ul>
+				<!--<div class='more-intro'>More intro will be out soon</div>-->
+			</div>
+		</div>
+		<div class='section-wrapper' style='top: 260%; background: white'>
+			<div class='section-title-wrapper right-wrapper'>
+				<h3 class='section-title'>What is Codeblog?</h3>
+				<p class='section-desc'>
+					Codeblog is portfolio of me, The Silly Coder. This website contains every bit of projects that created by me, and how I create it.
+				</p>
+				<a class='explore-btn' href='#'>
+					Explore projects
+				</a>
+			</div>
+			<div class='card-container-wrapper'>
+				<div class='card-container' id='tools-card-container'></div>
+			</div>
+		</div>
+		<div class='section-wrapper', style='height: 70%; background: none; top: 345%'></div>
+		<div class='section-wrapper' style='top: 430%; background: white'>
+			<div class='section-title-wrapper' style='top: 25%'>
+				<h3 class='section-title'>Articles - How it's made</h3>
+				<p class='section-desc'>
+					There's a section on this website, that contains article for every project I made. In each of the article, I'll be talking about everything about the project, like how I make it, and skills involved to make that project.
+				</p>
+				<a class='explore-btn' href='#'>
+					Explore articles
+				</a>
+			</div>
+			<div class='card-container-wrapper right-wrapper' style='right: 0px'>
+				<div class='card-container' id='article-card-container'></div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+		<script>
+		feather.replace()
+		</script>
+		<script>
+			$(document).on("scroll", function() {
+				var page_top = $(document).scrollTop();
+				if (page_top > 300) {
+					$('.section-title').addClass('visible');
+					$('.section-desc').addClass('visible');
+					$('.intro-list-item').addClass('visible');
+				} else {
+					$('.section-title').removeClass('visible');
+					$('.section-desc').removeClass('visible');
+					$('.intro-list-item').removeClass('visible')
+				}
+			})
+			$(document).ready(function(){
+				$(this).scrollTop(0);
+			});
+			$.ajax({
+				url: '{% url "project-index-api" %}',
+				type: "GET",
+				data: {
+					'amount': 5
+				},
+				success: function(data){
+					data = JSON.parse(data)
+					$('#tools-card-container').append(
+						function(){
+							var tools_lst = []
+							for (item of data.items) {
+								tools_lst.push(`
+								<div class='tools-card'>
+									<div class='tools-card-content-wrapper'>
+										<span data-feather='${item.icon_name}' class='tools-icon'></span>
+										<div class='tools-name'>
+											${item.name}
+										</div>
+										<div class='tools-desc'>
+											${item.description}
+										</div>
+										<div class='btn-wrapper'>
+											<a class='card-btn btn-hollow'>Explore API</a>
+											<a href="../${item.link_for_html}" class='card-btn'>Let's Go</a>
+										</div>
+									</div>
+								</div>
+								`)
+							}
+							return tools_lst.join('')
+						}
+					)
+					feather.replace() 
+					$(".card-container-wrapper").animate({
+						scrollLeft: '+=1500'
+					}, 2000);
+					scrollbar = new PerfectScrollbar('.card-container-wrapper');
+					scrollbar.update()
+				}
+			})
+		</script>
+		<script>
+			window.addEventListener("load", () => {
+				document.querySelector("body").classList.add("loaded"); 
+			});
+		</script>
+	</body>
 </html>

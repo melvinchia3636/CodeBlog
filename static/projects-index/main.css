@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Poppins:wght@200;300;400&display=swap');
+
+body {
+	background: #F6F5F7;
+	overflow: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.cb-nav > * > *, .cb-nav > * > * > *{
+	color: rgb(20, 20, 20)
+}
+
+.center-container {
+	margin-top: 10em;
+	text-align: center;
+}
+
+.title-text {
+	color: rgb(20, 20, 20);
+	font-family: 'Poppins', sans-serif;
+	margin-bottom: 50px;
+	font-size: 48px
+}
+
+.search-box-icon {
+	color: rgb(20, 20, 20);
+	margin-top: -3px;
+}
+
+.searchbox-container {
+	border: 2px solid rgb(20, 20, 20);
+	width: 700px;
+	margin: 0 auto;
+	text-align: left;
+	padding: 0 0 5px 20px;
+	border-radius: 50px;
+}
+
+.search-box {
+	outline-style: none;
+	outline: none;
+	border: none;
+	height: 40px;
+	width: 610px;
+	background-color: rgba(0, 0, 0, 0);
+	border-radius: 10px;
+	margin-left: 10px;
+	font-size: 20px;
+	position: relative;
+	top: 2px;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 200;
+	color: rgb(20, 20, 20);
+}
+
+/* all */
+::-webkit-input-placeholder { /* Webkit */
+   color: rgb(20, 20, 20);
+}
+
+:-moz-placeholder { /* Firefox 18-4 */
+   color: rgb(20, 20, 20)F;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: rgb(20, 20, 20);
+}
+
+:-ms-input-placeholder {  /*  IE10+  */
+   color: rgb(20, 20, 20)F;
+}
+
+.result-container {
+	display: grid;
+	grid-template-columns: auto auto auto auto;
+	align-items: center;
+	grid-gap: 30px;
+	justify-content: center;
+	margin-top: 80px;
+	margin-bottom: 80px
+}
+
+.tools-card {
+	background: white;
+	border: 2px solid white;
+	width: 250px;
+	height: 380px;
+	border-radius: 5px;
+	box-shadow: 3px 5px 3px #DDDDDD;
+	text-align: center
+}
+
+.tools-card-content-wrapper {
+	padding: 20px 0;
+	height: 380px;
+}
+
+.tools-icon {
+	width: 64px;
+	height: 64px;
+	stroke-width: 1px;
+	color: rgb(20, 20, 20);
+	stroke: rgb(20, 20, 20);
+}
+
+.tools-name {
+	margin-top: 10px;
+	color: rgb(20, 20, 20);
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 500;
+	font-size: 20px;
+}
+
+.tools-desc {
+	margin: 15px 15px;
+	color: rgb(20, 20, 20);
+	font-family: 'Montserrat', sans-serif;
+}
+
+.btn-wrapper {
+	display: grid;
+	align-items: center;
+	text-align: center;
+	justify-content: center;
+	grid-template-columns: auto;
+	grid-row-gap: 10px;
+}
+
+.card-btn {
+	color: white;
+	text-decoration: none;
+	font-family: 'Montserrat', sans-serif;
+	background: rgb(20, 20, 20);
+	padding: 10px;
+	width: 200px;
+	border-radius: 5px;
+}
+
+.card-btn:hover {
+	color: white;
+}
+
+.btn-hollow {
+	color: rgb(20, 20, 20);
+	background: none;
+	border: 2px solid rgb(20, 20, 20);;
+}
+
+.btn-hollow:hover {
+	color: rgb(20, 20, 20);
+}

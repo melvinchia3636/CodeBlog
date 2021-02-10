@@ -2,16 +2,16 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseBadRequest
 from .forms import UrlInputForm
 from .core import A, C
-from django.core.paginator import Paginator
 from django.views.decorators.csrf import csrf_exempt
 import json
 
 @csrf_exempt
 def home(request):
 	if request.method == 'POST':
-		form = UrlInputForm(request.POST)
-		try: result = C(form.data['video_url'], A(form.data['video_url']))
-		except: result = None
+		url = request.POST.get('video_url')
+		try: result = C(url, A(url))
+		except Exception as e: raise;result = None
+		return HttpResponse(json.dumps(result))
 	else:
 		form = UrlInputForm()
 		result = None

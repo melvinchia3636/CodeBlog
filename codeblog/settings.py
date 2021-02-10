@@ -32,7 +32,7 @@ INSTALLED_APPS = [
     'ideas.apps.IdeasConfig',
     'comment_viewer.apps.CommentViewerConfig',
     'base.apps.BaseConfig',
-    'tools_index.apps.ToolsIndexConfig',
+    'projects_index.apps.ProjectsIndexConfig',
     'covid19stat.apps.Covid19StatConfig',
     'code_syntax_highlight.apps.CodeSyntaxHighlightConfig',
     'flight_tracker.apps.FlightTrackerConfig'

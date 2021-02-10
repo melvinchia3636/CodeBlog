@@ -1,0 +1,57 @@
+{% include 'base/navbar.html' %}
+{% load static %}
+{% load custom_functions %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href='{% static "projects-index/main.css" %}'>
+	<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+	<title>Browse Tools</title>
+</head>
+<body>
+	<div class='center-container'>
+		<h1 class='title-text'>Browse projects</h1>
+		<div class='searchbox-container'>
+			<i data-feather='search' class='search-box-icon'></i>
+			<input type='text' class='search-box' placeholder='Search'>
+		</div>
+		<div class='result-container'>
+		{% autoescape off %}
+			{% for item in data.items %}
+				<div class='tools-card'>
+					<div class='tools-card-content-wrapper'>
+						<span data-feather='{{ item.icon_name }}' class='tools-icon'></span>
+						<div class='tools-name'>
+							{{ item.name }}
+						</div>
+						<div class='tools-desc'>
+							{{ item.description }}
+						</div>
+						<div class='btn-wrapper'>
+							<a class='card-btn btn-hollow'>Explore API</a>
+							<a href="{% if item.link %}{% url item.link %}{% endif %}" class='card-btn'>Let's Go</a>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+		{% endautoescape %}
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	</script>
+	<script type="text/javascript">
+		if ($("#result").html().trim() !== "") {
+			document.getElementById('result').scrollIntoView();
+		}
+	</script>
+	<script>
+	  feather.replace()
+	</script>
+</body>
+</html>

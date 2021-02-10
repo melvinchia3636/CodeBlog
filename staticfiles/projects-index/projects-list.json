@@ -1,0 +1,100 @@
+{
+	"items": [
+		{
+			"name": "YouTube <br> Comment Scraper",
+			"description": "Scrape comments of any YouTube Video without limitation",
+			"link": "comment-viewer",
+			"link_for_html": "../youtube-comment-scraper",
+			"icon_name": "message-square"
+
+		},
+		{
+			"name": "Covid 19 <br> Data Analysis",
+			"description": "Get your hands on the latest data of Covid 19 Pandemic",
+			"link": "covid19-stat",
+			"link_for_html": "../covid19-stat",
+			"icon_name": "database"
+
+		},
+		{
+			"name": "Code Syntax <br> Highlighter",
+			"description": "Format your code, add some color, and make it look a lot cooler",
+			"link": "code-syntax-highlight:code-syntax-highlight",
+			"link_for_html": "../code-syntax-highlight",
+			"icon_name": "code"
+
+		},
+		{
+			"name": "Airport<br>Flight Tracker",
+			"description": "Get the latest flight informations of any airport around the world",
+			"link": "flight-tracker",
+			"link_for_html": "../flight-tracker",
+			"icon_name": "list"
+
+		},
+		{
+			"name": "Parcel Tracker of<br>Pos Malaysia",
+			"description": "Track your parcel and check out its status and location right now",
+			"link": "",
+			"link_for_html": "",
+			"icon_name": "package"
+
+		},
+		{
+			"name": "Color Palette<br>Explorer",
+			"description": "Explore beautiful color palettes and build something cool with them",
+			"link": "",
+			"link_for_html": "",
+			"icon_name": "grid"
+
+		},
+		{
+			"name": "The Wiki of<br>Hermitcraft",
+			"description": "If you're a Hermitcraft follower, here is a right place for you",
+			"link": "",
+			"link_for_html": "",
+			"icon_name": "box"
+
+		},
+		{
+			"name": "Roblox Games<br>Explorer",
+			"description": "A replica oF Roblox Game Catalogue, but with much better UI",
+			"link": "",
+			"link_for_html": "",
+			"icon_name": "grid"
+
+		},
+		{
+			"name": "YouTube Search<br>Result API",
+			"description": "Find any video you want on YouTube, with clean and nice looking UI",
+			"link": "",
+			"link_for_html": "",
+			"icon_name": "grid"
+
+		},
+		{
+			"name": "Stock Photos<br>Library", 
+			"description": "Explore over 1 million free and open source images and videos",
+			"link": "",
+			"link_for_html": "",
+			"icon_name": "image"
+
+		},
+		{
+			"name": "Wallpapers and<br>Ringtone",
+			"description": "Explore beautiful and nice wallpapers and ringtones, and download them",
+			"link": "",
+			"link_for_html": "",
+			"icon_name": "bell"
+
+		},
+		{
+			"name": "Google<br>Translate",
+			"description": "Translate phrases from any language to any language you want",
+			"link": "",
+			"link_for_html": "",
+			"icon_name": "file-text"
+
+		}
+	]
+}
