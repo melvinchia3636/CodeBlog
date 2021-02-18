@@ -145,3 +145,7 @@
 - UI renovation v3 continued
 - tools index is dumped into a JSON file
 - a little bit more future project ideas added
+
+### update 5/2/2021 - 20/2/2021
+- busy working on school stuff
+- designed login page, thanks for contribution, credit will be on website
