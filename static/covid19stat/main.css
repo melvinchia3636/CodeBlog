@@ -1,35 +1,100 @@
 @import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Poppins:wght@200;300;400&family=Lato&display=swap);
 
 body {
-    background: #3AAFA9;
+    background: #f6f5f7;
     overflow: none;
 }
-.table-container {
-    width: 904px;
-    height: 500px;
-    margin: 50px auto;
-    visibility: hidden;
-    overflow: hidden;
-    border-radius: 10px;
+
+.cb-nav > * > *, .cb-nav > * > * > *{
+	color: rgb(20, 20, 20)
 }
 
-.GridViewScrollHeader th,
-.GridViewScrollHeader td {
+.homenav-item:hover {
+	color: rgb(20, 20, 20)
+}
+
+.homenav-item::after {
+	background-color: rgb(20, 20, 20);
+}
+
+.login-link:hover {
+	color: rgb(20, 20, 20)
+}
+
+.navbar-brand:hover {
+	color: rgb(20, 20, 20)
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Poppins';
+    font-weight: 400;
+    padding-top: 180px;
+    font-size: 38px
+}
+
+h1 span {
+    font-size: 15px
+}
+
+.table-container {
+    position: relative;
+    height: 500px;
+    overflow: auto;
+    width: 900px
+}
+
+.table-container {
+    position: relative;
+    height: 500px;
+    overflow: auto;
+    width: 900px;
+    overflow-y: hidden
+}
+
+.table-container-wrapper {
+    display: grid;
+    margin: 50px 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.table-wrapper {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.result-table-header {
+    table-layout:fixed;
+    overflow: hidden
+}
+
+.hidden-header {
+    line-height: 0px; 
+}
+
+.hidden-header th {
+    height: 0px; 
+    padding: 0 25px !important;
+    overflow: hidden
+}
+
+#result-table th {
     padding: 25px;
     font-weight: 400;
     white-space: nowrap;
-    border-right:;
     border-bottom: 1px solid #e6e6e6;
-    background-color: #2B7A78;
+    background-color: rgb(20, 20, 20);
     color: white;
     text-align: left;
     vertical-align: bottom;
-    font-family: 'Montserrat';
+    font-family: 'Poppins';
     font-weight: 500;
     font-size: 15px;
     text-transform: uppercase;
 }
-.GridViewScrollItem td {
+
+#result-table td {
     padding: 25px;
     white-space: nowrap;
     border-bottom: 1px solid #e6e6e6;
@@ -38,18 +103,7 @@ body {
     font-family: 'Lato';
     font-size: 15px;
 }
-.GridViewScrollItemFreeze td {
-    padding: 25px;
-    white-space: nowrap;
-    border-right:;
-    border-bottom: 1px solid #e6e6e6;
-    background-color: #fff;
-    color: #444;
-}
 
-#result-table_Content_Fixed{
-    position: relative;
-}
 
 .center-container {
     margin: 0px auto;
@@ -58,15 +112,15 @@ body {
     grid-template-columns: auto auto auto;
     justify-content: center;
     column-gap: 30px;
-    margin-top:200px;
+    margin-top: 50px;
 }
 
 .overview-card {
     background: white;
-    width: 250;
-    height: 300;
+    width: 250px;
+    height: 300px;
     border-radius: 5px;
-    box-shadow: 5px 5px 5px #2B7A78
+    box-shadow: 5px 5px 5px #dddddd
 }
 
 .number {
@@ -83,7 +137,7 @@ body {
 
 .line {
    fill: none;
-   stroke: #2B7A78;
+   stroke: rgb(20, 20, 20);
    stroke-width: 2px;
 }
 .hover-row {

@@ -1,0 +1,254 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Sign In</title>
+
+	<link rel="stylesheet" type="text/css" href='{% static "base/navbar.css" %}'>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link href="{% static 'login/main.css' %}" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	{% include "base/navbar.html" %}
+	<main role="main" class="container">
+		<div class="row box-shadow main-container">
+			<div class='col-md-5 text-white side-container'>
+				<div class="p-4 pt-5 text-left">
+					<h2 class="side-title px-4">Continue Your Journey</h2>
+					<h3 class="side-subtitle px-4">Login to Codeblog in order to access my website with your personalised settings, and information. Create an account if you don't have one.</h3>
+					<a class='side-btn goto-signup'>Join Us Today</a>
+				</div>
+			</div>
+			<div class="col-md-7 text-center normal-margin form-wrapper" id='signin-form'>
+				<div id="form">
+					<h1 class='login-form-title'>Sign In</h1>
+					<div class="row mt-4">
+						<div class="offset-md-2 col-md-8">
+							<form action="" method="post">
+								{% csrf_token %}
+								<div class='input-group'>
+									<input type="text" class="input-box" aria-label="Email" id="email">
+									<span class='hover-line'></span>
+									<label for="email" class='input-label'>Email</label>
+								</div>
+								<div class='input-group'>
+									<input type="password" class="input-box" aria-label="Password" id="password">
+									<span class='hover-line'></span>
+									<label for="password" class='input-label'>Password</label>
+								</div>
+								<button type="submit" name="sign-in" class="btn btn-block btn-submit">LOGIN</button>
+							</form>
+
+							<!--<p><span class="text-light-violet">Not registered?</span> <a href="#" id="create-account-btn" class="">Create an account</a></p>
+							<a href="#" id="forgot-password-btn" class="">Forgot Password</a>-->
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-7 text-center normal-margin form-wrapper" id='signup-form'>
+				<div id="form">
+					<h1 class='login-form-title'>Create Account</h1>
+					<div class="row mt-4">
+						<div class="offset-md-2 col-md-8">
+							<form action="" method="post">
+								{% csrf_token %}
+								<div class='input-group'>
+									<input type="text" class="input-box" id="username">
+									<span class='hover-line'></span>
+									<label for="username" class='input-label'>Username</label>
+								</div>
+								<div class='input-group'>
+									<input type="text" class="input-box" id="email">
+									<span class='hover-line'></span>
+									<label for="email" class='input-label'>Email</label>
+								</div>
+								<div class='input-group'>
+									<input type="password" class="input-box" id="password">
+									<span class='hover-line'></span>
+									<label for="password" class='input-label'>Password</label>
+								</div>
+									<button type="submit" name="sign-in" class="btn btn-block btn-submit">PROCEED</button>
+							</form>
+
+							<!--<p><span class="text-light-violet">Not registered?</span> <a href="#" id="create-account-btn" class="">Create an account</a></p>
+							<a href="#" id="forgot-password-btn" class="">Forgot Password</a>-->
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+				
+				<!--<div id="sign-up-form" style="display: none;">
+					<h1 class="text-violet">Sign Up</h1>
+					<div class="row mt-4">
+						<div class="offset-md-2 col-md-8">
+							<form action="" method="post">
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<span class="input-group-text"><i class="fa fa-envelope"></i></span>
+									</div>
+									<input type="text" class="form-control" placeholder="Email" aria-label="Email">
+								</div>
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<span class="input-group-text"><i class="fa fa-key"></i></span>
+									</div>
+									<input type="text" class="form-control" placeholder="Password" aria-label="Password">
+								</div>
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<span class="input-group-text"><i class="fa fa-key"></i></span>
+									</div>
+									<input type="text" class="form-control" placeholder="Confirm Password" aria-label="Password">
+								</div>
+								<button type="submit" name="sign-up" class="btn btn-violet btn-block">SIGN UP</button>
+							</form>
+							<p><span class="text-light-violet">Already have an account</span> <a href="#" id="sign-in-btn" class="text-violet">Sign In</a></p>
+
+						</div>
+					</div>
+				</div>
+				
+				<div id="forgot-password-form" style="display: none;">
+					<img src="images/forgot-password.png" class="mt-5" width="300px">
+					<h1 class="text-violet">Forgot Password</h1>
+					<div class="row mt-4">
+						<div class="offset-md-2 col-md-8">
+							<form action="" method="post">
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<span class="input-group-text"><i class="fa fa-envelope"></i></span>
+									</div>
+									<input type="text" class="form-control" placeholder="Email" aria-label="Email">
+								</div>
+								<button type="submit" name="forgot-password" class="btn btn-violet btn-block">RESET</button>
+							</form>
+							<p><span class="text-light-violet">Already have an account</span> <a href="#" id="sign-in-btn2" class="text-violet">Sign In</a></p>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>-->
+
+	</main><!-- /.container -->
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script src="https://use.fontawesome.com/fcfd8b4814.js"></script>
+
+	<script>
+		$(document).ready(function(){
+			if (document.URL.includes('login')) {
+			} else {
+				$('#signin-form').fadeOut()
+				$('.side-container').removeClass('left-container').addClass('right-container')
+				$('.side-btn').removeClass('goto-signup').addClass('goto-login').text('Have an Account?')
+				$('.side-title').text('Welcome to Codeblog')
+				$('.side-subtitle').text('Codeblog is portfolio of me, The Silly Coder. This website contains every bit of projects that created by me, and how I create it.')
+				window.history.pushState('signup', 'Join Us', '{% url "join" %}');
+				document.title = 'Join Us'
+				setTimeout(function() {$('#signup-form').fadeIn()}, 0)
+			}
+		})
+	</script>
+
+	<!--<script>
+		$('#create-account-btn').click(function() {
+			$("#sign-in-form").hide();
+			$("#sign-up-form").fadeIn();
+		});
+
+		$('#sign-in-btn').click(function() {
+			$("#sign-up-form").hide();
+			$("#forgot-password-form").hide();
+			$("#sign-in-form").fadeIn();
+		});
+
+		$('#sign-in-btn2').click(function() {
+			$("#forgot-password-form").hide();
+			$("#sign-in-form").fadeIn();
+		});
+
+		$('#forgot-password-btn').click(function() {
+			$("#sign-in-form").hide();
+			$("#forgot-password-form").fadeIn();
+		});
+	</script>-->
+	<script>
+		Array.prototype.last = function() {
+			return this[this.length-1]
+		}
+		$('.input-box').focus(function() {
+			$(this).parent().children('.input-label').attr('style', 'top: -5px !important')
+			$(this).parent().children('.hover-line').css('width', '100%')
+		}).blur(function() {
+			if ($(this).val() == '') {
+				$(this).parent().children('.input-label').attr('style', 'top: 50% !important')
+				$(this).parent().children('.hover-line').css('width', '0')
+			}
+		}).hover(
+				function() {
+					$(this).parent().children('.input-label').attr('style', 'top: -5px !important')
+					$(this).parent().children('.hover-line').css('width', '100%')
+				},
+				function() {
+					if (!$(this).is(":focus") && $(this).val() == ''){
+						$(this).parent().children('.input-label').attr('style', 'top: 50% !important')
+						$(this).parent().children('.hover-line').css('width', '0')
+					}
+				}
+		)
+		$('.input-label').hover(
+			function() {
+				$(this).css('top', '-5px')
+				$(this).parent().children('.hover-line').css('width', '100%')
+			},
+			function() {
+				if (!$(this).parent().children('.input-box').is(":focus") && $(this).parent().children('.input-box').val() == ''){
+					$(this).css('top', '50%')
+					$(this).parent().children('.hover-line').css('width', '0')
+				}
+			}
+		)
+		$('.side-btn').click(function() {
+			if ($(this).attr("class").split(/\s+/).last() == 'goto-signup') {
+				$('#signin-form').fadeOut()
+				$('.side-container').removeClass('left-container').addClass('right-container')
+				$(this).removeClass('goto-signup').addClass('goto-login').text('Have an Account?')
+				$('.side-title').text('Welcome to Codeblog')
+				$('.side-subtitle').text('Codeblog is portfolio of me, The Silly Coder. This website contains every bit of projects that created by me, and how I create it.')
+				window.history.pushState('signup', 'Join Us', '{% url "join" %}');
+				document.title = 'Join Us'
+				setTimeout(function() {$('#signup-form').fadeIn()}, 0)
+			} else {
+				$('#signup-form').fadeOut()
+				$('.side-container').removeClass('right-container').addClass('left-container')
+				$(this).removeClass('goto-login').addClass('goto-signup').text('Join Us Today')
+				$('.side-title').text('Continue Your Journey')
+				$('.side-subtitle').text("Login to Codeblog in order to access my website with your personalised settings, and information. Create an account if you don't have one.")
+				window.history.pushState('login', 'Login', '{% url "login" %}');
+				document.title = 'Sign In'
+				setTimeout(function() {$('#signin-form').fadeIn()}, 0)
+			}
+		})
+		$('.hover-line').hover(function() {
+			$(this).css('width', '100%')
+			$(this).parent().children('.input-label').css('top', '-5px')
+		}, function() {
+			if (!$(this).parent().children('.input-box').is(":focus") && $(this).parent().children('.input-box').val() == ''){
+				$(this).css('width', '0')
+				$(this).parent().children('.input-label').css('top', '50%')
+			}
+		})
+	</script>
+
+
+</body></html>

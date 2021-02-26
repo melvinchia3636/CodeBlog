@@ -1,9 +1,12 @@
 from pathlib import Path
 import os
 import django_heroku
+import sys
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+sys.path.insert(0, os.path.join(BASE_DIR, 'projects'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -12,11 +15,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'k!02^u8l7x)8oqnukv4-(+$n7j6eg*9n&i!$m^3#s6&qud#npw'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 X_FRAME_OPTIONS = 'SAMEORIGIN'
-
 
 # Application definition
 
@@ -30,12 +32,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home.apps.HomeConfig',
     'ideas.apps.IdeasConfig',
-    'comment_viewer.apps.CommentViewerConfig',
+    'projects.comment_viewer.apps.CommentViewerConfig',
     'base.apps.BaseConfig',
     'projects_index.apps.ProjectsIndexConfig',
-    'covid19stat.apps.Covid19StatConfig',
-    'code_syntax_highlight.apps.CodeSyntaxHighlightConfig',
-    'flight_tracker.apps.FlightTrackerConfig'
+    'projects.covid19stat.apps.Covid19StatConfig',
+    'projects.code_syntax_highlight.apps.CodeSyntaxHighlightConfig',
+    'projects.flight_tracker.apps.FlightTrackerConfig',
+    'signin_register.apps.SigninRegisterConfig',
 ]
 
 MIDDLEWARE = [

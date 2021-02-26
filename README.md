@@ -67,7 +67,7 @@
 - daily cases, daily recovered and daily death graph scrapper created
 - binded number, graph and table into UI
 
-### update 2/1/2021
+### update 2/1/2020
 - created tool card for covid19 data analysis
 - binded covid 19 analysis app to it's tool card
 - binded IDEAS page to corresponding navbar button
@@ -76,7 +76,7 @@
 - user uplaoded media storage created
 - prototype UI of Code Syntax Highlighter created (which contains cool new stuff I never done before)
 
-### update 3/1/2021
+### update 3/1/2020
 - Code Syntax Highlighter 80% completed
   - upload file
   - select lexer and theme
@@ -84,64 +84,19 @@
   - download styled file
 - deployed website to heroku (https://codeblog-official.herokuapp.com)
 
-### update 4/1/2021
+### update 4/1/2020
 - new app created: **Flight Tracker**
 - homepage of flight tracker created
 - countries scraper created
 - airport list scraper prototype created
 
-### update 5/1/2021
+### update 5/1/2020
 - fixed bugs for airport list scraper
 - alphabetic indexing created in browse country page
 - airport list of every country created
 - airport info page prototype of prototype created
 
-### update 6/1/2021
+### update 6/1/2020
 - airport info page UI created
 - airport info page tab seperation completed
 - first tab of airport info completed
-
-### update 7/1/2021
-- homepage responsivity completed
-- airport image added to the flight tracker
-
-### update 8/1/2021
-- starting working on flight tracker responsivity
-
-### update 17/1/2021
-- responsivity of flight-tracker main page and airport list page completed
-- UI renovation v3
-
-### update 19/1/2021
-- continuing UI renovation v3
-- starting making collapse navbar
-
-### update 20/1/2021
-- continuing UI renovation v3
-- continuing making collapse navbar
-
-### update 25/1/2021
-- arrival data cleanup completed
-- arrival table mostly completed
-
-### update 26/1/2021
-- "load more" button on arrival and departure page completed
-
-### update 27/1/2021
-- reviews data scraper of airport tracker completed
-- prototype of reviews data API completed
-
-### update 28/1/2021
-- UI for reviews tab of airport tracker completed
-- raw reviews data successfully loaded into frontend UI
-
-### update 3/2/2021
-- UI component of subrating of flight tracker reviews completed
-- future projects tools card added
-- static files are now put together in a folder
-- minor bug fixed
-
-### update 4/2/2021
-- UI renovation v3 continued
-- tools index is dumped into a JSON file
-- a little bit more future project ideas added

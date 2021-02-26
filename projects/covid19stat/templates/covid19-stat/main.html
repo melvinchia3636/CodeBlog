@@ -1,0 +1,157 @@
+{% load static %}
+
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Covid 19 Statistic</title>
+
+	<link rel="stylesheet" type="text/css" href='{% static "base/navbar.css" %}'>
+	<link rel="stylesheet" type="text/css" href="{% static 'covid19stat/main.css' %}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.0/css/perfect-scrollbar.min.css">
+	<script src="https://d3js.org/d3.v6.min.js"></script>
+	<script type="text/javascript" src='https://cdn.jsdelivr.net/npm/underscore@1.12.0/underscore-min.js'></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.0/perfect-scrollbar.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+</head>
+<body>
+	{% include 'base/navbar.html' %}
+	<h1>Covid 19 Statistic <span>by worldometers.info</span></h1>
+	<div class='center-container'>
+		<div class='overview-card' id='recovered'>
+			<div class='number'>{{ table.0.2 }}</div>
+			<div class='title'>Total Recovered</div>
+		</div>
+		<div class='overview-card' id='total'>
+			<div class='number'>{{ table.0.0 }}</div>
+			<div class='title'>Total Cases</div>
+		</div>
+		<div class='overview-card' id='death'>
+			<div class='number'>{{ table.0.1 }}</div>
+			<div class='title'>Total Death</div>
+		</div>
+	</div>
+	<div class='table-container-wrapper'>
+		<div class='table-wrapper'>
+			<div class='table-container' style='height:auto;overflow:hidden'>
+				<table cellspacing="0" id="result-table" class='result-table-header' style="width:100%;border-collapse:collapse">
+					<tr>
+						<th>#</th>
+						<th>Country, Other</th>
+						<th>Total Cases</th>
+						<th>New Cases</th>
+						<th>Total Deaths</th>
+						<th>New Deaths</th>
+						<th>Total Recovered</th>
+						<th>New Recovered</th>
+						<th>Active Cases</th>
+						<th>Serious, Critical</th>
+						<th>Tot&nbsp; Cases/1M pop</th>
+						<th>Deaths/1M pop</th>
+						<th>Total Tests</th>
+						<th >Tests/1M pop
+						<th>Population</th>
+						<th>Continent</th>
+						<th>1 Case every X ppl</th>
+						<th>1 Death every X ppl</th>
+						<th>1 Test every X ppl</th>
+					</tr>
+				</table>
+			</div>
+			<div class='table-container' id='main-table'>
+				<table cellspacing="0" id="result-table" class='scroll-table' style="width:100%;border-collapse:collapse;">
+					<tr class='hidden-header'>
+						<th>#</th>
+						<th>Country, Other</th>
+						<th>Total Cases</th>
+						<th>New Cases</th>
+						<th>Total Deaths</th>
+						<th>New Deaths</th>
+						<th>Total Recovered</th>
+						<th>New Recovered</th>
+						<th>Active Cases</th>
+						<th>Serious, Critical</th>
+						<th>Tot&nbsp; Cases/1M pop</th>
+						<th>Deaths/1M pop</th>
+						<th>Total Tests</th>
+						<th >Tests/1M pop
+						<th>Population</th>
+						<th>Continent</th>
+						<th>1 Case every X ppl</th>
+						<th>1 Death every X ppl</th>
+						<th>1 Test every X ppl</th>
+					</tr>
+					{% for row in table.1 %}
+						<tr class="item">
+							{% for cell in row %}
+								<td>
+									{% if cell %}
+										{{ cell }}
+									{% endif %}
+								</td>
+							{% endfor %}
+						</tr>
+					{% endfor %}
+				</table>
+			</div> 
+		</div>
+	</div> 
+	<script>
+		var margin = {top: 0, right: 0, bottom: 10, left: 0}, width = 200 - margin.left - margin.right, height = 100 - margin.top - margin.bottom;
+    	var x = d3.scaleTime().range([0, width]);
+        var y = d3.scaleLinear().range([height, 0]);
+        var valueline = d3.line().x(function(d) { return x(d[0]); }).y(function(d) { return y(d[1]); });
+        var svg = d3.select("#total").append("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom).style("margin-top", '50px').append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+		var valueline = d3.line().x(function(d) { return x(d[0]); }).y(function(d) { return y(d[1]); });
+		var data = _.zip(_.range(eval({{ graph.0 }}).length), eval({{ graph.0 }}))
+		x.domain(d3.extent(data, function(d) { return d[0]; }));
+		y.domain([0, d3.max(data, function(d) { return d[1]; })]);
+		svg.append("path").data([data]).attr("class", "line").attr("d", valueline);
+
+		var margin = {top: 0, right: 0, bottom: 10, left: 0}, width = 200 - margin.left - margin.right, height = 100 - margin.top - margin.bottom;
+    	var x = d3.scaleTime().range([0, width]);
+        var y = d3.scaleLinear().range([height, 0]);
+        var valueline = d3.line().x(function(d) { return x(d[0]); }).y(function(d) { return y(d[1]); });
+        var svg = d3.select("#recovered").append("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom).style("margin-top", '50px').append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+		var valueline = d3.line().x(function(d) { return x(d[0]); }).y(function(d) { return y(d[1]); });
+		var data = _.zip(_.range(eval({{ graph.1 }}).length), eval({{ graph.1 }}))
+		x.domain(d3.extent(data, function(d) { return d[0]; }));
+		y.domain([0, d3.max(data, function(d) { return d[1]; })]);
+		svg.append("path").data([data]).attr("class", "line").attr("d", valueline);
+
+		var margin = {top: 0, right: 0, bottom: 10, left: 0}, width = 200 - margin.left - margin.right, height = 100 - margin.top - margin.bottom;
+    	var x = d3.scaleTime().range([0, width]);
+        var y = d3.scaleLinear().range([height, 0]);
+        var valueline = d3.line().x(function(d) { return x(d[0]); }).y(function(d) { return y(d[1]); });
+        var svg = d3.select("#death").append("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom).style("margin-top", '50px').append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+		var valueline = d3.line().x(function(d) { return x(d[0]); }).y(function(d) { return y(d[1]); });
+		var data = _.zip(_.range(eval({{ graph.2 }}).length), eval({{ graph.2 }}))
+		x.domain(d3.extent(data, function(d) { return d[0]; }));
+		y.domain([0, d3.max(data, function(d) { return d[1]; })]);
+		svg.append("path").data([data]).attr("class", "line").attr("d", valueline);
+	</script>
+	<script>
+		$(document).ready( function(){
+			var ifr1 = $('.result-table-header').parent();
+			var ifr2 = $('.scroll-table').parent();
+			count = 0
+
+			ifr1.scroll( function(){
+				ifr2.scrollLeft(ifr1.scrollLeft());
+			});
+
+			ifr2.scroll( function(){
+				console.log('yeah')
+				ifr1.scrollLeft(ifr2.scrollLeft());
+			});
+			$('.scroll-table > tbody > tr:first-child').children('th').each(function() {
+				$('.result-table-header > tbody > tr > th').eq(count).width($(this).width())
+				count++
+			})
+			ps = new PerfectScrollbar('#main-table')
+		});
+	</script>
+</body>
+</html>
