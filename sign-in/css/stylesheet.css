@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&family=Montserrat&family=Roboto:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap');
+
+body {
+	background: #f6f5f7
+}
+
+@media only screen and (max-width: 768px) {
+
+	/* For mobile phones: */
+	.bg-violet {
+		border-radius: 0px !important;
+		border-top-left-radius: 20px !important;
+		border-top-right-radius: 20px !important;
+	}
+
+	.logo {
+		width: 250px;
+		margin-top: 2vh !important;
+		margin-bottom: 5vh !important;
+	}
+
+	.mt-50 {
+		margin-top: 2vh !important;
+	}
+}
+
+.main-container {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 1140px;
+	border-radius: 10px;
+	height: 500px
+}
+
+.side-btn {
+	border: 2px solid white;
+	padding: 10px 40px;
+	border-radius: 50px;
+	font-family: 'Poppins';
+	margin-left: 20px;
+	cursor: pointer
+}
+
+.btn-submit {
+	height: 50px;
+	border-radius: 30px !important;
+	font-family: 'Poppins';
+	margin-top: 40px !important;
+	font-size: 16px;
+	background: rgb(20, 20, 20);
+	color: white;
+	transition: 0.3s
+}
+
+.btn-submit:hover {
+	background: black;
+	color: white;
+}
+
+.row {
+	background: white
+}
+
+.login-form-title {
+	font-family: 'Poppins';
+	font-weight: 400;
+	font-size: 28px;
+	padding: 0 92px;
+	text-align: left;
+	margin-bottom: 30px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+#form {
+	margin: auto 0;
+	position: absolute;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 80%;
+	left: 50%
+}
+
+#signin-form {
+	top: 0;
+	right: 0
+}
+
+#signup-form {
+	top: 0;
+	left: 0
+}
+
+.pt-5 {
+	padding-top: 12vh !important
+}
+
+.side-title {
+	font-family: 'Poppins';
+	font-size: 48px;
+	font-weight: 500;
+	text-align: left;
+}
+
+.side-subtitle {
+	font-family: "Poppins";
+	font-weight: 300;
+	font-size: 18px;
+	margin-top: 3vh;
+	margin-bottom: 6vh;
+	padding: 0 20px;
+	text-align: left;
+	line-height: 24px
+}
+
+.form-wrapper {
+	height: 500px;
+	background: white;
+	border-radius: 10px;
+	position: absolute;
+}
+
+.side-container {
+	transition: 0.5s;
+	z-index: 9999;
+	background-color: rgb(20, 20, 20);
+	border-radius: 10px;
+	border-bottom-right-radius: 0;
+	border-top-right-radius: 0;
+	margin-left: 0
+}
+
+.left-container {
+	animation: slideLeft .5s;
+	animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.right-container {
+	background-color: rgb(20, 20, 20);
+	border-radius: 10px;
+	border-bottom-left-radius: 0;
+	border-top-left-radius: 0;
+	animation: slideRight .5s;
+	animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	margin-left: calc(100% - 475px)
+}
+
+@keyframes slideLeft {
+	from {
+		margin-left: calc(100% - 475px);
+		margin-right: 0;
+	}
+	to {
+		margin-left: 0;
+		margin-right: calc(100% - 475px);
+	}
+}
+
+@keyframes slideRight {
+	from {
+		margin-left: 0;
+		margin-right: calc(100% - 475px);
+	}
+	to {
+		margin-left: calc(100% - 475px);
+		margin-right: 0;
+	}
+}
+
+.box-shadow {
+	box-shadow: 2.5px 4.33px 5px 0px rgba(0, 0, 0, 0.2);
+	border-radius: 10px;
+}
+
+.logo {
+	text-align: center;
+	font-family: "Poppins";
+	font-weight: 500;
+	font-size: 64px
+}
+
+.footer {
+	position: absolute;
+	bottom: 10px;
+	left: 35%;
+}
+
+.normal-margin {
+	padding: 20px;
+}
+
+.text-light-violet {
+	color: rgb(20, 20, 20);
+}
+
+.mt-50 {
+	margin-top: 20vh;
+}
+
+.input-group {
+	position: relative;
+	margin-bottom: 30px;
+}
+
+.input-label {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	left: 0px;
+	color: rgb(141, 141, 141);
+	font-family: 'Montserrat', sans-serif;
+	transition: top 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	font-size: 15px
+}
+
+.input-label:hover {
+	cursor: text;
+}
+
+.input-box {
+	border: 0;
+	width: 100%;
+	height: 32px;
+	border-bottom: 2px solid rgb(141, 141, 141)
+}
+
+.hover-line::after {
+	content: "";
+	width: 0%;
+	height: 2px;
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	background: rgb(20, 20, 20);
+	transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.input-box:focus {
+	outline: 0
+}
+
+.hover-line {
+	transition: all .2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	width: 0%;
+	height: 2px;
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	background: rgb(20, 20, 20);
+}
+
+
+#signup-form {
+	display: none
+}
+
