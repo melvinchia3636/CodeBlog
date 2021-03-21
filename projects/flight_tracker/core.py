@@ -33,7 +33,7 @@ def get_airports(country):
 	return sorted_airport_list, count
 
 def get_airport_data(iata):
-	headers = {'User-Agent': ua.chrome}
+	headers = {'User-Agent': ua.chrome} 
 	raw = requests.get('https://api.flightradar24.com/common/v1/airport.json?code='+iata, headers=headers).json()['result']['response']['airport']['pluginData']
 	schedule_data = raw['schedule']  
 	arrival_data = [

@@ -1,0 +1,63 @@
+body, html {
+	background: #f6f5f7;
+	width: 100%;
+	height: 100%
+}
+
+.cb-nav *{
+	color: rgb(20, 20, 20)
+}
+
+.homenav-item:hover {
+	color: rgb(20, 20, 20)
+}
+
+.homenav-item::after {
+	background-color: rgb(20, 20, 20);
+}
+
+.login-link:hover {
+	color: rgb(20, 20, 20)
+}
+
+.navbar-brand:hover {
+	color: rgb(20, 20, 20)
+}
+
+.main-container {
+	height: 80%;
+	margin: 0 20px;
+	text-align: center
+}
+
+.not-found-title {
+	margin-top: 40vh;
+	font-family: 'Poppins';
+	font-size: 3rem;
+	font-weight: 500
+}
+
+.not-found-desc {
+	margin: 0 20px;
+	font-family: 'Poppins';
+	color: rgb(20, 20, 20);
+	font-weight: 400;
+}
+
+@media (max-width: 500px) {
+	.not-found-title {
+		font-size: 8vw
+	}
+}
+
+@media all and (max-width: 490px) {
+	.not-found-desc {
+		font-size: 4vw
+	}
+}
+
+@media all and (max-width: 300px) {
+	.not-found-title {
+		font-size: 6vw
+	}
+}

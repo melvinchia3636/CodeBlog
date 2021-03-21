@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    {% include 'base/head.html' %}
+    <title>Oops! Error 404 - TheCodeblog.net</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href='/static/base/navbar.css'>
+    <link rel="stylesheet" type="text/css" href="/static/base/error_404.css"> 
+  </head>
+  <body>
+    {% include 'base/navbar.html' %}
+    <!--[if lt IE 7]>
+		<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
+    <div class='main-container'>
+      <h1 class='not-found-title'>404 Page Not Found... :(
+      </h1>
+      <h2 class='not-found-desc'>Hmm... Perhapse you can check if you made some typo mistakes in the url?
+      </h2>
+    </div>
+    {% include 'base/footer.html' %}
+  </body>
+</html>

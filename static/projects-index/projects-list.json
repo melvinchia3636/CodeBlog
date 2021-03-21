@@ -33,10 +33,10 @@
 
 		},
 		{
-			"name": "Parcel Tracker of<br>Pos Malaysia",
-			"description": "Track your parcel and check out its status and location right now",
-			"link": "",
-			"link_for_html": "",
+			"name": "Universal<br>Parcel Tracker",
+			"description": "Track your parcel status with a nice collection of well known trackers",
+			"link": "parcel_tracker_index",
+			"link_for_html": "parcel-tracker",
 			"icon_name": "package"
 
 		},
@@ -75,8 +75,8 @@
 		{
 			"name": "Stock Photos<br>Library", 
 			"description": "Explore over 1 million free and open source images and videos",
-			"link": "",
-			"link_for_html": "",
+			"link": "stock_photos_explorer_index",
+			"link_for_html": "../stock-photos",
 			"icon_name": "image"
 
 		},

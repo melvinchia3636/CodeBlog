@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+	{% include 'base/head.html' %}
+	<link rel="stylesheet" type="text/css" href='{% static "base/navbar.css" %}'>
+	<link rel="stylesheet" type="text/css" href='{% static "parcel-tracker/main.css" %}'>
+	<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+</head>
+<body>
+	{% include 'base/navbar.html' %}
+	<main class='main-container-wrapper'>
+		<div class='main-container'>
+			
+			<h1 class='title'>Universal Parcel Tracker</h1>
+			<div class='grid-container'>
+				<div class='container-item'>
+					<span><img src={% static "parcel-tracker/image/trackingmy-icon.png" %}></span>
+					<div class='tracker-name'>Tracking.my</div>
+					<p class='tracker-desc'>
+						Malaysia's Largest Shipment Tracking Platform. Track all your shipments in one place.
+					</p>
+				</div>
+				<div class='container-item'>
+					<span><img src={% static "parcel-tracker/image/parcelsapp-icon.png" %}></span>
+					<div class='tracker-name'>Parcelsapp.com</div>
+					<p class='tracker-desc'>
+						Regardless of the online store or the market you have purchased, you can always trace the full path of the order with our parcel tracking service
+					</p>
+				</div>
+				<div class='container-item'>
+					<span><img src={% static "parcel-tracker/image/ship24-icon.png" %}></span>
+					<div class='tracker-name'>Ship24.com</div>
+					<p class='tracker-desc'>
+						Ship24 universal tracking system is the fastest tracking service covering over 10,000 shops and logistics providers. Enter your tracking ID, get real-time tracking, and receive notifications so you don't miss any update!
+					</p>
+				</div>
+			</div>
+		</div>
+	</main>
+</body>
+
+</html>

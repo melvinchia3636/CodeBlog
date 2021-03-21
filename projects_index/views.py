@@ -4,7 +4,7 @@ from django.shortcuts import render
 import json
 
 def home(request):
-	return render(request, 'projects-index/main.html', {'data': projectsListAPI(None)})
+	return render(request, 'projects-index/main.html', {'data': projectsListAPI(None), 'title': 'Projects'})
 
 def projectsListAPI(request):
 	if not request: return json.load(open(staticfiles_storage.path('projects-index/projects-list.json'),'r'))

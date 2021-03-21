@@ -30,15 +30,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
     'home.apps.HomeConfig',
     'ideas.apps.IdeasConfig',
     'projects.comment_viewer.apps.CommentViewerConfig',
     'base.apps.BaseConfig',
+    'signin_register.apps.SigninRegisterConfig',
+
     'projects_index.apps.ProjectsIndexConfig',
     'projects.covid19stat.apps.Covid19StatConfig',
     'projects.code_syntax_highlight.apps.CodeSyntaxHighlightConfig',
     'projects.flight_tracker.apps.FlightTrackerConfig',
-    'signin_register.apps.SigninRegisterConfig',
+    'projects.parcel_tracker.apps.ParcelTrackerConfig',
+    'projects.stock_photos_explorer.apps.StockPhotosExplorerConfig'
 ]
 
 MIDDLEWARE = [
@@ -166,12 +170,12 @@ LOGGING = {
     'loggers': {
         'django': {
             'handlers': ['console'],
-            'level': 'DEBUG',
+            'level': 'INFO',
             'propagate': True,
         },
         'django.request': {
             'handlers': ['console'],
-            'level': 'DEBUG',
+            'level': 'INFO',
             'propagate': False,
         },
     }

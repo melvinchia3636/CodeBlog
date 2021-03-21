@@ -1,0 +1,55 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'base/footer.css' %}">
+<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+<div class='footer'>
+	<div class='footer-socialmedia-list-container'>
+		<ul>
+			<li><span data-feather='github' class='footer-socialmedia-icon'></span></li>
+			<li><span data-feather='youtube' class='footer-socialmedia-icon'></span></li>
+			<li><span data-feather='facebook' class='footer-socialmedia-icon'></span></li>
+			<li><span data-feather='linkedin' class='footer-socialmedia-icon'></span></li>
+			<li><span data-feather='twitter' class='footer-socialmedia-icon'></span></li>
+		</ul>
+	</div>
+	<div class='footer-grid'>
+		<div class='footer-section'>
+			<h4 class='footer-section-title'>About Me</h4>
+			<ul class='footer-section-list'>
+				<li>Self Intruduce</li>
+				<li>Contribute</li>
+				<li>My Skills</li>
+			</ul>
+		</div>
+		<div class='footer-section'>
+			<h4 class='footer-section-title'>Projects</h4>
+			<ul class='footer-section-list'>
+				<li>Web Scraping</li>
+				<li>Database</li>
+				<li>REST API</li>
+				<li>More...</li>
+			</ul>
+		</div>
+		<div class='footer-section'>
+			<h4 class='footer-section-title'>Articles</h4>
+			<ul class='footer-section-list'>
+				<li>Inspiration</li>
+				<li>Thoughts</li>
+				<li>Tutorials</li>
+				<li>Ideas</li>
+			</ul>
+		</div>	
+		<div class='footer-section'>
+			<h4 class='footer-section-title'>Feedback</h4>
+			<button class='footer-contact-button'>Contact Me</button>
+			<ul class='footer-section-list'>
+				<li>Privacy and Policy</li>
+				<li>Terms</li>
+			</ul>
+		</div>
+	</div>
+	<div class='copyright'>&#169; 2020 - 2021 TheCodeblog.net All rights reserved</div>
+</div>
+<script>
+	feather.replace()
+</script>

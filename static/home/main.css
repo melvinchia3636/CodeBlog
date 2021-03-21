@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&family=Lato:wght@500;700&family=Roboto:wght@300;500;700&Montserrat:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@600;800&family=Poppins:wght@200;300;400;500;600&family=Lato:wght@500;700&family=Roboto:wght@300;500;700&Montserrat:wght@600&display=swap');
 
 html {
 	height: auto;
@@ -8,7 +8,7 @@ body {
 	height:auto;
 	align-items: center;
 	scroll-behavior: smooth;
-	height: auto
+	height: auto;
 }
 
 @keyframes fadeIn {
@@ -69,10 +69,12 @@ body {
 .title-wrapper {
 	font-size: 64px;
 	color: white;
-	font-family: 'Poppins';
+	font-family: 'Raleway';
 	line-height: 75px;
 	overflow: hidden;
-	font-weight: 600
+	font-weight: 800;
+	margin-bottom: 20px;
+	margin-top: 50px
 }
 
 .title-text {
@@ -85,7 +87,7 @@ body {
 	font-family: 'Poppins';
 	font-weight: 400;
 	overflow: hidden;
-	width: 70%;
+	width: 90%;
 	padding-bottom: 30px
 }
 
@@ -178,7 +180,7 @@ pre { line-height: 125%; }
 
 .transparent-section-title {
 	color: white;
-	font-family: 'Poppins';
+	font-family: 'Raleway';
 	font-weight: 500;
 	font-size: 50px;
 	text-align: center;
@@ -200,8 +202,9 @@ pre { line-height: 125%; }
 
 .section-title {
 	font-size: 3vw;
-	font-family: 'Poppins';
+	font-family: 'Raleway';
 	opacity: 0;
+	margin-left: -5px
 }
 
 .section-desc{
@@ -402,9 +405,19 @@ pre { line-height: 125%; }
 .transparent-section-wrapper {
 	background: rgba(0, 0, 0, 0.6);
 	width: 100vw;
-	height: 50vh;
-	grid-template-columns: auto !important;
+	height: 70vh;
+	grid-gap: 30vw;
 	margin: 0 !important
+}
+
+.transparent-section-wrapper .explore-btn {
+	color: white;
+	border-color: white
+}
+
+.transparent-section-wrapper .explore-btn:hover {
+	background: white;
+	color: rgba(0, 0, 0, 1) !important
 }
 
 .post-card-wrapper {

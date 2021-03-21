@@ -135,7 +135,7 @@
     scroll-behavior: smooth;
     text-align: center;
     font-family: Montserrat, sans-serif;
-    max-height: 120px
+    max-height: 132px;
 }
 .comment-content::-webkit-scrollbar {
     display: none

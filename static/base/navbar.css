@@ -262,3 +262,9 @@ body {
 		font-size: 150% !important;
 	}
 }
+
+@media all and (max-width: 400px) {
+	.navbar-brand {
+		font-size: 120% !important;
+	}
+}

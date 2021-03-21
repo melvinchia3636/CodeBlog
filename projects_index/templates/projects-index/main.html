@@ -4,14 +4,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
+	{% include 'base/head.html' %}
 	<link rel="stylesheet" type="text/css" href='{% static "base/navbar.css" %}'>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href='{% static "projects-index/main.css" %}'>
 	<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-	<title>Browse Projects</title>
 </head>
 <body>
 	{% include 'base/navbar.html' %}
@@ -24,18 +21,24 @@
 		<div class='result-container'>
 		{% autoescape off %}
 			{% for item in data.items %}
-				<div class='tools-card'>
-					<div class='tools-card-content-wrapper'>
-						<span data-feather='{{ item.icon_name }}' class='tools-icon'></span>
-						<div class='tools-name'>
-							{{ item.name }}
+				<div class='tool-card-container' ontouchstart="this.classList.toggle('hover');">
+					<div class='tool-card-flipper'>
+						<div class='tools-card-front'>
+							<div class='tools-card-content-wrapper'>
+								<span data-feather='{{ item.icon_name }}' class='tools-icon'></span>
+								<div class='tools-name'>
+									{{ item.name }}
+								</div>
+								<div class='tools-desc'>
+									{{ item.description }}
+								</div>
+							</div>
 						</div>
-						<div class='tools-desc'>
-							{{ item.description }}
-						</div>
-						<div class='btn-wrapper'>
-							<a class='card-btn btn-hollow'>Explore API</a>
-							<a href="{% if item.link %}{% url item.link %}{% endif %}" class='card-btn'>Let's Go</a>
+						<div class='tools-card-back'>
+							<div class='btn-wrapper'>
+								<a class='card-btn' href='{% if item.link %}{% url item.link %}{% endif %}'>View Project</a>
+								<a class='card-btn btn-hollow'>How It's Made</a>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -43,6 +46,7 @@
 		</div>
 		{% endautoescape %}
 	</div>
+	{% include 'base/footer.html' %}
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	</script>

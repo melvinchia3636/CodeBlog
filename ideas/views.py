@@ -4,4 +4,4 @@ from .models import Post
 
 def home(request):
 	posts = reversed(Post.objects.all())
-	return render(request, 'ideas/main.html', {'posts': posts})
+	return render(request, 'ideas/main.html', {'posts': posts, 'title': 'Ideas'})

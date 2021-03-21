@@ -48,7 +48,7 @@ body::-webkit-scrollbar {
 
 .searchbox-container {
 	border: 2px solid rgb(20, 20, 20);
-	width: 700px;
+	width: 50%;
 	margin: 0 auto;
 	text-align: left;
 	padding: 0 0 5px 20px;
@@ -60,7 +60,7 @@ body::-webkit-scrollbar {
 	outline: none;
 	border: none;
 	height: 40px;
-	width: 610px;
+	width: 80%;
 	background-color: rgba(0, 0, 0, 0);
 	border-radius: 10px;
 	margin-left: 10px;
@@ -99,14 +99,59 @@ body::-webkit-scrollbar {
 	margin-bottom: 80px
 }
 
-.tools-card {
-	background: white;
-	border: 2px solid white;
+.tool-card-container {
+	perspective: 1000px;
+}
+
+.tool-card-container:hover .tool-card-flipper, .tool-card-container.hover .tool-card-flipper {
+	transform: rotateY(180deg);
+}
+
+.tool-card-flipper {
+	transition: 0.6s;
+	transform-style: preserve-3d;
+
+	position: relative;
+}
+
+.tools-card-front, .tools-card-back {
+	backface-visibility: hidden;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.tool-card-container, .tools-card-front, .tools-card-back {
 	width: 250px;
-	height: 380px;
-	border-radius: 5px;
+	height: 300px;
+}
+
+.tools-card-front {
+	background: white;
+	border-radius: 3px;
 	box-shadow: 3px 5px 3px #DDDDDD;
-	text-align: center
+	text-align: center;
+	transition: 0.1s;
+	position: relative;
+	z-index: 2;
+	transform: rotateY(0deg);
+}
+
+.tools-card-back {
+	background: white;
+	transform: rotateY(180deg);
+}
+
+.tools-redirect {
+	float: left;
+	z-index: 9999;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	border-radius: 3px
 }
 
 .tools-card-content-wrapper {
@@ -125,13 +170,14 @@ body::-webkit-scrollbar {
 .tools-name {
 	margin-top: 10px;
 	color: rgb(20, 20, 20);
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Poppins', sans-serif;
 	font-weight: 500;
 	font-size: 20px;
 }
 
 .tools-desc {
-	margin: 15px 15px;
+	width: 200px;
+	margin: 15px auto;
 	color: rgb(20, 20, 20);
 	font-family: 'Montserrat', sans-serif;
 }
@@ -143,6 +189,8 @@ body::-webkit-scrollbar {
 	justify-content: center;
 	grid-template-columns: auto;
 	grid-row-gap: 10px;
+	margin-top: 50%;
+	transform: translateY(-25%)
 }
 
 .card-btn {
@@ -167,4 +215,34 @@ body::-webkit-scrollbar {
 
 .btn-hollow:hover {
 	color: rgb(20, 20, 20);
+}
+
+@media all and (max-width: 1720px) {
+	.searchbox-container {
+		width: 60%;
+	}
+}
+
+@media all and (max-width: 1150px) {
+	.result-container {
+		grid-template-columns: repeat(3, auto);
+	}
+	.searchbox-container {
+		width: 70%;
+	}
+}
+
+@media all and (max-width: 850px) {
+	.result-container {
+		grid-template-columns: repeat(2, auto);
+	}
+}
+
+@media all and (max-width: 600px) {
+	.result-container {
+		grid-template-columns: auto;
+	}
+	.title-text {
+		font-size: 8vw
+	}
 }

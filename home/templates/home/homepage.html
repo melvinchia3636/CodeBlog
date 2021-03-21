@@ -4,18 +4,13 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-
+		{% include 'base/head.html' %}
 		<link rel="stylesheet" type="text/css" href='{% static "base/navbar.css" %}'>
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 		<link rel="stylesheet" type='text/css' href='{% static "home/main.css" %}'>
 		<link href="{% static "home/perfect-scrollbar/css/perfect-scrollbar.css" %}" rel="stylesheet">
-		<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 		<script src="{% static "home/perfect-scrollbar/dist/perfect-scrollbar.js" %}"></script>
 		<script src="//code.iconify.design/1/1.0.6/iconify.min.js"></script>
-
-		<title>&#60;/&#62; CODEBLOG</title>
  	</head>
 	<body>
 		{% include 'base/navbar.html' %}
@@ -25,10 +20,9 @@
 					<div class='title-wrapper'>
 						<p class='title-text'>Clean UI <br>Fun Projects</p>
 					</div>
-					<div class='subtitle'><p class='subtitle-text'>This is a very own portfolio of me, The Silly Coder. You can find a bunch of fun projects with nice and clean UI here.</p></div>
-					<a class='join-btn' href='{% url "join" %}'>
-						Get started
-					</a>
+					<div class='subtitle'>
+						<p class='subtitle-text'>Hundreds of fun and useful projects involving a lot of skills, with detailed explainations</p>
+					</div>
 				</div>
 				<div class='right-container'>
 					<div class="highlight top-code-snippet">
@@ -67,7 +61,7 @@
 										<path fill="currentColor" d="M12 3L1 9L5 11.18V17.18L12 21L19 17.18V11.18L21 10.09V17H23V9L12 3M18.82 9L12 12.72L5.18 9L12 5.28L18.82 9M17 16L12 18.72L7 16V12.27L12 15L17 12.27V16Z" />
 									</svg>
 									Learn</p>
-								<p class='intro-list-item-desc'>Coders should always learn cool tricks along their programming journey</p>
+								<p class='intro-list-item-desc'>Coders should keep practicing and never stop leaning new stuff</p>
 							</div>
 						</li>
 						<li class='intro-list-item'>
@@ -113,12 +107,12 @@
 		<b class='transparent-container-background'></b>
 		<div class='section-container transparent-section-container'>
 			<div class='section-wrapper transparent-section-wrapper'>
-				<div class='section-title-wrapper' style='color: white; width: 80vw !important'>
-					<h3 class='section-title'>What's Inside Codeblog?</h3>
+				<div class='section-title-wrapper' style='color: white; width: 50vw !important'>
+					<h3 class='section-title'>Anything Inside Codeblog?</h3>
 					<p class='section-desc'>
 						Codeblog contains a bunch of projects that created by me, articles on how I created them, and a platform for coders to share their thought.
 					</p>
-					<a class='explore-btn' href='#' style='color: white; border-color: white'>
+					<a class='explore-btn' href='#'>
 						Join Us Today
 					</a>
 				</div>
@@ -152,58 +146,8 @@
 				</div>
 			</div>
 		</div>
-		<div class='footer'>
-			<div class='footer-socialmedia-list-container'>
-				<ul>
-					<li><span data-feather='github' class='footer-socialmedia-icon'></span></li>
-					<li><span data-feather='youtube' class='footer-socialmedia-icon'></span></li>
-					<li><span data-feather='facebook' class='footer-socialmedia-icon'></span></li>
-					<li><span data-feather='linkedin' class='footer-socialmedia-icon'></span></li>
-					<li><span data-feather='twitter' class='footer-socialmedia-icon'></span></li>
-				</ul>
-			</div>
-			<div class='footer-grid'>
-				<div class='footer-section'>
-					<h4 class='footer-section-title'>About Me</h4>
-					<ul class='footer-section-list'>
-						<li>Self Intruduce</li>
-						<li>Contribute</li>
-						<li>My Skills</li>
-					</ul>
-				</div>
-				<div class='footer-section'>
-					<h4 class='footer-section-title'>Projects</h4>
-					<ul class='footer-section-list'>
-						<li>Web Scraping</li>
-						<li>Database</li>
-						<li>REST API</li>
-						<li>More...</li>
-					</ul>
-				</div>
-				<div class='footer-section'>
-					<h4 class='footer-section-title'>Articles</h4>
-					<ul class='footer-section-list'>
-						<li>Inspiration</li>
-						<li>Thoughts</li>
-						<li>Tutorials</li>
-						<li>Ideas</li>
-					</ul>
-				</div>	
-				<div class='footer-section'>
-					<h4 class='footer-section-title'>Feedback</h4>
-					<button class='footer-contact-button'>Contact Me</button>
-					<ul class='footer-section-list'>
-						<li>Privacy and Policy</li>
-						<li>Terms</li>
-					</ul>
-				</div>
-			</div>
-			<div class='copyright'>&#169; 2019 - 2020 The Silly Coder All rights reserved</div>
-		</div>
+		{% include 'base/footer.html' %}
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-		<script>
-		feather.replace()
-		</script>
 		<script>
 			$(document).on("scroll", function() {
 				var page_top = $(document).scrollTop();

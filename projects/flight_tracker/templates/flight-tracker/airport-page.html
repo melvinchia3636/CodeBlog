@@ -4,9 +4,7 @@
 <!doctype html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	{% include 'base/head.html' %}
 	<title>Flight Tracker</title>
 
 	<link rel="stylesheet" type="text/css" href='{% static "base/navbar.css" %}'>
@@ -260,15 +258,17 @@
 							  ).append(
 								  $("<div class='subratings-container'></div>").append(function() {
 									  var subratingArray = [];
-									  for (subrating of item.subratings) {
-										  subratingArray.push(`
-										  	<div class='subrating-container'>
-										  		<div class='subrating-header'>
-													${subrating[1]} 
+									  if (item.subratings) {
+										for (subrating of item.subratings) {
+											subratingArray.push(`
+												<div class='subrating-container'>
+													<div class='subrating-header'>
+														${subrating[1]} 
+													</div>
 												</div>
-											</div>
-											<div>${"<span class='subrating-star' data-feather='star'></span>".repeat(subrating[0])}</div>
-										  `);
+												<div>${"<span class='subrating-star' data-feather='star'></span>".repeat(subrating[0])}</div>
+											`);
+										}
 									  }
 									  return subratingArray;
 								  })

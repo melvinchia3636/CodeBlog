@@ -7,16 +7,16 @@ from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 def home(response):
-	return render(response, 'flight-tracker/country-list.html', {'countries': get_countries()})
+	return render(response, 'flight-tracker/country-list.html', {'countries': get_countries(), 'title': 'Flight Tracker'})
 	
 def airportlist(response, country=None):
 	country_search = re.sub(r',|\(|\)|\'|-', '', country).replace(' ', '-').lower()
 	airport_list, count = get_airports(country_search)
-	return render(response, 'flight-tracker/airport-list.html', {'airport_list': airport_list, 'airport_count': count, 'country': country})
+	return render(response, 'flight-tracker/airport-list.html', {'airport_list': airport_list, 'airport_count': count, 'country': country, 'title': 'Airports in {}'.format(country)})
 
 def airport(response, iata=None):
 	result = get_airport_data(iata.lower())
-	return render(response, 'flight-tracker/airport-page.html', result)
+	return render(response, 'flight-tracker/airport-page.html', {**result, 'title': result['name']})
 
 @csrf_exempt
 def get_next(response):

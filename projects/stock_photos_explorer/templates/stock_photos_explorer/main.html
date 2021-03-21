@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+	{% include 'base/head.html' %}
+	<link rel="stylesheet" type="text/css" href='{% static "base/navbar.css" %}'>
+	<link rel="stylesheet" type="text/css" href='{% static "stock-photos-explorer/main.css" %}'>
+	<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+</head>
+<body>
+	{% include 'base/navbar.html' %}
+	<main class='main-container-wrapper'>
+		<div class='main-container'>
+			<h1 class='title'>Stock Photos Explorer</h1>
+			<h2 class='subtitle'>Explore over 5 million beautiful and high quality stock photos, and download them if you want. REST API supported.</h2>
+			<div class='grid-container'>
+				<div class='container-item'>
+					<a class='cover-link'></a>
+					<span><img src={% static "stock-photos-explorer/image/pexels-icon.png" %}></span>
+					<div class='library-name'>Pexels</div>
+					<p class='library-desc'>
+						Pexels provides high quality and completely free stock photos that are nicely tagged and searchable
+					</p>
+				</div>
+				<div class='container-item'>
+					<a class='cover-link' href='{% url "pixabay_index" %}'></a>
+					<span><img src={% static "stock-photos-explorer/image/pixabay-icon.png" %}></span>
+					<div class='library-name'>Pixabay</div>
+					<p class='library-desc'>
+						Over 1.9 million+ high quality stock images, videos and music shared by our talented community.
+					</p>
+				</div>
+			</div>
+		</div>
+	</main>
+	{% include 'base/footer.html' %}
+</body>
+
+</html>

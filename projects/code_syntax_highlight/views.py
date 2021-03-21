@@ -9,7 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 def home(response):
 	#preview = (highlight(code, PythonLexer(), HtmlFormatter(full=True, style=i)) for i in get_all_styles())
-	return render(response, 'code-syntax-highlight/main.html', {'lexer_list': get_all_lexers(), 'style_list': get_all_styles(), 'preview': get_all_styles()})
+	return render(response, 'code-syntax-highlight/main.html', {'lexer_list': get_all_lexers(), 'style_list': get_all_styles(), 'preview': get_all_styles(), 'title': 'Code Syntax Highlighter'})
 
 
 def get_preview(response, theme=None):
