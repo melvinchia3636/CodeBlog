@@ -156,3 +156,13 @@
 - Responsive designing for homepage completed
 - major bug fixed
 - UI renovation v3 continued
+
+### update 21/3/2021
+- animation changed for projects page
+- bound a new domain into codeblog: https://thecodeblog.net
+- created prototype for stock image library 
+- created prototype for universal parser tracker
+- major improvements
+- major bugs fixing
+- footer added
+- added "- TheCodeblog.net" to every single page title
