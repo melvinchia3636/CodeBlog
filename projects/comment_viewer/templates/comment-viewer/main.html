@@ -66,7 +66,7 @@
 						feather.replace();
 						$('#result').css('display', 'inline-grid');
 						document.getElementById('result').scrollIntoView();
-						result[1].length > 0 ? $('#load-btn').css('display', 'initial') : {};
+						$('#load-btn').css('display', result[1].length > 0 ? 'initial': 'none');
 					}
 				}
 			})
@@ -86,7 +86,7 @@
 			data: data,
 			success: function(response) {
 				result = eval(response);
-					result[1].length > 0 ? {} : document.getElementById('load-btn').remove();
+					result[1].length > 0 ? {} : $('#load-btn').css('display', 'none');
 					comments = result[0];
 					for(comment of comments) {
 						d1.innerHTML += `<div class='comment-card'><div class='comment-wrapper'><img src='${comment.authorThumbnail}'class='authorThumbnail'><br><div class='comment-card-author'>${comment.author}</div><div class='comment-publish-time'>${comment.publishedTimeText}</div><br><div class=comment-content>${comment.text}</div><br><div class='metadata-container'><span data-feather='heart'class='metadata-icon'></span><p class='metadata'>${comment.likeCount}</p><span data-feather='message-square'class='metadata-icon'></span><p class='metadata'>${comment.commentsCount}</p></div></div></div>`;

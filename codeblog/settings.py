@@ -15,7 +15,7 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'projects'))
 SECRET_KEY = 'k!02^u8l7x)8oqnukv4-(+$n7j6eg*9n&i!$m^3#s6&qud#npw'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 X_FRAME_OPTIONS = 'SAMEORIGIN'
@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'projects.code_syntax_highlight.apps.CodeSyntaxHighlightConfig',
     'projects.flight_tracker.apps.FlightTrackerConfig',
     'projects.parcel_tracker.apps.ParcelTrackerConfig',
-    'projects.stock_photos_explorer.apps.StockPhotosExplorerConfig'
+    'projects.stock_photos_explorer.apps.StockPhotosExplorerConfig',
+    'projects.book_catalogue.apps.BookCatalogueConfig',
 ]
 
 MIDDLEWARE = [

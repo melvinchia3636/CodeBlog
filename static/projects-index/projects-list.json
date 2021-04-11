@@ -89,11 +89,11 @@
 
 		},
 		{
-			"name": "Google<br>Translate",
-			"description": "Translate phrases from any language to any language you want",
-			"link": "",
-			"link_for_html": "",
-			"icon_name": "file-text"
+			"name": "Book<br>Catalogue",
+			"description": "A simple dynamic generated website with nice UI, and no backend system",
+			"link": "book_catalogue",
+			"link_for_html": "../book-catalogue",
+			"icon_name": "book"
 
 		}
 	]

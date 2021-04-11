@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		{% include 'base/head.html' %}
+		<link rel="stylesheet" type="text/css" href='{% static "base/navbar.css" %}'>
+		<link rel="stylesheet" type="text/css" href='{% static "stock-photos-explorer/main.css" %}'>
+		<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+	</head>
+	<body>
+		{% include 'base/navbar.html' %}
+		<main class='main-container-wrapper'>
+			<div class='main-container'>
+				<h1 class='title'>Stock Photos API Explorer&nbsp;<span>powered by Pixabay</span></h1>
+				<h2 class='subtitle bfctn-subtitle'>Before continuing to Pixabay Stock Photos Explorer homepage, please provide us your API key. You can get your own API key at <a class='link-to-doc' href='https://pixabay.com/api/docs/'>Pixabay API Documentation</a>. Note that this project uses legal API keys, no web scraping scripts is included.</h2>
+				<form class='api-form'>
+					<input type='text' name='api_key' placeholder='Enter your Pixabay API key here' class='key-input'>
+					<button class='proceed-button'>Go</button>
+				</form>
+			</div>
+		</main>
+		{% include 'base/footer.html' %}
+	<script>
+		$('.api-form').submit(function(event) {
+			event.preventDefault();
+			var pattern = /^\d{8}-[\da-f]{25}$/
+			var api_key = $(".api-form").serializeArray()[0].value;
+			if (api_key.match(pattern)) {
+				$.ajax({
+					'method': 'POST',
+					'url': '{% url "pixabay_index" %}',
+					headers: {
+						'X-CSRFToken': '{{ csrf_token }}'
+					},
+					'data': {
+						'api_key': api_key
+					},
+					success: function(data) {
+						document.cookie = 'api='+api_key+';';
+						window.location.href = "{% url 'pixabay_index' %}"
+					}
+				})
+			}
+		})
+	</script>
+	</body>
+</html>

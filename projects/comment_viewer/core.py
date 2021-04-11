@@ -20,6 +20,7 @@ def A(url):
 	A=O.get(url).text;
 	C=A.find(I);
 	F=A.find('};',C);
+	print(A[C+E(I):F].strip()+'}')
 	P=N.loads(A[C+E(I):F].strip()+'}');
 	J=H([A for A in B(P,'itemSectionRenderer')][-1].values())[0][0][Z];
 	Q=[(J[L],J['clickTrackingParams'])];

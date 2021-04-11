@@ -1,26 +1,13 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-
-<head>
-	{% include 'base/head.html' %}
-	<link rel="stylesheet" type="text/css" href='{% static "base/navbar.css" %}'>
-	<link rel="stylesheet" type="text/css" href='{% static "stock-photos-explorer/main.css" %}'>
-	<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-</head>
-<body>
-	{% include 'base/navbar.html' %}
-	<main class='main-container-wrapper'>
-		<div class='main-container'>
-			<h1 class='title'>Welcome to Pixabay API Explorer</h1>
-			<h2 class='subtitle bfctn-subtitle'>Before continuing to Pixabay Stock Photos Explorer homepage, please provide us your API key. you can get your own API key at <a class='link-to-doc' href='https://pixabay.com/api/docs/'>Pixabay API Documentation</a></h2>
-			<form onsubmit='check_and_submit()' class='api-form'>
-				<input type='text' name='api_key' placeholder='Enter your Pixabay API key here' class='key-input'>
-				<button class='proceed-button'>CONTINUE</button>
-			</form>
-		</div>
-	</main>
-	{% include 'base/footer.html' %}
-</body>
-
+	<head>
+		{% include 'base/head.html' %}
+		<link rel="stylesheet" type="text/css" href='{% static "base/navbar.css" %}'>
+		<link rel="stylesheet" type="text/css" href='{% static "stock-photos-explorer/main.css" %}'>
+		<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+	</head>
+	<body>
+		{% include 'base/navbar.html' %}
+	</body>
 </html>

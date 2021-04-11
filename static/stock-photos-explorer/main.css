@@ -55,8 +55,13 @@ html, body {
 	font-family: 'Roboto';
 	font-weight: 600;
 	padding: 0 10px;
-	font-size: 36px;
+	font-size: 40px;
 	margin: 0;
+}
+
+.title span {
+	font-size: 16px;
+	font-weight: 300
 }
 
 .subtitle {
@@ -103,7 +108,8 @@ html, body {
 }
 
 .bfctn-subtitle {
-	width: 800px
+	width: 800px;
+	font-weight: 300
 }
 
 .link-to-doc {
@@ -112,39 +118,46 @@ html, body {
 
 .api-form {
 	margin: 0 auto;
-	width: 100%
+	display: flex;
+	align-items: center
 }
 
 .key-input {
-	font-family: 'Poppins';
-	text-align: center;
-	padding: 10px 0;
+	font-family: 'Roboto';
+	text-align: left;
+	padding: 18px 30px;
 	font-size: 20px;
-	font-weight: 400;
+	font-weight: 300;
 	border: none;
-	background: none;
-	border-radius: 5px
+	background: white;
+	border-radius: 40px;
+	width: 100%;
+	float: left;
+	box-shadow: 2px 2px 4px rgb(180, 180, 180)
 }
 
-.key-input:focus, .key-input:active {
-	border: none
+.key-input:focus, .key-input:active, .proceed-button:focus, .proceed-button:active {
+	outline: none
 }
 
 .api-form * {
-	display: block;
 	margin: 0 auto;
-	width: 100%;
-	box-sizing:border-box;
 }
 
 .proceed-button {
-	padding: 10px 0;
 	font-family: 'Poppins';
 	color: white;
 	background: rgb(20, 20, 20);
 	font-size: 20px;
-	border-radius: 5px;
+	border-radius: 100px;
 	border: 0;
-	margin-top: 20px;
-	font-weight: 500
+	font-weight: 500;
+	width: 100px;
+	height: 50px;
+	margin-left: -99px;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer
 }

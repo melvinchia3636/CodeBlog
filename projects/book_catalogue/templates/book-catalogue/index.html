@@ -1,0 +1,119 @@
+{% load static %}
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        {% include 'base/head.html' %}
+        <link rel="stylesheet" href="{% static 'book-catalogue/main.css' %}">
+        <link rel="stylesheet" type="text/css" href='{% static "base/navbar.css" %}'>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+        {% include 'base/navbar.html' %}
+        <div class='catalogue-container'></div>
+        <div class='info-wrapper'>
+            <div class='info-container'>
+            
+            </div>
+        </div>
+        {% include 'base/footer.html' %}
+
+        <script>
+            var BASE_URL = 'http://corsanywhere.herokuapp.com/https://books.toscrape.com/catalogue/';
+            let parser = new DOMParser();
+            var rating_dict = {'One': 1, 'Two': 2, 'Three': 3, 'Four': 4, 'Five': 5};
+            var current = 1
+            var is_done = false;
+            function generateContent() {
+                is_done = false;
+                left = 20
+                $.ajax({
+                    url: `${BASE_URL}page-${current}.html`,
+                    method: 'GET',
+                    success: (data) => {
+                        let doc = parser.parseFromString(data, "text/html");
+                        $(doc).find('article h3 a').each(function(){
+                            $.ajax({
+                                url: BASE_URL+$(this).attr('href'),
+                                method: 'GET',
+                                success: function(data){
+                                    if (current==1) window.scrollTo(0, 0);
+                                    html = parser.parseFromString(data, "text/html")
+                                    var rating = $(html).find('.star-rating')[0].className.split(' ');
+                                    rating = rating[rating.length-1]
+                                    $('.catalogue-container').append(`
+                                        <div class='product'>
+                                            <div class='image' href='${this.url}'>
+                                                <img src='${BASE_URL+$(html).find('div[class="thumbnail"] img').attr('src').replace('../', '')}'>
+                                                <a class='more-info'></a>
+                                            </div>
+                                            <div class='meta'>
+                                                <h3>${$(html).find('h1').text()}</h3>
+                                                <p class='rating-container'>${('<span class="rating rating-active">\u00b7</span>').repeat(rating_dict[rating])+('<span class="rating rating-circle">\u00b7</span>').repeat(5-rating_dict[rating])}</p>
+                                                <p>${$(html).find('.product_main .price_color').text()}</p>
+                                                <div>${$(html).find('#product_description').next().text()}</div>
+                                            </div>
+                                        </div>
+                                    `);
+                                    left--;
+                                    if (left==0) {
+                                        is_done = true;
+                                        current++;
+                                    }
+                                }
+                            })
+                        });
+                    }
+                })
+            }
+            $('.catalogue-container').on('click', '.more-info', function(){
+                url = $(this).parent().attr('href')
+                $('.info-wrapper, .info-container').removeClass('hide').addClass('show')
+                $.ajax({
+                    url: url,
+                    method: 'GET',
+                    success: (data) => {
+                        html = parser.parseFromString(data, "text/html")
+                        var rating = $(html).find('.star-rating')[0].className.split(' ');
+                        rating = rating[rating.length-1]
+                        $('.info-container').empty()
+                        $('.info-container').append(`
+                            <div class='image' style='background-image: url(${BASE_URL+$(html).find('div[class="thumbnail"] img').attr('src').replace('../', '')})'></div>
+                            <div class='info'>
+                                <h3>${$(html).find('h1').text()}</h3>
+                                <p class='rating-container'>${('<span class="rating rating-active">\u00b7</span>').repeat(rating_dict[rating])+('<span class="rating rating-circle">\u00b7</span>').repeat(5-rating_dict[rating])}</p>
+                                <p class='price'>${$(html).find('.product_main .price_color').text()}</p>
+                                <p class='availability'>${$(html).find('.product_main .availability').text()}</p>
+                                <h4 class='subtitle'>Product Description</h4>
+                                <p class='desc'>${$(html).find('#product_description').next().text()}</p>
+                                <h4 class='subtitle'>Product Information</h4>
+                                <table>
+                                    ${$(html).find('table').find('tr').map((x, y) => `<tr><td>${$(y).find('th').text()}</td><td>${$(y).find('td').text()}</td></tr>`).get().join('')}
+                                </table>
+                            </div>
+                        `)
+                    }
+                })
+            })
+            $('.info-wrapper').click((event) => {
+                if (event.target == $('.info-wrapper')[0]) $('.info-wrapper, .info-container').removeClass('show').addClass('hide');
+            })
+            $(document).ready(function(){
+                generateContent()
+                window.addEventListener('scroll',()=>{
+                    const {scrollHeight,scrollTop,clientHeight} = document.documentElement;
+                    if(scrollTop + clientHeight > scrollHeight - $('.footer').height()){
+                        if (is_done) generateContent()
+                    }
+                });})
+        </script>
+    </body>
+</html>
