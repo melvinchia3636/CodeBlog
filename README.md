@@ -171,7 +171,7 @@
 - minor bug fixed
 - adjusted the UI of Pixabay API Explorer
 - created new app: **Book Catalogue**:
-  - thecodeblog.net/book-catalogue
+  - https://thecodeblog.net/book-catalogue
   - infinite scroll
   - nice and clean UI
   - cool animation
