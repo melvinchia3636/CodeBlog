@@ -166,3 +166,15 @@
 - major bugs fixing
 - footer added
 - added "- TheCodeblog.net" to every single page title
+
+### update 11/4/2021
+- minor bug fixed
+- adjusted the UI of Pixabay API Explorer
+- created new app: **Book Catalogue**:
+  - https://codeblog-official.herokuapp.com/book-catalogue
+  - infinite scroll
+  - nice and clean UI
+  - cool animation
+  - every piece of details
+  - pure javascript
+- temporary removed project card for Google Translate in order to give spaces for completed project
