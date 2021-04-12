@@ -10,7 +10,9 @@
         {% include 'base/head.html' %}
         <link rel="stylesheet" href="{% static 'book-catalogue/main.css' %}">
         <link rel="stylesheet" type="text/css" href='{% static "base/navbar.css" %}'>
+        <link rel="stylesheet" type="text/css" href='https://cdn.jsdelivr.net/npm/perfect-scrollbar@1.5.0/css/perfect-scrollbar.css'>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src='https://cdn.jsdelivr.net/npm/perfect-scrollbar@1.5.0/dist/perfect-scrollbar.min.js'></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -18,6 +20,10 @@
         <![endif]-->
         
         {% include 'base/navbar.html' %}
+        <div class='header'>
+            <h1 class='title'>B O O K S</h1>
+            <h2 class='subtitle'>Stay Cool with Reading</h2>
+        </div>
         <div class='catalogue-container'></div>
         <div class='info-wrapper'>
             <div class='info-container'>
@@ -27,7 +33,7 @@
         {% include 'base/footer.html' %}
 
         <script>
-            var BASE_URL = 'http://corsanywhere.herokuapp.com/https://books.toscrape.com/catalogue/';
+            var BASE_URL = 'https://corsanywhere.herokuapp.com/https://books.toscrape.com/catalogue/';
             let parser = new DOMParser();
             var rating_dict = {'One': 1, 'Two': 2, 'Three': 3, 'Four': 4, 'Five': 5};
             var current = 1
@@ -58,7 +64,7 @@
                                             <div class='meta'>
                                                 <h3>${$(html).find('h1').text()}</h3>
                                                 <p class='rating-container'>${('<span class="rating rating-active">\u00b7</span>').repeat(rating_dict[rating])+('<span class="rating rating-circle">\u00b7</span>').repeat(5-rating_dict[rating])}</p>
-                                                <p>${$(html).find('.product_main .price_color').text()}</p>
+                                                <p class='price'>${$(html).find('.product_main .price_color').text()}</p>
                                                 <div>${$(html).find('#product_description').next().text()}</div>
                                             </div>
                                         </div>
@@ -84,22 +90,72 @@
                         html = parser.parseFromString(data, "text/html")
                         var rating = $(html).find('.star-rating')[0].className.split(' ');
                         rating = rating[rating.length-1]
-                        $('.info-container').empty()
-                        $('.info-container').append(`
-                            <div class='image' style='background-image: url(${BASE_URL+$(html).find('div[class="thumbnail"] img').attr('src').replace('../', '')})'></div>
-                            <div class='info'>
-                                <h3>${$(html).find('h1').text()}</h3>
-                                <p class='rating-container'>${('<span class="rating rating-active">\u00b7</span>').repeat(rating_dict[rating])+('<span class="rating rating-circle">\u00b7</span>').repeat(5-rating_dict[rating])}</p>
-                                <p class='price'>${$(html).find('.product_main .price_color').text()}</p>
-                                <p class='availability'>${$(html).find('.product_main .availability').text()}</p>
-                                <h4 class='subtitle'>Product Description</h4>
-                                <p class='desc'>${$(html).find('#product_description').next().text()}</p>
-                                <h4 class='subtitle'>Product Information</h4>
-                                <table>
-                                    ${$(html).find('table').find('tr').map((x, y) => `<tr><td>${$(y).find('th').text()}</td><td>${$(y).find('td').text()}</td></tr>`).get().join('')}
-                                </table>
-                            </div>
-                        `)
+                        let check_layout = () => {
+                            $('.info-container').empty()
+                            if ($(window).width() <= 650) {
+                                $('.info-container').append(`
+                                    <div class='top'>
+                                        <div class='image' style='background-image: url(${BASE_URL+$(html).find('div[class="thumbnail"] img').attr('src').replace('../', '')})'></div>
+                                    </div>
+                                    <div class='info'>
+                                        <h3>${$(html).find('h1').text()}</h3>
+                                        <p class='rating-container'>${('<span class="rating rating-active">\u00b7</span>').repeat(rating_dict[rating])+('<span class="rating rating-circle">\u00b7</span>').repeat(5-rating_dict[rating])}</p>
+                                        <p class='price'>${$(html).find('.product_main .price_color').text()}</p>
+                                        <p class='availability'>${$(html).find('.product_main .availability').text()}</p>
+                                    </div>
+                                    <div class='details'>
+                                        <h4 class='info-subtitle'>Product Description</h4>
+                                        <p class='desc'>${$(html).find('#product_description').next().text()}</p>
+                                        <h4 class='info-subtitle'>Product Information</h4>
+                                        <table>
+                                            ${$(html).find('table').find('tr').map((x, y) => `<tr><td>${$(y).find('th').text()}</td><td>${$(y).find('td').text()}</td></tr>`).get().join('')}
+                                        </table>
+                                    </div>
+                                `)
+                            } else if ($(window).width() <= 1025) {
+                                $('.info-container').append(`
+                                    <div class='top'>
+                                        <div class='image' style='background-image: url(${BASE_URL+$(html).find('div[class="thumbnail"] img').attr('src').replace('../', '')})'></div>
+                                        <div class='info'>
+                                            <h3>${$(html).find('h1').text()}</h3>
+                                            <p class='rating-container'>${('<span class="rating rating-active">\u00b7</span>').repeat(rating_dict[rating])+('<span class="rating rating-circle">\u00b7</span>').repeat(5-rating_dict[rating])}</p>
+                                            <p class='price'>${$(html).find('.product_main .price_color').text()}</p>
+                                            <p class='availability'>${$(html).find('.product_main .availability').text()}</p>
+                                        </div>
+                                    </div>
+                                    <div class='details'>
+                                        <h4 class='info-subtitle'>Product Description</h4>
+                                        <p class='desc'>${$(html).find('#product_description').next().text()}</p>
+                                        <h4 class='info-subtitle'>Product Information</h4>
+                                        <table>
+                                            ${$(html).find('table').find('tr').map((x, y) => `<tr><td>${$(y).find('th').text()}</td><td>${$(y).find('td').text()}</td></tr>`).get().join('')}
+                                        </table>
+                                    </div>
+                                `)
+                            } else {
+                                $('.info-container').append(`
+                                    <div class='image' style='background-image: url(${BASE_URL+$(html).find('div[class="thumbnail"] img').attr('src').replace('../', '')})'></div>
+                                    <div class='info'>
+                                        <h3>${$(html).find('h1').text()}</h3>
+                                        <p class='rating-container'>${('<span class="rating rating-active">\u00b7</span>').repeat(rating_dict[rating])+('<span class="rating rating-circle">\u00b7</span>').repeat(5-rating_dict[rating])}</p>
+                                        <p class='price'>${$(html).find('.product_main .price_color').text()}</p>
+                                        <p class='availability'>${$(html).find('.product_main .availability').text()}</p>
+                                        <h4 class='info-subtitle'>Product Description</h4>
+                                        <p class='desc'>${$(html).find('#product_description').next().text()}</p>
+                                        <h4 class='info-subtitle'>Product Information</h4>
+                                        <table>
+                                            ${$(html).find('table').find('tr').map((x, y) => `<tr><td>${$(y).find('th').text()}</td><td>${$(y).find('td').text()}</td></tr>`).get().join('')}
+                                        </table>
+                                    </div>
+                                `)
+                                const ps = new PerfectScrollbar('.info');
+                                ps.update()
+                            }
+                        }
+                        $(window).on('resize', function(){
+                            check_layout()
+                        }) 
+                        check_layout()
                     }
                 })
             })

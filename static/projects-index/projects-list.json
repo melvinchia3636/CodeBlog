@@ -5,7 +5,8 @@
 			"description": "Scrape comments of any YouTube Video without limitation",
 			"link": "comment-viewer",
 			"link_for_html": "../youtube-comment-scraper",
-			"icon_name": "message-square"
+			"icon_name": "message-square",
+			"status": "done"
 
 		},
 		{
@@ -13,7 +14,8 @@
 			"description": "Get your hands on the latest data of Covid 19 Pandemic",
 			"link": "covid19-stat",
 			"link_for_html": "../covid19-stat",
-			"icon_name": "database"
+			"icon_name": "database",
+			"status": "done"
 
 		},
 		{
@@ -21,7 +23,8 @@
 			"description": "Format your code, add some color, and make it look a lot cooler",
 			"link": "code-syntax-highlight:code-syntax-highlight",
 			"link_for_html": "../code-syntax-highlight",
-			"icon_name": "code"
+			"icon_name": "code",
+			"status": "working"
 
 		},
 		{
@@ -29,7 +32,8 @@
 			"description": "Get the latest flight informations of any airport around the world",
 			"link": "flight-tracker",
 			"link_for_html": "../flight-tracker",
-			"icon_name": "list"
+			"icon_name": "list",
+			"status": "working"
 
 		},
 		{
@@ -37,7 +41,8 @@
 			"description": "Track your parcel status with a nice collection of well known trackers",
 			"link": "parcel_tracker_index",
 			"link_for_html": "parcel-tracker",
-			"icon_name": "package"
+			"icon_name": "package",
+			"status": "working"
 
 		},
 		{
@@ -45,7 +50,8 @@
 			"description": "Explore beautiful color palettes and build something cool with them",
 			"link": "",
 			"link_for_html": "",
-			"icon_name": "grid"
+			"icon_name": "grid",
+			"status": "waiting"
 
 		},
 		{
@@ -53,7 +59,8 @@
 			"description": "If you're a Hermitcraft follower, here is a right place for you",
 			"link": "",
 			"link_for_html": "",
-			"icon_name": "box"
+			"icon_name": "box",
+			"status": "waiting"
 
 		},
 		{
@@ -61,7 +68,8 @@
 			"description": "A replica oF Roblox Game Catalogue, but with much better UI",
 			"link": "",
 			"link_for_html": "",
-			"icon_name": "grid"
+			"icon_name": "grid",
+			"status": "waiting"
 
 		},
 		{
@@ -69,7 +77,8 @@
 			"description": "Find any video you want on YouTube, with clean and nice looking UI",
 			"link": "",
 			"link_for_html": "",
-			"icon_name": "grid"
+			"icon_name": "grid",
+			"status": "waiting"
 
 		},
 		{
@@ -77,7 +86,8 @@
 			"description": "Explore over 1 million free and open source images and videos",
 			"link": "stock_photos_explorer_index",
 			"link_for_html": "../stock-photos",
-			"icon_name": "image"
+			"icon_name": "image",
+			"status": "working"
 
 		},
 		{
@@ -85,7 +95,8 @@
 			"description": "Explore beautiful and nice wallpapers and ringtones, and download them",
 			"link": "",
 			"link_for_html": "",
-			"icon_name": "bell"
+			"icon_name": "bell",
+			"status": "waiting"
 
 		},
 		{
@@ -93,8 +104,8 @@
 			"description": "A simple dynamic generated website with nice UI, and no backend system",
 			"link": "book_catalogue",
 			"link_for_html": "../book-catalogue",
-			"icon_name": "book"
-
+			"icon_name": "book",
+			"status": "done"
 		}
 	]
 }
