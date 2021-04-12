@@ -178,3 +178,8 @@
   - every piece of details
   - pure javascript
 - temporary removed project card for Google Translate in order to give spaces for completed project
+- responsive view of book catalogue completed
+
+### update 11/4/2021
+- minor adjustment on navbar
+- added header section for book catalogue
