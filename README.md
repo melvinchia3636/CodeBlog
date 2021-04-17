@@ -183,3 +183,8 @@
 ### update 12/4/2021
 - minor adjustment on navbar
 - added header section for book catalogue
+
+### update 17/4/2021
+- homepage of pixabay api explorer completed
+- search query system of pixabay api explorer completed
+- minor bug fixed
