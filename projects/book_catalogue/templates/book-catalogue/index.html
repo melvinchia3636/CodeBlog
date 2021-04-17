@@ -81,6 +81,7 @@
                 })
             }
             $('.catalogue-container').on('click', '.more-info', function(){
+                $('body').css('overflow', 'hidden')
                 url = $(this).parent().attr('href')
                 $('.info-wrapper, .info-container').removeClass('hide').addClass('show')
                 $.ajax({
@@ -160,7 +161,10 @@
                 })
             })
             $('.info-wrapper').click((event) => {
-                if (event.target == $('.info-wrapper')[0]) $('.info-wrapper, .info-container').removeClass('show').addClass('hide');
+                if (event.target == $('.info-wrapper')[0]) {
+                    $('.info-wrapper, .info-container').removeClass('show').addClass('hide');
+                    $('body').css('overflow', 'visible')
+                }
             })
             $(document).ready(function(){
                 generateContent()

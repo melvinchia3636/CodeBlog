@@ -4,16 +4,24 @@ html, body {
 	background: #f6f5f7
 }
 
-.cb-nav > * > *, .cb-nav > * > * > *{
+.search-result .cb-nav :is(* > *, * > * > *), .ask-api .cb-nav :is(* > *, * > * > *) {
 	color: rgb(20, 20, 20)
 }
 
-.homenav-item:hover {
+.search-result .homenav-item:hover, .ask-api .search-result .homenav-item:hover {
 	color: rgb(20, 20, 20)
 }
 
-.homenav-item::after {
+.search-result .homenav-item::after, .ask-api .search-result .homenav-item::after {
 	background-color: rgb(20, 20, 20);
+}
+
+.search-result .login-link:hover, .ask-api .search-result .login-link:hover {
+	color: rgb(20, 20, 20)
+}
+
+.search-result .navbar-brand:hover, .ask-api .search-result .navbar-brand:hover {
+	color: rgb(20, 20, 20)
 }
 
 .main-container {
@@ -160,4 +168,221 @@ html, body {
 	justify-content: center;
 	align-items: center;
 	cursor: pointer
+}
+
+.header {
+	position: fixed;
+	width: 100%;
+	height: 70vh; 
+	top: 0;
+	left: 0;
+	z-index: -1;
+	color: white !important;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-blend-mode: darken;
+	background-color: rgb(0, 0, 0, 0.4);
+}
+
+.title, .pixabay-subtitle {
+	font-family: 'Poppins' !important;
+	margin: 0
+}
+
+.title {
+	font-weight: 600;
+	font-size: 2.6rem
+}
+
+.pixabay-subtitle {
+	font-weight: 300;
+	margin-bottom: 30px;
+	font-size: 1.1rem;
+	margin-top: 8px
+}
+
+.search-box-icon {
+	color: rgb(110, 110, 110);
+	width: 22px;
+	height: 22px
+}
+
+.search-btn {
+	background: none;
+	border: none;
+	cursor: pointer;
+}
+
+.search-btn:focus, .search-btn:active {
+	outline: none
+}
+
+.searchbox-container {
+	border: 2px solid white;
+	width: 50%;
+	margin: 0 auto;
+	text-align: left;
+	padding: 0 20px;
+	border-radius: 50px;
+	background: white;
+	display: flex;
+	align-items: center;
+	box-shadow: 2px 2px 4px rgb(85, 85, 85)
+}
+
+.search-result .searchbox-container {
+	margin: 0;
+	height: 56px;
+	box-shadow: 1px 1px 2px rgb(136, 136, 136)
+}
+
+.search-box {
+	outline-style: none;
+	outline: none;
+	border: none;
+	height: 50px;
+	width: 80%;
+	background-color: white;
+	border-radius: 10px;
+	margin-left: 15px;
+	font-size: 18px;
+	position: relative;
+	font-family: 'Poppins', sans-serif;
+	font-weight: 300;
+	color: rgb(20, 20, 20);
+}
+
+/* all */
+::-webkit-input-placeholder { /* Webkit */
+	color: rgb(110, 110, 110);
+ }
+ 
+ :-moz-placeholder { /* Firefox 18-4 */
+	color: rgb(110, 110, 110);
+ }
+ 
+ ::-moz-placeholder {  /* Firefox 19+ */
+	color: rgb(110, 110, 110);
+ }
+ 
+ :-ms-input-placeholder {  /*  IE10+  */
+	color: rgb(110, 110, 110);
+ }
+
+.image-container {
+	display: flex;
+	flex-wrap: wrap;
+	list-style: none;
+	padding: 50px;
+	margin-top: 70vh;
+	margin-bottom: 0;
+	background: #f6f5f7
+}
+
+.image-container li {
+	height: 50vh;
+	flex-grow: 1;
+	margin: 5px;
+	flex-shrink: 1
+}
+
+.image-container li:last-child {
+	flex-grow: 0;
+}
+
+.image-container img {
+	max-height: 100%;
+	min-width: 100%;
+	max-width: 100%;
+	object-fit: cover;
+	vertical-align: bottom;
+}
+
+.search-result .image-container {
+	margin-top: 40px
+}
+
+.search-result-header {
+	margin-top: 140px;
+	padding: 0 55px;
+	font-family: 'Poppins';
+	width: calc(100% - 110px);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.search-result-title {
+	width: 40%
+}
+
+.search-result-title h1 {
+	margin: 0;
+	font-weight: 400;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.search-result-title h2 {
+	margin: 0;
+	font-weight: 300;
+	color:rgb(85, 85, 85);
+	font-size: 1.2rem
+}
+
+.no-result {
+	font-weight: 400;
+	font-size: 1.8rem;
+	color: rgb(146, 146, 146);
+	font-family: 'Poppins';
+	margin-top: 120px;
+	margin-bottom: 0
+}
+
+.back-to-home {
+	font-weight: 400;
+	font-size: 1.2rem;
+	color: rgb(80, 80, 80);
+	font-family: 'Poppins';
+	margin-top: 0;
+	text-decoration: none;
+	transition: 0.3s
+}
+
+.back-to-home:hover {
+	color:rgb(20, 20, 20)
+}
+
+@media (max-aspect-ratio: 1/1) {
+	.image-container li {
+		height: 30vh;
+	}
+}
+  
+  @media (max-height: 480px) {
+	.image-container li {
+		height: 80vh;
+	}
+}
+  
+@media (max-aspect-ratio: 1/1) and (max-width: 480px) {
+	.image-container {
+		flex-direction: row;
+		padding: 50px 3%
+	}
+
+	.image-container li {
+		height: auto;
+		width: 100%;
+	}
+	.image-container img {
+		width: 100%;
+		max-height: 75vh;
+		min-width: 0;
+	}
 }

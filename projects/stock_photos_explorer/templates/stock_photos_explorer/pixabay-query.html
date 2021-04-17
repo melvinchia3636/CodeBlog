@@ -7,11 +7,13 @@
 		<link rel="stylesheet" type="text/css" href='{% static "stock-photos-explorer/main.css" %}'>
 		<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 	</head>
-	<body>
+	<body class='search-result'>
 		{% include 'base/navbar.html' %}
-		<div class='header' style='background-image: url({{ image }})'>
-			<h1 class='title'>Pixabay API Explorer</h1>
-			<h2 class='pixabay-subtitle'>Explore over 2 million stunning images, totally free to download and use them</h2>
+		<div class='search-result-header'>
+			<div class='search-result-title'>
+				<h1></h1>
+				<h2></h2>
+			</div>
 			<form class='searchbox-container'>
 				<button class='search-btn'><i data-feather='search' class='search-box-icon'></i></button>
 				<input type='text' class='search-box' placeholder='Search images, videos, and vectors' name='q' autocomplete="off">
@@ -20,20 +22,17 @@
 		<ul class='image-container'></ul>
 		{% include 'base/footer.html' %}
 		<script>
-			function shuffle(arra1) {
-			var ctr = arra1.length, temp, index;
-				while (ctr > 0) {
-					index = Math.floor(Math.random() * ctr);
-					ctr--;
-					temp = arra1[ctr];
-					arra1[ctr] = arra1[index];
-					arra1[index] = temp;
-				}
-				return arra1;
+			get_params = (key) => {
+				address = window.location.search
+				parameterList = new URLSearchParams(address)
+				return parameterList.get(key)
 			}
 
 			$(document).ready(function() {
 				feather.replace()
+				var query = get_params('q');
+				$('input[name="q"]').attr('value', query)
+				$('.search-result-title > h1').text('Search results for '+query)
 				var api_key = Object.fromEntries(Array.from(document.cookie.split(';'), (i) => i.split('='))).api
 				url = 'https://pixabay.com/api/'
 				$.ajax({
@@ -41,12 +40,22 @@
 					method: 'GET',
 					data: {
 						key: api_key,
-						per_page: 50,
-						max_height: $(window).height()/2
+						per_page: 100,
+						max_height: $(window).height()/2,
+						q: query
 					},
 					success: function(data) {
-						images = shuffle(data.hits)
-						for (i of images) {
+						$('.search-result-title > h2').text(`${data.total} items found`)
+						if (data.total == 0) {
+							$('.image-container').append('<h3 class="no-result">Sorry, we couldn\'t find any matches :(<h3><a class="back-to-home" href={% url "pixabay_index" %}>Back to homepage</a>')
+							$('.image-container').css({
+								'align-items': 'center',
+								'height': '70%',
+								'flex-direction': 'column'
+							})
+							return
+						}
+						for (i of data.hits) {
 							$('.image-container').append(`<li><img src="${i.webformatURL}"></li>`)
 						}
 					}
