@@ -6,14 +6,15 @@
 }
 
 .footer-section {
-	margin: 0 50px
+	margin: 0 40px
 }
 
 .footer-grid {
 	display: grid;
 	grid-template-columns: repeat(4, auto);
 	justify-content: center;
-	margin-top: 60px
+	margin-top: 60px;;
+	text-align: left
 }
 
 .footer-section-title {
@@ -89,6 +90,8 @@
 		grid-template-columns: auto
 	}
 	.footer-section {
-		margin-bottom: 30px
+		margin: 0;
+		margin-bottom: 30px;
+		padding: 0
 	}
 }

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;800&family=Roboto:wght@300;400;500&family=Raleway:wght@200;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800&family=Roboto:wght@300;400;500&family=Raleway:wght@200;400;600&display=swap');
 
 body {
 	background: #f6f5f7;
@@ -445,5 +445,72 @@ body * {
 	
 	.info-container .top {
 		grid-template-columns: auto;
+	}
+}
+
+.loading-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	grid-column: 1/3
+}
+
+.loading-icon {
+	display: grid;
+	grid-template-columns: repeat(2, auto);
+	align-items: center;
+	justify-content: center;
+	grid-gap: 3px;
+	margin-right: 20px
+}
+
+.loading-icon > div {
+	width: 10px;
+	height: 10px;
+	background: #141414;
+	border: 2px solid #141414
+}
+
+.loading-icon > div:nth-child(1) {
+	animation: loading 1s cubic-bezier( 0.79, 0.33, 0.14, 0.53 ) -0.3s infinite;
+	animation-fill-mode: forwards;
+}
+
+.loading-icon > div:nth-child(2) {
+	animation: loading 1s cubic-bezier( 0.79, 0.33, 0.14, 0.53 ) -0.2s infinite;
+	animation-fill-mode: forwards;
+}
+
+.loading-icon > div:nth-child(3) {
+	animation: loading 1s cubic-bezier( 0.79, 0.33, 0.14, 0.53 ) 0s infinite;
+	animation-fill-mode: forwards;
+}
+
+.loading-icon > div:nth-child(4) {
+	animation: loading 1s cubic-bezier( 0.79, 0.33, 0.14, 0.53 ) -0.1s infinite;
+	animation-fill-mode: forwards;
+}
+
+/*.loading-icon > div:nth-child(3) {
+	animation: loading2 2s cubic-bezier( 0.79, 0.33, 0.14, 0.53 ) 4s infinite alternate;
+}
+
+.loading-icon > div:nth-child(4) {
+	animation: loading2 2s cubic-bezier( 0.79, 0.33, 0.14, 0.53 ) 6s infinite alternate;
+}*/
+
+
+.loading-text {
+	font-weight: 400 !important;
+	font-size: 20px;
+	font-family: 'Poppins'
+}
+
+@keyframes loading {
+	0% {
+		background: #141414
+	}
+	100% {
+		background: none
 	}
 }

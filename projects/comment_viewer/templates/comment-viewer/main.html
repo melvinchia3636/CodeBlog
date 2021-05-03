@@ -14,24 +14,30 @@
 	{% include 'base/navbar.html' %}
 	<div class='center-container'>
 		<h1 class='title-text'>YouTube Comment Scraper</h1>
-		<form class='url-input-form' id='url-form'> {{ form.video_url }}</form>
-		<input type="submit" form="url-form" name="submit" value='GET COMMENTS' class='submit-button'>
-		<div class='result' id='result'> {% if result != None %} {% for comment in result.0 %} {% if comment %}
-			<div class='comment-card'>
-				<div class='comment-wrapper'> <img src='{{ comment.authorThumbnail }}' class='authorThumbnail'>
-					<br>
-					<div class='comment-card-author'>{{ comment.author }}</div>
-					<div class='comment-publish-time'>{{ comment.publishedTimeText }}</div>
-					<br>
-					<div class=comment-content>{{ comment.text }}</div>
-					<br>
-					<div class='metadata-container'> <span data-feather='heart' class='metadata-icon'></span>
-						<p class='metadata'>{{ comment.likeCount }}</p> <span data-feather='message-square' class='metadata-icon'></span>
-						<p class='metadata'>{{ comment.commentsCount }}</p>
+		<form class='url-input-form' id='url-form' style='height: 100vh'> 
+			{{ form.video_url }}
+			<input type="submit" form="url-form" name="submit" value='GET COMMENTS' class='submit-button'>
+		</form>
+		<div>
+			<div class='result' id='result'> {% if result != None %} {% for comment in result.0 %} {% if comment %}
+				<div class='comment-card'>
+					<div class='comment-wrapper'> <img src='{{ comment.authorThumbnail }}' class='authorThumbnail'>
+						<br>
+						<div class='comment-card-author'>{{ comment.author }}</div>
+						<div class='comment-publish-time'>{{ comment.publishedTimeText }}</div>
+						<br>
+						<div class=comment-content>{{ comment.text }}</div>
+						<br>
+						<div class='metadata-container'> <span data-feather='heart' class='metadata-icon'></span>
+							<p class='metadata'>{{ comment.likeCount }}</p> <span data-feather='message-square' class='metadata-icon'></span>
+							<p class='metadata'>{{ comment.commentsCount }}</p>
+						</div>
 					</div>
-				</div>
-			</div> {% endif %} {% endfor %} {% endif %}</div>
-		<input type="submit" onclick='update()' class='load-btn' value='Load More' id='load-btn'></div>
+				</div> {% endif %} {% endfor %} {% endif %}
+			</div>
+			<input type="submit" onclick='update()' class='load-btn' value='Load More' id='load-btn'>
+		</div>
+		{% include "base/footer.html" %}
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	</script>
@@ -66,7 +72,7 @@
 						feather.replace();
 						$('#result').css('display', 'inline-grid');
 						document.getElementById('result').scrollIntoView();
-						$('#load-btn').css('display', result[1].length > 0 ? 'initial': 'none');
+						$('#load-btn').css('display', result[1].length > 0 ? 'block': 'none');
 					}
 				}
 			})

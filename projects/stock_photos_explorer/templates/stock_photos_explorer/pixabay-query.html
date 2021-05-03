@@ -17,7 +17,62 @@
 			<form class='searchbox-container'>
 				<button class='search-btn'><i data-feather='search' class='search-box-icon'></i></button>
 				<input type='text' class='search-box' placeholder='Search images, videos, and vectors' name='q' autocomplete="off">
+				<a class='search-btn' id='filter-button'><i data-feather='sliders' class='search-box-icon'></i></a>
 			</form>
+			<div class='filter-container'>
+				<div style='grid-area: type'>
+					<h4>Type</h4>
+					<div>
+						<a>Images</a>
+						<div>
+							<a>Photo</a>
+							<a>Illustration</a>
+							<a>Vector</a>
+						</div>
+						<a>Videos</a>
+					</div>
+				</div>
+				<div style='grid-area: orientation'>
+					<h4>Orientation</h4>
+					<div>
+						<a>Any Orientation</a>
+						<a>Horizontal</a>
+						<a>Vertical</a>
+					</div>
+				</div>
+				<div style='grid-area: size'>
+					<h4>Size</h4>
+				</div>
+				<div style='grid-area: color'>
+					<h4>Color</h4>
+				</div>
+				<div style='grid-area: category'>
+					<h4>Category</h4>
+					<div>
+						<a>All</a>
+						<a>Backgrounds</a>
+						<a>Fashion</a>
+						<a>Nature</a>
+						<a>Science</a>
+						<a>Education</a>
+						<a>Feelings</a>
+						<a>Health</a>
+						<a>People</a>
+						<a>Religion</a>
+						<a>Places</a>
+						<a>Animals</a>
+						<a>Industry</a>
+						<a>Computer</a>
+						<a>Food</a>
+						<a>Sports</a>
+						<a>Transportation</a>
+						<a>Travel</a>
+						<a>Buildings</a>
+						<a>Business</a>
+						<a>Music</a>
+					</div>
+				</div>
+			</div>
 		</div>
 		<ul class='image-container'></ul>
 		{% include 'base/footer.html' %}
@@ -30,18 +85,26 @@
 
 			$(document).ready(function() {
 				feather.replace()
+				$('#filter-button').click(function(){
+					if ($('.filter-container').toggleClass('show').attr('class').includes('show')){
+						$('.filter-container').removeClass('hide')
+					} else {
+						$('.filter-container').addClass('hide')
+					}
+				})
 				var query = get_params('q');
 				$('input[name="q"]').attr('value', query)
 				$('.search-result-title > h1').text('Search results for '+query)
 				var api_key = Object.fromEntries(Array.from(document.cookie.split(';'), (i) => i.split('='))).api
 				url = 'https://pixabay.com/api/'
+				var current_page = 1;
+				var is_loading = false
 				$.ajax({
 					url: url,
 					method: 'GET',
 					data: {
 						key: api_key,
-						per_page: 100,
-						max_height: $(window).height()/2,
+						per_page: 50,
 						q: query
 					},
 					success: function(data) {
@@ -59,6 +122,39 @@
 							$('.image-container').append(`<li><img src="${i.webformatURL}"></li>`)
 						}
 					}
+				}).then(function(){
+					window.addEventListener('scroll',()=>{
+						const {scrollHeight,scrollTop,clientHeight} = document.documentElement;
+						if(scrollTop + clientHeight > scrollHeight - $('.footer').height() && !is_loading){
+							is_loading = true;
+							current_page++;
+							$.ajax({
+								url: url,
+								method: 'GET',
+								data: {
+									key: api_key,
+									per_page: 50,
+									q: query,
+									page: current_page
+								},
+								success: function(data) {
+									$(window).promise().then(()=>{
+										
+									}).then(()=>{
+										res = ''
+										for (i of data.hits) {
+											res+=`<li><img src="${i.webformatURL}"></li>`
+										}
+										$('.image-container').append(res)
+									}).then(()=>{
+										is_loading=false
+									})
+									return
+								}
+							})
+						}
+					}
+					)
 				})
 			})
 		</script>

@@ -31,7 +31,7 @@ html, body {
 
 .grid-container {
 	display: grid;
-	grid-template-columns: repeat(3, auto);
+	grid-template-columns: repeat(2, auto);
 	grid-column-gap: 30px;
 	justify-content: center;
 	justify-items: center;
@@ -59,12 +59,10 @@ html, body {
 }
 
 .title {
-	display: inline;
 	font-family: 'Roboto';
 	font-weight: 600;
 	padding: 0 10px;
 	font-size: 40px;
-	margin: 0;
 }
 
 .title span {
@@ -73,11 +71,12 @@ html, body {
 }
 
 .subtitle {
+	margin: 0 auto;
 	margin-bottom: 50px;
 	font-family: 'Poppins';
 	font-weight: 400;
 	color: #535353;
-	width: 450px;
+	width: 80%;
 	padding: 0 10px;
 	font-size: 18px;
 	line-height: 25px
@@ -116,8 +115,10 @@ html, body {
 }
 
 .bfctn-subtitle {
-	width: 800px;
-	font-weight: 300
+	width: 80vw;
+	font-weight: 300;
+	margin-left: 0;
+	margin-right: 0
 }
 
 .link-to-doc {
@@ -127,7 +128,8 @@ html, body {
 .api-form {
 	margin: 0 auto;
 	display: flex;
-	align-items: center
+	align-items: center;
+	position: relative
 }
 
 .key-input {
@@ -162,9 +164,12 @@ html, body {
 	font-weight: 500;
 	width: 100px;
 	height: 50px;
-	margin-left: -99px;
 	padding: 0;
 	display: flex;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	right: 8px;
 	justify-content: center;
 	align-items: center;
 	cursor: pointer
@@ -190,7 +195,11 @@ html, body {
 
 .title, .pixabay-subtitle {
 	font-family: 'Poppins' !important;
-	margin: 0
+}
+
+.main-title {
+	margin: 0 auto;
+	width: 81%
 }
 
 .title {
@@ -208,7 +217,8 @@ html, body {
 .search-box-icon {
 	color: rgb(110, 110, 110);
 	width: 22px;
-	height: 22px
+	height: 22px;
+	margin-top: 3px
 }
 
 .search-btn {
@@ -226,17 +236,19 @@ html, body {
 	width: 50%;
 	margin: 0 auto;
 	text-align: left;
-	padding: 0 20px;
 	border-radius: 50px;
 	background: white;
-	display: flex;
+	display: grid;
 	align-items: center;
-	box-shadow: 2px 2px 4px rgb(85, 85, 85)
+	grid-template-columns: 10% 80% 10%;
+	box-shadow: 2px 2px 4px rgb(85, 85, 85);
+	grid-area: search
 }
 
 .search-result .searchbox-container {
 	margin: 0;
 	height: 56px;
+	width: 100%;
 	box-shadow: 1px 1px 2px rgb(136, 136, 136)
 }
 
@@ -254,6 +266,10 @@ html, body {
 	font-family: 'Poppins', sans-serif;
 	font-weight: 300;
 	color: rgb(20, 20, 20);
+}
+
+.search-result .search-box {
+	margin-left: 0
 }
 
 /* all */
@@ -280,14 +296,20 @@ html, body {
 	padding: 50px;
 	margin-top: 70vh;
 	margin-bottom: 0;
-	background: #f6f5f7
+	background: #f6f5f7;
 }
 
 .image-container li {
-	height: 50vh;
+	height: 250px;
 	flex-grow: 1;
 	margin: 5px;
-	flex-shrink: 1
+	flex-shrink: 1;
+	background: rgb(240, 240, 240);
+	-webkit-user-select: none;
+	-webkit-touch-callout: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 
 .image-container li:last-child {
@@ -307,17 +329,21 @@ html, body {
 }
 
 .search-result-header {
-	margin-top: 140px;
+	margin-top: 0px;
 	padding: 0 55px;
 	font-family: 'Poppins';
 	width: calc(100% - 110px);
-	display: flex;
-	justify-content: space-between;
+	display: grid;
 	align-items: center;
+	grid: 
+		'title search search'
+		'filter . .';
+	padding-top: 140px
 }
 
 .search-result-title {
-	width: 40%
+	width: 100%;
+	grid-area: title
 }
 
 .search-result-title h1 {
@@ -358,6 +384,85 @@ html, body {
 	color:rgb(20, 20, 20)
 }
 
+.filter-container {
+	display: grid;
+	padding: 0px 50px;
+	grid: 
+		'type category'
+		'orientation category'
+		'color category'
+		'size category';
+	grid-column-gap: 60px;
+	grid-area: filter;
+	background: white;
+	border-radius: 10px;
+	position: absolute;
+	top: 220px;
+	right: 65px;
+	box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+	height: 0;
+	overflow: hidden;
+	-webkit-user-select: none;
+	-webkit-touch-callout: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.filter-container.show {
+	animation: slidedown 0.5s cubic-bezier(0.19, 1, 0.22, 1) 0s;
+	animation-fill-mode: forwards
+}
+
+.filter-container h4 {
+	font-weight: 400;
+	font-family: 'Poppins';
+	font-size: 1.2rem;
+	margin-bottom: 10px;
+	color: rgb(20, 20, 20);
+}
+
+.filter-container a {
+	display: block;
+	color:rgb(110, 110, 110);
+	font-weight: 300;
+	font-size: 1rem
+}
+
+#filter-button {
+	width: auto;
+	display: block;
+	text-align: center;
+	margin-top: 3px
+}
+
+@keyframes slidedown {
+	0% {
+		padding: 0 50px;
+		height: 0
+	}
+	100% {
+		padding: 10px 50px;
+		height: 590px
+	}
+}
+
+@keyframes slideup {
+	100% {
+		padding: 0 50px;
+		height: 0
+	}
+	0% {
+		padding: 10px 50px;
+		height: 590px
+	}
+}
+
+.filter-container.hide {
+	animation: slideup 0.5s cubic-bezier(0.19, 1, 0.22, 1) 0s;
+	animation-fill-mode: forwards
+}
+
 @media (max-aspect-ratio: 1/1) {
 	.image-container li {
 		height: 30vh;
@@ -384,5 +489,106 @@ html, body {
 		width: 100%;
 		max-height: 75vh;
 		min-width: 0;
+	}
+}
+
+@media all and (max-width: 1024px) {
+	.title {
+		font-size: 4vw
+	}
+	.bfctn-subtitle {
+		font-size: 1.8vw
+	}
+	.api-form {
+		width: 90vw;
+	}
+
+	.key-input {
+		margin: 0
+	}
+}
+
+@media all and (max-width: 800px) {
+	.bfctn-subtitle {
+		font-size: 2vw;
+		line-height: 25px
+	}
+}
+
+@media all and (max-width: 700px) {
+	.bfctn-subtitle {
+		font-size: 2vw;
+		line-height: 20px
+	}
+	.key-input {
+		padding-top: 10px;
+		padding-bottom: 10px;
+		font-size: 2.4vw
+	}
+	.proceed-button {
+		height: 24px;
+		font-size: 2vw;
+		width: 15vw
+	}
+	.grid-container {
+		grid-template-columns: auto;
+		grid-row-gap: 20px
+	}
+	.container-item {
+		width: 70%;
+		height: auto;
+		padding: 30px 50px
+	}
+	.main-title {
+		font-size: 5vw
+	}
+}
+
+@media all and (max-width: 600px) {
+	.bfctn-subtitle {
+		font-size: 2.4vw;
+		line-height: 20px
+	}
+	.key-input {
+		padding-left: 20px;
+		padding-right: 20px;
+		font-size: 2.4vw
+	}
+	.title {
+		font-size: 6vw
+	}
+	.title span {
+		font-size: 2vw
+	}
+}
+
+@media all and (max-width: 500px) {
+	.bfctn-subtitle {
+		font-size: 2.6vw;
+		line-height: 18px
+	}
+	.proceed-button {
+		right: 6px
+	}
+	.pixabay-title {
+		font-size: 8vw
+	}
+	.container-item {
+		width: 60%;
+	}
+	.main-title {
+		font-size: 7vw
+	}
+	.main-subtitle {
+		font-size: 4vw
+	}
+}
+
+@media all and (max-width: 400px) {
+	.bfctn-subtitle {
+		line-height: 17px
+	}
+	.main-subtitle {
+		line-height: 20px
 	}
 }

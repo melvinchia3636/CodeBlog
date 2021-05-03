@@ -613,8 +613,13 @@ pre { line-height: 125%; }
 @media all and (max-width: 1100px) {
 	.top-grid-container {
 		grid-template-columns: 80%;
-		grid-row-gap: 100px;
+		grid-row-gap: 30px;
 		grid-column-gap: 0;
+		margin: 12vh 0;
+	}
+	.top-code-snippet {
+		font-size: 2.4vw;
+		margin-left: 20%;
 	}
 	.title-container {
 		margin: 0 auto;
@@ -622,21 +627,14 @@ pre { line-height: 125%; }
 	}
 	.title-wrapper {
 		font-size: 6vw;
-		line-height: 8vw;
+		line-height: 7vw;
 	}
 	.subtitle {
 		width: 100%;
 		font-size: 2vw
 	}
-	.right-container {
-		display: none
-	}
 	.join-btn {
 		font-size: 2vw
-	}
-	.title-wrapper {
-		font-size: 6vw;
-		line-height: 8vw;
 	}
 	.subtitle {
 		font-size: 2.5vw
@@ -650,6 +648,9 @@ pre { line-height: 125%; }
 	}
 	.description {
 		display: none
+	}
+	.top-code-snippet pre {
+		overflow: visible
 	}
 }
 
@@ -693,6 +694,11 @@ pre { line-height: 125%; }
 	.tools-desc, .metadata {
 		font-size: 2vw;
 	}
+	.top-code-snippet {
+		font-size: 3vw;
+		margin-left: 16%;
+		overflow: visible
+	}
 }
 
 @media all and (max-width: 640px) {
@@ -713,6 +719,10 @@ pre { line-height: 125%; }
 	.tools-icon {
 		width: 10vw;
 		height: 10vw
+	}
+	.top-code-snippet {
+		font-size: 3.5vw;
+		margin-left: 8%;
 	}
 }
 
@@ -772,5 +782,9 @@ pre { line-height: 125%; }
 	}
 	.tools-desc, .metadata {
 		font-size: 3vw;
+	}
+	.top-code-snippet {
+		font-size: 4vw;
+		margin-left: 0
 	}
 }

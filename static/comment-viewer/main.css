@@ -35,9 +35,12 @@
     font-weight: 500;
     font-size: 40px
 }
+.url-input-form {
+    margin: 0 10%
+}
 .url-inputbox {
     background: rgba(0, 0, 0, 0);
-    width: 800px;
+    width: 100%;
     height: 70px;
     border-top-style: hidden;
     border-right-style: hidden;
@@ -59,7 +62,7 @@
     background: rgb(20, 20, 20);
     border-style: none;
     margin-top: 20px;
-    width: 800px;
+    width: 100%;
     height: 70px;
     border-radius: 10px;
     color: white;
@@ -163,10 +166,106 @@
     color: #fff;
     background-color: rgb(20, 20, 20);
     padding: 10px 0;
+    margin: 0 auto;
     margin-bottom: 40px;
     font-family: Montserrat, sans-serif;
     font-size: 20px;
     border-radius: 10px;
 	width: 1250px;
 	display: none
+}
+
+@media all and (max-width: 1330px) {
+    .result {
+        grid-template-columns: repeat(3, auto);
+    }
+    .load-btn {
+        width: 935px
+    }
+}
+
+@media all and (max-width: 1000px) {
+    .result {
+        grid-template-columns: repeat(2, auto);
+    }
+    .load-btn {
+        width: 625px
+    }
+}
+
+@media all and (max-width: 800px) {
+    .title-text {
+        font-size: 36px
+    }
+    .url-inputbox {
+        font-size: 18px;
+        height: 60px
+    }
+    .submit-button {
+        font-size: 18px;
+        height: 60px
+    }
+}
+
+@media all and (max-width: 670px) {
+    .result {
+        grid-template-columns: auto;
+    }
+    .load-btn {
+        width: 305px;
+    }
+    .title-text {
+        font-size: 26px;
+        margin-bottom: 30px
+    }
+    .url-inputbox {
+        font-size: 14px;
+        height: 50px
+    }
+    .submit-button {
+        font-size: 18px;
+        height: 50px;
+        margin-top: 10px
+    }
+}
+
+@media all and (max-width: 500px) {
+    .title-text {
+        font-size: 24px;
+        margin-bottom: 30px
+    }
+    .url-inputbox {
+        font-size: 12px;
+        height: 50px
+    }
+    .submit-button {
+        font-size: 16px;
+        height: 50px;
+        margin-top: 10px
+    }
+    .center-container {
+        margin-top: 10em
+    }
+}
+
+@media all and (max-width: 440px) {
+    .title-text {
+        font-size: 24px;
+        margin-bottom: 30px
+    }
+    .url-input-form {
+        margin: 0 5%
+    }
+    .url-inputbox {
+        font-size: 12px;
+        height: 40px;
+    }
+    .submit-button {
+        font-size: 14px;
+        height: 40px;
+        margin-top: 10px
+    }
+    .center-container {
+        margin-top: 10em
+    }
 }

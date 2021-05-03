@@ -1,5 +1,6 @@
 Z,F,L,G,D,E,H='nextContinuationData',isinstance,'continuation',',','XSRF_TOKEN',len,list
 import requests as M,json as N
+from fake_useragent import UserAgent
 from ftfy import fix_text as Y
 try:from .sss import ShortScale as I
 except:from sss import ShortScale as I
@@ -17,11 +18,12 @@ def B(partial,key):
 def A(url):
 	I='var ytInitialData = ';
 	O=M.Session();
+	O.headers = {'user-agent': UserAgent().chrome}
 	A=O.get(url).text;
 	C=A.find(I);
 	F=A.find('};',C);
-	print(A[C+E(I):F].strip()+'}')
-	P=N.loads(A[C+E(I):F].strip()+'}');
+	lol = A[C+E(I):F].strip()+'}'
+	P=N.loads(lol);
 	J=H([A for A in B(P,'itemSectionRenderer')][-1].values())[0][0][Z];
 	Q=[(J[L],J['clickTrackingParams'])];
 	return Q.pop()

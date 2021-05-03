@@ -7,13 +7,21 @@
 	<link rel="stylesheet" type="text/css" href='{% static "base/navbar.css" %}'>
 	<link rel="stylesheet" type="text/css" href='{% static "stock-photos-explorer/main.css" %}'>
 	<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+	<style>
+		@media all and (max-width: 700px) {
+			.main-container-wrapper {
+				height: auto;
+				padding-bottom: 50px
+			}
+		}
+	</style>
 </head>
 <body class='ask-api'>
 	{% include 'base/navbar.html' %}
 	<main class='main-container-wrapper'>
 		<div class='main-container'>
-			<h1 class='title'>Stock Photos Explorer</h1>
-			<h2 class='subtitle'>Explore over 5 million beautiful and high quality stock photos, and download them if you want. REST API supported.</h2>
+			<h1 class='title main-title'>Stock Photos Explorer</h1>
+			<h2 class='subtitle main-subtitle'>Explore over 5 million beautiful and high quality stock photos, and download them if you want. REST API supported.</h2>
 			<div class='grid-container'>
 				<div class='container-item'>
 					<a class='cover-link'></a>

@@ -24,16 +24,24 @@
             <h1 class='title'>B O O K S</h1>
             <h2 class='subtitle'>Stay Cool with Reading</h2>
         </div>
-        <div class='catalogue-container'></div>
-        <div class='info-wrapper'>
-            <div class='info-container'>
-            
+        <div class='catalogue-container'>
+            <div class='loading-container'>
+                <div class='loading-icon'>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class='loading-text'>Loading</div>
             </div>
+        </div>
+        <div class='info-wrapper'>
+            <div class='info-container'></div>
         </div>
         {% include 'base/footer.html' %}
 
         <script>
-            var BASE_URL = 'https://corsanywhere.herokuapp.com/https://books.toscrape.com/catalogue/';
+            var BASE_URL = 'https://codeblog-corsanywhere.herokuapp.com/https://books.toscrape.com/catalogue/';
             let parser = new DOMParser();
             var rating_dict = {'One': 1, 'Two': 2, 'Three': 3, 'Four': 4, 'Five': 5};
             var current = 1
@@ -45,6 +53,7 @@
                     url: `${BASE_URL}page-${current}.html`,
                     method: 'GET',
                     success: (data) => {
+                        $('.catalogue-container').empty()
                         let doc = parser.parseFromString(data, "text/html");
                         $(doc).find('article h3 a').each(function(){
                             $.ajax({
@@ -54,7 +63,7 @@
                                     if (current==1) window.scrollTo(0, 0);
                                     html = parser.parseFromString(data, "text/html")
                                     var rating = $(html).find('.star-rating')[0].className.split(' ');
-                                    rating = rating[rating.length-1]
+                                    rating = rating[rating.length-1];
                                     $('.catalogue-container').append(`
                                         <div class='product'>
                                             <div class='image' href='${this.url}'>
