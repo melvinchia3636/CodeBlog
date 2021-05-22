@@ -188,3 +188,10 @@
 - homepage of pixabay api explorer completed
 - search query system of pixabay api explorer completed
 - minor bug fixed
+
+### update 18/4/2021 - 2/5/2021
+- a lot of major updates and bug fixes
+- UI renovation continued
+
+### update 3/5/2021
+- added loading animation to book catalogue
