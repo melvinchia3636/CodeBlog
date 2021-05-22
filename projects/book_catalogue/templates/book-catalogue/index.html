@@ -8,11 +8,10 @@
 <html>
     <head>
         {% include 'base/head.html' %}
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="{% static 'book-catalogue/main.css' %}">
         <link rel="stylesheet" type="text/css" href='{% static "base/navbar.css" %}'>
         <link rel="stylesheet" type="text/css" href='https://cdn.jsdelivr.net/npm/perfect-scrollbar@1.5.0/css/perfect-scrollbar.css'>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-        <script src='https://cdn.jsdelivr.net/npm/perfect-scrollbar@1.5.0/dist/perfect-scrollbar.min.js'></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -20,20 +19,16 @@
         <![endif]-->
         
         {% include 'base/navbar.html' %}
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <script src='https://cdn.jsdelivr.net/npm/perfect-scrollbar@1.5.0/dist/perfect-scrollbar.min.js'></script>
         <div class='header'>
             <h1 class='title'>B O O K S</h1>
             <h2 class='subtitle'>Stay Cool with Reading</h2>
         </div>
         <div class='catalogue-container'>
-            <div class='loading-container'>
-                <div class='loading-icon'>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-                <div class='loading-text'>Loading</div>
-            </div>
+            {% include 'base/loading.html' %}
         </div>
         <div class='info-wrapper'>
             <div class='info-container'></div>
@@ -53,7 +48,7 @@
                     url: `${BASE_URL}page-${current}.html`,
                     method: 'GET',
                     success: (data) => {
-                        $('.catalogue-container').empty()
+                        $('.loading-container').remove()
                         let doc = parser.parseFromString(data, "text/html");
                         $(doc).find('article h3 a').each(function(){
                             $.ajax({
@@ -71,8 +66,8 @@
                                                 <a class='more-info'></a>
                                             </div>
                                             <div class='meta'>
-                                                <h3>${$(html).find('h1').text()}</h3>
-                                                <p class='rating-container'>${('<span class="rating rating-active">\u00b7</span>').repeat(rating_dict[rating])+('<span class="rating rating-circle">\u00b7</span>').repeat(5-rating_dict[rating])}</p>
+                                                <h3 title='${$(html).find('h1').text()}'>${$(html).find('h1').text()}</h3>
+                                                <p >${('<span class="rating rating-active" data-feather="circle"></span>').repeat(rating_dict[rating])+('<span class="rating rating-circle" data-feather="circle"></span>').repeat(5-rating_dict[rating])}</p>
                                                 <p class='price'>${$(html).find('.product_main .price_color').text()}</p>
                                                 <div>${$(html).find('#product_description').next().text()}</div>
                                             </div>
@@ -83,6 +78,7 @@
                                         is_done = true;
                                         current++;
                                     }
+                                    feather.replace()
                                 }
                             })
                         });
@@ -108,8 +104,8 @@
                                         <div class='image' style='background-image: url(${BASE_URL+$(html).find('div[class="thumbnail"] img').attr('src').replace('../', '')})'></div>
                                     </div>
                                     <div class='info'>
-                                        <h3>${$(html).find('h1').text()}</h3>
-                                        <p class='rating-container'>${('<span class="rating rating-active">\u00b7</span>').repeat(rating_dict[rating])+('<span class="rating rating-circle">\u00b7</span>').repeat(5-rating_dict[rating])}</p>
+                                        <h3 title='${$(html).find('h1').text()}'>${$(html).find('h1').text()}</h3>
+                                        <p>${('<span class="rating rating-active" data-feather="circle"></span>').repeat(rating_dict[rating])+('<span class="rating rating-circle" data-feather="circle"></span>').repeat(5-rating_dict[rating])}</p>
                                         <p class='price'>${$(html).find('.product_main .price_color').text()}</p>
                                         <p class='availability'>${$(html).find('.product_main .availability').text()}</p>
                                     </div>
@@ -127,8 +123,8 @@
                                     <div class='top'>
                                         <div class='image' style='background-image: url(${BASE_URL+$(html).find('div[class="thumbnail"] img').attr('src').replace('../', '')})'></div>
                                         <div class='info'>
-                                            <h3>${$(html).find('h1').text()}</h3>
-                                            <p class='rating-container'>${('<span class="rating rating-active">\u00b7</span>').repeat(rating_dict[rating])+('<span class="rating rating-circle">\u00b7</span>').repeat(5-rating_dict[rating])}</p>
+                                            <h3 title='${$(html).find('h1').text()}'>${$(html).find('h1').text()}</h3>
+                                            <p >${('<span class="rating rating-active" data-feather="circle">\u00b7</span>').repeat(rating_dict[rating])+('<span class="rating rating-circle" data-feather="circle">\u00b7</span>').repeat(5-rating_dict[rating])}</p>
                                             <p class='price'>${$(html).find('.product_main .price_color').text()}</p>
                                             <p class='availability'>${$(html).find('.product_main .availability').text()}</p>
                                         </div>
@@ -146,8 +142,8 @@
                                 $('.info-container').append(`
                                     <div class='image' style='background-image: url(${BASE_URL+$(html).find('div[class="thumbnail"] img').attr('src').replace('../', '')})'></div>
                                     <div class='info'>
-                                        <h3>${$(html).find('h1').text()}</h3>
-                                        <p class='rating-container'>${('<span class="rating rating-active">\u00b7</span>').repeat(rating_dict[rating])+('<span class="rating rating-circle">\u00b7</span>').repeat(5-rating_dict[rating])}</p>
+                                        <h3 title='${$(html).find('h1').text()}'>${$(html).find('h1').text()}</h3>
+                                        <p >${('<span class="rating rating-active" data-feather="circle"></span>').repeat(rating_dict[rating])+('<span class="rating rating-circle" data-feather="circle"></span>').repeat(5-rating_dict[rating])}</p>
                                         <p class='price'>${$(html).find('.product_main .price_color').text()}</p>
                                         <p class='availability'>${$(html).find('.product_main .availability').text()}</p>
                                         <h4 class='info-subtitle'>Product Description</h4>
@@ -161,10 +157,11 @@
                                 const ps = new PerfectScrollbar('.info');
                                 ps.update()
                             }
+                            feather.replace()
                         }
                         $(window).on('resize', function(){
                             check_layout()
-                        }) 
+                        })
                         check_layout()
                     }
                 })
@@ -182,7 +179,8 @@
                     if(scrollTop + clientHeight > scrollHeight - $('.footer').height()){
                         if (is_done) generateContent()
                     }
-                });})
+                });
+            })
         </script>
     </body>
 </html>

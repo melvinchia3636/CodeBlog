@@ -9,26 +9,6 @@ body::-webkit-scrollbar {
   display: none;
 }
 
-.cb-nav > * > *, .cb-nav > * > * > *{
-	color: rgb(20, 20, 20)
-}
-
-.homenav-item:hover {
-	color: rgb(20, 20, 20)
-}
-
-.homenav-item::after {
-	background-color: rgb(20, 20, 20);
-}
-
-.login-link:hover {
-	color: rgb(20, 20, 20)
-}
-
-.navbar-brand:hover {
-	color: rgb(20, 20, 20)
-}
-
 .center-container {
 	margin-top: 10em;
 	text-align: center;

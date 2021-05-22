@@ -4,26 +4,6 @@ html, body {
 	background: #f6f5f7
 }
 
-.search-result .cb-nav :is(* > *, * > * > *), .ask-api .cb-nav :is(* > *, * > * > *) {
-	color: rgb(20, 20, 20)
-}
-
-.search-result .homenav-item:hover, .ask-api .search-result .homenav-item:hover {
-	color: rgb(20, 20, 20)
-}
-
-.search-result .homenav-item::after, .ask-api .search-result .homenav-item::after {
-	background-color: rgb(20, 20, 20);
-}
-
-.search-result .login-link:hover, .ask-api .search-result .login-link:hover {
-	color: rgb(20, 20, 20)
-}
-
-.search-result .navbar-brand:hover, .ask-api .search-result .navbar-brand:hover {
-	color: rgb(20, 20, 20)
-}
-
 .main-container {
 	margin: 0 auto;
 	margin-top: 23vh;
@@ -176,12 +156,8 @@ html, body {
 }
 
 .header {
-	position: fixed;
 	width: 100%;
 	height: 70vh; 
-	top: 0;
-	left: 0;
-	z-index: -1;
 	color: white !important;
 	display: flex;
 	flex-direction: column;
@@ -275,26 +251,29 @@ html, body {
 /* all */
 ::-webkit-input-placeholder { /* Webkit */
 	color: rgb(110, 110, 110);
- }
- 
- :-moz-placeholder { /* Firefox 18-4 */
+}
+
+:-moz-placeholder { /* Firefox 18-4 */
 	color: rgb(110, 110, 110);
- }
- 
- ::-moz-placeholder {  /* Firefox 19+ */
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
 	color: rgb(110, 110, 110);
- }
- 
- :-ms-input-placeholder {  /*  IE10+  */
+}
+
+:-ms-input-placeholder {  /*  IE10+  */
 	color: rgb(110, 110, 110);
- }
+}
+
+#image {
+	margin-top: 50px;
+}
 
 .image-container {
 	display: flex;
 	flex-wrap: wrap;
 	list-style: none;
 	padding: 50px;
-	margin-top: 70vh;
 	margin-bottom: 0;
 	background: #f6f5f7;
 }
@@ -591,4 +570,8 @@ html, body {
 	.main-subtitle {
 		line-height: 20px
 	}
+}
+
+.loading-container {
+	margin: 100px 0
 }

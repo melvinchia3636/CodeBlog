@@ -7,221 +7,171 @@
 		{% include 'base/head.html' %}
 		<link rel="stylesheet" type="text/css" href='{% static "base/navbar.css" %}'>
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-		<link rel="stylesheet" type='text/css' href='{% static "home/main.css" %}'>
-		<link href="{% static "home/perfect-scrollbar/css/perfect-scrollbar.css" %}" rel="stylesheet">
-		<script src="{% static "home/perfect-scrollbar/dist/perfect-scrollbar.js" %}"></script>
+		<link rel="stylesheet" type='text/css' href='{% static "home/css/main.css" %}'>
 		<script src="//code.iconify.design/1/1.0.6/iconify.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
  	</head>
 	<body>
+		<div id="t"></div>
 		{% include 'base/navbar.html' %}
-		<div class='top-container'>
-			<div class='top-grid-container'>
-				<div class='title-container'>
-					<div class='title-wrapper'>
-						<p class='title-text'>Make Dream<br>Come True</p>
-					</div>
-					<div class='subtitle'>
-						<p class='subtitle-text'>This is a portfolio containing hundreds of fun and useful projects, all made by me, <b>The Silly Coder</b>.</p>
-					</div>
+		<div class='top-wrapper'>
+			<div class='top-container'>
+				<div class='subtitle top-title'>
+					<p class='subtitle-text'>Hey! I'm</p>
 				</div>
-				<div class='right-container'>
-					<div class="highlight top-code-snippet">
-						<pre>
-<span class="k">class</span> <span class="nc">Code</span><span class="p">(</span><span class="nb">object</span>)<span class="sym">:</span>
-	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="kw">self</span><span class="p">,</span> <span class="o">*</span><span class="kw">args</span><span class="p">,</span> <span class="o">**</span><span class="kw">kwargs</span>)<span class="sym">:</span>
-		<span class="bp">self</span><span class="o">.</span><span class="n">argument</span> <span class="sym">=</span> <span class="n">args</span>
-		<span class="bp">self</span><span class="o">.</span><span class="n">keyword</span> <span class="sym">=</span> <span class="n">kwargs</span>
-	<span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="kw">self</span>)<span class="sym">:</span>
-		<span class="k">return</span> <span class="s1">&#39;Learn Coding&#39;</span>
-	<span class="k">def</span> <span class="nf">sayHello</span><span class="p">(</span><span class="kw">self</span><span class="p">,</span> <span class="kw">keyword</span>)<span class="sym">:</span>
-		<span class="k">print</span><span class="p">(</span><span class="k">f</span><span class="s1">&#39;Hello </span><span class="k">{</span>keyword<span class="k">}</span></span><span class="s1">&#39;</span><span class="p">)</span>
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-	<span class="n">my_class</span> <span class="o">=</span> <span class="n">Code</span><span class="p">()</span>
-	<span class="n">myclass</span><span class="o">.</span><span class="n">sayHello</span><span class="p">(</span><span class="s1">&#39;World&#39;</span><span class="p">)</span>
-						</pre>
-					</div>
+				<div class='title-wrapper'>
+					<p class='title-text'></p>
+					<div class='title-seperator'></div>
 				</div>
-			</div>
-		</div>
-		<div class='section-container' style='margin-top: 100vh;'>
-			<div class='section-wrapper'>
-				<div class='section-title-wrapper'>
-					<h3 class='section-title'>What a good coder should be like?</h3>
-					<p class='section-desc'>
-						A coder, doesn't mean he or she is a good coder. So what attitudes a good coder should have? Well... The answer is quite simple - Hardworking, keep learning.
-					</p>
+				<div class='subtitle'>
+					<p class='subtitle-text'>A 15 years old guy who can do the jobs with unimaginable speed and quality, and enjoy learning new skills as time goes by.</p>
 				</div>
-				<div class='intro-list-wrapper'>
-					<ul class='intro-list' id='introlist'>
-						<li class='intro-list-item'>
-							<div class='intro-list-item-container'>
-								<p class='intro-list-item-title'>
-									<svg style="width:24px;height:24px" viewBox="0 0 24 24" class='intro-list-icon'>
-										<path fill="currentColor" d="M12 3L1 9L5 11.18V17.18L12 21L19 17.18V11.18L21 10.09V17H23V9L12 3M18.82 9L12 12.72L5.18 9L12 5.28L18.82 9M17 16L12 18.72L7 16V12.27L12 15L17 12.27V16Z" />
-									</svg>
-									Learn</p>
-								<p class='intro-list-item-desc'>Coders should keep practicing and never stop leaning new stuff</p>
-							</div>
-						</li>
-						<li class='intro-list-item'>
-							<div class='intro-list-item-container'>
-								<p class='intro-list-item-title'>
-									<svg style="width:26px;height:26px" viewBox="0 0 26 26" class='intro-list-icon'>
-									<path fill="currentColor" d="M8,3A2,2 0 0,0 6,5V9A2,2 0 0,1 4,11H3V13H4A2,2 0 0,1 6,15V19A2,2 0 0,0 8,21H10V19H8V14A2,2 0 0,0 6,12A2,2 0 0,0 8,10V5H10V3M16,3A2,2 0 0,1 18,5V9A2,2 0 0,0 20,11H21V13H20A2,2 0 0,0 18,15V19A2,2 0 0,1 16,21H14V19H16V14A2,2 0 0,1 18,12A2,2 0 0,1 16,10V5H14V3H16Z" />
-									</svg>
-									Code</p>
-								<p class='intro-list-item-desc'>Coders should always write code, beautiful code, efficient code</p>
-							</div>
-						</li>
-						<li class='intro-list-item'>
-							<div class='intro-list-item-container'>
-								<p class='intro-list-item-title'>
-									<svg style="width:24px;height:24px" viewBox="0 0 24 24" class='intro-list-icon'>
-										<path fill="currentColor" d="M17,12C17,14.42 15.28,16.44 13,16.9V21H11V16.9C8.72,16.44 7,14.42 7,12C7,9.58 8.72,7.56 11,7.1V3H13V7.1C15.28,7.56 17,9.58 17,12M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z" />
-									</svg>
-									Share</p>
-								<p class='intro-list-item-desc'>Coders should always share their mind, and their way of thinking</p>
-							</div>
-						</li>
+				<a href='/projects' class='btn-mywork'>
+					<div class='bg'></div>
+					<div class='text'>SEE MY WORKS</div>
+				</a>
+				<div class='footer-socialmedia-list-container top-socialmedia-list'>
+					<ul>
+						<li><span data-feather='github' class='footer-socialmedia-icon'></span></li>
+						<li><span data-feather='youtube' class='footer-socialmedia-icon'></span></li>
+						<li><span data-feather='facebook' class='footer-socialmedia-icon'></span></li>
+						<li><span data-feather='linkedin' class='footer-socialmedia-icon'></span></li>
+						<li><span data-feather='twitter' class='footer-socialmedia-icon'></span></li>
 					</ul>
 				</div>
 			</div>
+			<div class='btn-see-more'>
+				<a>Scroll down</a>
+				<div></div>
+			</div>
 		</div>
-		<div class='section-container' style='background: white'>
-			<div class='section-wrapper card-section-wrapper'  id='tools-card-wrapper'>
-				<div class='card-container-wrapper' id='ccw1'>
-					<div class='card-container' id='tools-card-container'></div>
+		<div class='section-wrapper'>
+			<h2 class='section-title'>INTRODUCTION</h2>
+			<div class='section-title-seperator'></div>
+			<div class='section-container'>
+				<div class='section-image-wrapper'>
+					<div class='border-left'></div>
+					<div class='border-right'></div>
+					<div class='section-image-container'></div>
 				</div>
-				<div class='section-title-wrapper right-wrapper'>
-					<h3 class='section-title'>What is Codeblog?</h3>
-					<p class='section-desc'>
-						Codeblog is portfolio of me, The Silly Coder. This website contains every bit of projects that created by me, and how I create it.
-					</p>
-					<a class='explore-btn' href='#'>
-						Explore projects
+				<div class='section-desc-wrapper'>
+					<h3>ABOUT ME</h3>
+					<div id='about-me' class='section-desc-container'><p></p></div>
+					<a href='#' class='btn-mywork'>
+						<div class='bg'></div>
+						<div class='text'>GET IN TOUCH</div>
 					</a>
 				</div>
 			</div>
 		</div>
-		<b class='transparent-container-background'></b>
-		<div class='section-container transparent-section-container'>
-			<div class='section-wrapper transparent-section-wrapper'>
-				<div class='section-title-wrapper' style='color: white; width: 50vw !important'>
-					<h3 class='section-title'>Anything Inside Codeblog?</h3>
-					<p class='section-desc'>
-						Codeblog contains a bunch of projects that created by me, articles on how I created them, and a platform for coders to share their thought.
-					</p>
-					<a class='explore-btn' href='#'>
-						Join Us Today
-					</a>
-				</div>
-			</div>
-		</div>
-		<div class='section-container' style='background: white'>
-			<div class='section-wrapper card-section-wrapper' id='articles-card-wrapper'>
-				<div class='section-title-wrapper right-wrapper'>
-					<h3 class='section-title'>Articles - How it's made</h3>
-					<p class='section-desc'>
-						There's a section on this website, that contains article for every project I made. In each of the article, I'll be exlpaining about everything about the project.
-					</p>
-					<a class='explore-btn' href='#'>
-						Explore articles
-					</a>
-				</div>
-				<div class='card-container-wrapper' id='ccw2'>
-					<div class='card-container' id='article-card-container'>
-						{% for post in articles %}
-							<div class='post-card'>
-								<div class='post-card-wrapper'>
-									<img src='{{ post.image.url }}' class='post-thumbnail'>
-									<div class='post-title'>{{ post.title }}</div>
-									{% getdatetime post.date_posted as date %}
-									<div class='metadata'>{{ date }} | {{ post.author }}</div>
-									<div class='description'>{{post.description}}</div>
-								</div>
-							</div>
-						{% endfor %}
-					</div>
-				</div>
-			</div>
-		</div>
+		<button class='btn-go-up'>
+			<span data-feather='chevron-up'></span>
+		</button>
 		{% include 'base/footer.html' %}
+		
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 		<script>
-			$(document).on("scroll", function() {
-				var page_top = $(document).scrollTop();
-				if (page_top > 300) {
-					$('.section-title').addClass('visible');
-					$('.section-desc').addClass('visible');
-					$('.intro-list-item').addClass('visible');
-				} else {
-					$('.section-title').removeClass('visible');
-					$('.section-desc').removeClass('visible');
-					$('.intro-list-item').removeClass('visible');
-				}
-			})
+			$('.btn-go-up').css('top', `calc(${window.innerHeight}px - 3em - 20px)`)
+			$('.top-wrapper').css('height', window.innerHeight+'px')
+			function htmlToElem(html) {
+				let temp = document.createElement('template');
+				html = html.trim();
+				temp.innerHTML = html;
+				return temp.content.firstChild;
+			}
+			function typing_effect(container, text, speed) {
+				var text = text.split(/(<.*?>.*?<\/.*?>)|(<br\/>)/)
+				var container = document.querySelector(container);
+				var counter = 0
+				console.log(text)
+				for (var i = 0; i < text.length; i++) {
+					if (!(text[i]||'').match(/(<.*?>.*?<\/.*?>)|(<br\/>)/)) {
+						for (var j = 0; j < (text[i]||'').length; j++) {
+							setTimeout(function(t){
+								container.innerHTML += t==' '?'&nbsp;':t;
+							}, counter, text[i][j])
+							counter+=speed;
+						}
+					} else {
+						var element = htmlToElem(text[i]);
+						var content = element.innerText
+						element.innerText = ''
 
-			$(document).ready(function(){
-				$(this).scrollTop(0);
-				document.querySelector("body").classList.add("loaded"); 
-				scrollbar1 = new PerfectScrollbar('#ccw1');
-				scrollbar1.update()
-				scrollbar2 = new PerfectScrollbar('#ccw2');
-				scrollbar2.update()
-				if (window.innerWidth <= 1200) {
-					$('#ccw1').appendTo($('#tools-card-wrapper'))
-				} else {
-					$('#tools-card-wrapper > .section-title-wrapper').appendTo($('#tools-card-wrapper'))
-				}
-				$.ajax({
-					url: '{% url "project-index-api" %}',
-					type: "GET",
-					async: false,
-					data: {
-						'amount': 5
-					},
-					success: function(data){
-						data = JSON.parse(data)
-						$('#tools-card-container').append(
-							function(){
-								var tools_lst = []
-								for (item of data.items) {
-									tools_lst.push(`
-									<div class='tools-card'>
-										<div class='tools-card-content-wrapper'>
-											<span data-feather='${item.icon_name}' class='tools-icon'></span>
-											<div class='tools-name'>
-												${item.name}
-											</div>
-											<div class='tools-desc'>
-												${item.description}
-											</div>
-											<div class='btn-wrapper'>
-												<a class='card-btn btn-hollow'>Explore API</a>
-												<a href="../${item.link_for_html}" class='card-btn'>Let's Go</a>
-											</div>
-										</div>
-									</div>
-									`)
-								}
-								return tools_lst.join('')
-							}
-						)
-						feather.replace() 
-						$("#ccw1").animate({
-							scrollLeft: '+=1500'
-						}, 2000);
+						setTimeout(function(e){
+							container.innerHTML += e.outerHTML;
+						}, counter, element)
+						counter+=speed;
+
+						for (var j = 0; j < content.length; j++) {
+							setTimeout(function(t){
+								container.querySelector(element.tagName.toLowerCase()+':last-child').innerHTML += t==' '?'&nbsp;':t;
+							}, counter, content[j])
+							counter+=speed;
+						}
 					}
+				}
+			}
+			$(document).ready(function(){
+				var scrollbar = Scrollbar.init($('#t')[0])
+				$('body').addClass('loaded')
+				if(!navigator.userAgent.toLowerCase().includes('mobile')) {
+					scrollbar = Scrollbar.init($('body')[0], {
+						syncCallbacks: true,
+						damping: 0.05
+					})
+					$('.btn-see-more').click(function(){
+						scrollbar.scrollIntoView(document.querySelector('.section-wrapper'), {
+							offsetTop: -60
+						})
+					})
+				} else {
+					$('body, html').css({height: 'auto', overflow: 'scroll'})
+					$('.btn-see-more').click(function(){
+						document.querySelector('.section-wrapper').scrollIntoView()
+					})
+				}
+				
+				function onScrollCallback(offset){
+					var page_top = scrollbar.scrollTop;
+					if (page_top > 300) {
+						$('.go-up').css('opacity', 1)
+					} else {
+						$('.go-up').css('opacity', 0)
+					}
+					$('.cb-nav').css('top', offset.y + 'px')
+					$('.btn-go-up').css('top', `calc(${offset.y + 'px'} + ${window.innerHeight}px - 3em - 20px)`)
+				}
+				scrollbar.addListener(onScrollCallback)
+				window.addEventListener('scroll', onScrollCallback)
+
+				$('.btn-see-more').click(function(){
+					window.scrollIntoView(document.querySelector('.section-wrapper'))
+					scrollbar.scrollIntoView(document.querySelector('.section-wrapper'), {
+						offsetTop: -60
+					})
 				})
+				feather.replace()
+
+				new Typed('.title-text', {
+					strings: ['Melvin Chia', 'The Silly Coder', 'Web Developer', 'Data Scraper'],
+					typeSpeed: 40,
+					loop: true,
+					backSpeed: 40,
+					backDelay: 1200,
+					cursorChar: '_',
+					startDelay: 1000,
+				});
+				new typing_effect('#about-me p', `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Velit sed ullamcorper morbi tincidunt. Ultrices neque ornare aenean euismod elementum nisi quis. At tempor commodo ullamcorper a lacus vestibulum sed arcu. A diam maecenas sed enim ut sem <span class='highlight'>viverra</span> aliquet.
+				<br/><br/>
+				Cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla. Congue mauris rhoncus aenean vel. <span class='highlight'>Consequat ac</span> felis donec et odio pellentesque diam volutpat. Sit amet aliquam id diam maecenas ultricies mi eget. Id leo in vitae turpis massa sed elementum tempus.`,
+				10
+				);
 			});
 
-			$(window).resize(function(){
-				if (window.innerWidth <= 1200) {
-					$('#ccw1').appendTo($('#tools-card-wrapper'))
-				} else {
-					$('#tools-card-wrapper > .section-title-wrapper').appendTo($('#tools-card-wrapper'))
-				}
+			$('.btn-mywork').hover(function(){
+				$('.btn-mywork .bg').css('animation', 'see-work-slideIn 0.5s cubic-bezier( 0.16, 0.61, 0.08, 1 ) 0s normal forwards')
+			}, function(){
+				$('.btn-mywork .bg').css('animation', 'see-work-slideOut 0.5s cubic-bezier( 0.16, 0.61, 0.08, 1 ) 0s normal forwards')
 			})
 		</script>
 	</body>

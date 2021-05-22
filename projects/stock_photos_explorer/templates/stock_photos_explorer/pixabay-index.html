@@ -17,7 +17,9 @@
 				<input type='text' class='search-box' placeholder='Search images, videos, and vectors' name='q' autocomplete="off">
 			</form>
 		</div>
-		<ul class='image-container'></ul>
+		{% include 'base/loading.html' %}
+		<div id='image'>
+		</div>
 		{% include 'base/footer.html' %}
 		<script>
 			function shuffle(arra1) {
@@ -46,9 +48,12 @@
 					},
 					success: function(data) {
 						images = shuffle(data.hits)
+						container = '<ul class="image-container">'
 						for (i of images) {
-							$('.image-container').append(`<li><img src="${i.webformatURL}"></li>`)
+							container+=`<li><img src="${i.webformatURL}"></li>`
 						}
+						$('#image').append(container+'</ul>')
+						$('.loading-container').remove()
 					}
 				})
 			})

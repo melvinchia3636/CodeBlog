@@ -4,18 +4,6 @@ html, body {
 	background: #f6f5f7
 }
 
-.cb-nav > * > *, .cb-nav > * > * > *{
-	color: rgb(20, 20, 20)
-}
-
-.homenav-item:hover {
-	color: rgb(20, 20, 20)
-}
-
-.homenav-item::after {
-	background-color: rgb(20, 20, 20);
-}
-
 .main-container {
 	margin: 0 auto;
 	margin-top: 22vh;

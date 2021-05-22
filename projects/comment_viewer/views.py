@@ -16,7 +16,7 @@ def home(request):
 	else:
 		form = UrlInputForm()
 		result = None
-	return render(request, 'comment-viewer/main.html', {'form': form, 'result': result, 'title': 'Youtube Comments Scraper'})
+	return render(request, 'comment-viewer/main.html', {'form': form, 'result': result, 'title': 'Youtube Comments Scraper', 'theme': 'light'})
 
 @csrf_exempt
 def load_comments(request):

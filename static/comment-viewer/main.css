@@ -1,27 +1,7 @@
 @import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Poppins:wght@200;300;400;500&display=swap);
- body {
+body {
     background: #f6f5f7;
     overflow: none
-}
-
-.cb-nav > * > *, .cb-nav > * > * > *{
-	color: rgb(20, 20, 20)
-}
-
-.homenav-item:hover {
-	color: rgb(20, 20, 20)
-}
-
-.homenav-item::after {
-	background-color: rgb(20, 20, 20);
-}
-
-.login-link:hover {
-	color: rgb(20, 20, 20)
-}
-
-.navbar-brand:hover {
-	color: rgb(20, 20, 20)
 }
 
 .center-container {

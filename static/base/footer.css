@@ -1,8 +1,13 @@
+button:active, button:focus {
+	outline: none;
+}
+
 .footer {
 	width: 100%;
 	background: rgb(20, 20, 20);
 	min-height: 50vh;
-	position: relative
+	position: relative;
+	margin-top: -1px
 }
 
 .footer-section {
@@ -20,7 +25,7 @@
 .footer-section-title {
 	font-family: 'Poppins';
 	font-weight: 500;
-	color: white;
+	color: rgb(255, 200, 0);
 	font-size: 20px;
 	margin-bottom: 15px
 }
@@ -39,14 +44,59 @@
 }
 
 .footer-contact-button {
-	color: white;
+	width: 150px;
 	background: none;
 	font-family: 'Poppins';
+	padding: 0;
+	height: 35px;
 	font-weight: 400;
 	border: 2px solid white;
-	padding: 5px 25px;
 	margin-top: 5px;
-	margin-bottom: 20px
+	margin-bottom: 20px;
+	position: relative;
+	transition: 0.3s
+}
+
+.bg {
+	width: 0;
+	white-space: nowrap;
+	height: 108%;
+	background-color: white;
+	margin-top: -2px;
+	margin-left: -1px;
+	overflow: visible;
+}
+
+.text {
+	color: white;
+	mix-blend-mode: difference;
+	width: 148px;
+	height: 35px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: flex;
+	align-items: center;
+	justify-content: center
+}
+
+@keyframes footer-slideIn {
+	0% {
+		width: 0px;
+	} 
+	100% {
+		width: 148px;
+	}
+}
+
+@keyframes footer-slideOut {
+	0% {
+		width: 148px;
+	} 
+	100% {
+		width: 0;
+	}
 }
 
 .footer-socialmedia-list-container ul {
@@ -59,7 +109,8 @@
 
 .footer-socialmedia-list-container ul > li {
 	display: inline;
-	margin: 0 20px
+	margin: 0 20px;
+	cursor: pointer;
 }
 
 .footer-socialmedia-icon {
@@ -67,6 +118,14 @@
 	width: 30px;
 	height: 30px;
 	stroke-width: 1.5px;
+}
+
+.footer-socialmedia-list-container ul > li svg {
+	transition: 0.3s
+}
+
+.footer-socialmedia-list-container ul > li:hover svg {
+	color: rgb(255, 200, 0)
 }
 
 .copyright {

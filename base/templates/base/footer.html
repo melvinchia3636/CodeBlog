@@ -43,7 +43,10 @@
 		</div>	
 		<div class='footer-section'>
 			<h4 class='footer-section-title'>Feedback</h4>
-			<button class='footer-contact-button'>Contact Me</button>
+			<button class='footer-contact-button'>
+				<div class="bg"></div>
+				<div class="text">Contact Me</div>
+			</button>
 			<ul class='footer-section-list'>
 				<li>Privacy and Policy</li>
 				<li>Terms</li>
@@ -54,4 +57,9 @@
 </div>
 <script>
 	feather.replace()
+	$('.footer-contact-button').hover(function(){
+		$('.footer-contact-button .bg').css('animation', 'footer-slideIn 0.5s cubic-bezier( 0.16, 0.61, 0.08, 1 ) 0s normal forwards')
+	}, function(){
+		$('.footer-contact-button .bg').css('animation', 'footer-slideOut 0.5s cubic-bezier( 0.16, 0.61, 0.08, 1 ) 0s normal forwards')
+	})
 </script>

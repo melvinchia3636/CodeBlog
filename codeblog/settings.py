@@ -15,7 +15,7 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'projects'))
 SECRET_KEY = 'k!02^u8l7x)8oqnukv4-(+$n7j6eg*9n&i!$m^3#s6&qud#npw'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 X_FRAME_OPTIONS = 'SAMEORIGIN'
@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_sass',
     
     'home.apps.HomeConfig',
     'ideas.apps.IdeasConfig',
