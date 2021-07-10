@@ -1,5 +1,5 @@
 {% load static %}
-{% load custom_functions %}
+{% load get_replace %}
 
 <!DOCTYPE html>
 <html>
@@ -12,46 +12,204 @@
 </head>
 <body>
 	{% include 'base/navbar.html' %}
-	<div class='center-container'>
-		<h1 class='title-text'>Browse projects</h1>
-		<div class='searchbox-container'>
-			<i data-feather='search' class='search-box-icon'></i>
-			<input type='text' class='search-box' placeholder='Search'>
+	<main>
+		<div class="title-container">
+			<h1>Project Index</h1>
+			<div class="title-seperator"></div>
+			<p>Explore over 50 amazing, cool and fun projects that I’ve created throughout my entire coding journey</p>
 		</div>
-		<div class='result-container'>
-		{% autoescape off %}
-			{% for item in data.items %}
-				<div class='tool-card-container' ontouchstart="this.classList.toggle('hover');">
-					<div class='tool-card-flipper'>
-						<div class='tools-card-front'>
-							<div class='tools-card-content-wrapper'>
-								<span data-feather='{{ item.icon_name }}' class='tools-icon'></span>
-								<div class='tools-name'>
-									{{ item.name }}
-								</div>
-								<div class='tools-desc'>
-									{{ item.description }}
-								</div>
-							</div>
+		<div class="rank-container">
+			{% with project=data.1 %}
+				<div class="project-card place">
+					<div class="project-title">
+						<img src="{{project.icon}}">
+						<h2>{{project.name}}</h2>
+						<p class="cat-name">{{project.category}}</p>
+						<p class="description">{{project.desc}}</p>
+					</div>
+					<div class="project-meta">
+						<div class="meta" style="color: {{ project.language.color }}">
+							<span style="background: {{ project.language.color }}"></span>
+							{{project.language}}
 						</div>
-						<div class='tools-card-back'>
-							<div class='btn-wrapper'>
-								<a class='card-btn' href='{% if item.link %}{% url item.link %}{% endif %}'>View Project</a>
-								<a class='card-btn btn-hollow'>How It's Made</a>
-							</div>
+						<div class="meta">
+							<span class="iconify" data-inline="false" data-icon="bx:bxs-star" style="font-size: 16px; margin-right: .4em; color: #ffc800;"></span>
+							{{project.star}}
+						</div>
+						<div class="meta">
+							<span class="iconify" data-inline="false" data-icon="cil:fork" style="font-size: 16px; margin-right: .4em; color: #ffc800;"></span>
+							{{project.fork}}
+						</div>
+						<div>
+							<a class="repo-link" href={{project.repo}} target="_blank">
+								<span class="iconify" data-inline="false" data-icon="bx:bxl-github" style="font-size: 16px; margin-right: .4em; color: #ffc800;"></span>
+							</a>
 						</div>
 					</div>
 				</div>
+			{% endwith %}
+			{% with project=data.0 %}
+				<div class="project-card first-place place">
+					<div class="first-place-banner">No. 1</div>
+					<div class="project-title">
+						<img src="{% replace project.icon 'ffc800' '141414' %}">
+						<h2>{{project.name}}</h2>
+						<p class="cat-name">{{project.category}}</p>
+						<p class="description">{{project.desc}}</p>
+					</div>
+					<div class="project-meta">
+						<div class="meta" style="color: {{ project.language.color }}">
+							<span style="background: {{ project.language.color }}"></span>
+							{{project.language}}
+						</div>
+						<div class="meta">
+							<span class="iconify" data-inline="false" data-icon="bx:bxs-star" style="font-size: 16px; margin-right: .4em; color: #ffc800;"></span>
+							{{project.star}}
+						</div>
+						<div class="meta">
+							<span class="iconify" data-inline="false" data-icon="cil:fork" style="font-size: 16px; margin-right: .4em; color: #ffc800;"></span>
+							{{project.fork}}
+						</div>
+						<div>
+							<a class="repo-link" href={{project.repo}} target="_blank">
+								<span class="iconify" data-inline="false" data-icon="bx:bxl-github" style="font-size: 16px; margin-right: .4em; color: #ffc800;"></span>
+							</a>
+						</div>
+					</div>
+				</div>
+			{% endwith %}
+			{% with project=data.2 %}
+				<div class="project-card place">
+					<div class="project-title">
+						<img src="{{project.icon}}">
+						<h2>{{project.name}}</h2>
+						<p class="cat-name">{{project.category}}</p>
+						<p class="description">{{project.desc}}</p>
+					</div>
+					<div class="project-meta">
+						<div class="meta" style="color: {{ project.language.color }}">
+							<span style="background: {{ project.language.color }}"></span>
+							{{project.language}}
+						</div>
+						<div class="meta">
+							<span class="iconify" data-inline="false" data-icon="bx:bxs-star" style="font-size: 16px; margin-right: .4em; color: #ffc800;"></span>
+							{{project.star}}
+						</div>
+						<div class="meta">
+							<span class="iconify" data-inline="false" data-icon="cil:fork" style="font-size: 16px; margin-right: .4em; color: #ffc800;"></span>
+							{{project.fork}}
+						</div>
+						<div>
+							<a class="repo-link" href={{project.repo}} target="_blank">
+								<span class="iconify" data-inline="false" data-icon="bx:bxl-github" style="font-size: 16px; margin-right: .4em; color: #ffc800;"></span>
+							</a>
+						</div>
+					</div>
+				</div>
+			{% endwith %}
+		</div>
+		<div class="filter-container">
+			<h2>Project Categories</h2>
+			<div>
+				<a {% ifequal selectedCat|length 0 %}class="selected"{% endifequal %} onclick="setHref(-1, 'cat')">All</a>
+				{% for cat in categories %}
+				<a onclick="setHref({{cat.id}}, 'cat')" {% if cat.id in selectedCat %}class="selected"{% endif %}>{{cat}}</a>
+				{% endfor %}
+			</div>
+		</div>
+		<div class="filter-container">
+			<h2>Language Used</h2>
+			<div>
+				<a {% ifequal selectedLang|length 0 %}class="selected"{% endifequal %} onclick="setHref(-1, 'lang')">All</a>
+				{% for lang in languageUsed %}
+				<a onclick="setHref({{lang.id}}, 'lang')" {% if lang.id in selectedLang %}class="selected"{% endif %}>{{lang}}</a>
+				{% endfor %}
+			</div>
+		</div>
+		<div class="projects-container">
+			{% for project in data %}
+			<div class="project-card">
+				<div class="project-title">
+					<img src="{{project.icon}}">
+					<h2>{{project.name}}</h2>
+					<p class="cat-name">{{project.category}}</p>
+					<p class="description">{{project.desc}}</p>
+				</div>
+				<div class="project-meta">
+					<div class="meta" style="color: {{ project.language.color }}">
+						<span style="background: {{ project.language.color }}"></span>
+						{{project.language}}
+					</div>
+					<div class="meta">
+						<span class="iconify" data-inline="false" data-icon="bx:bxs-star" style="font-size: 16px; margin-right: .4em; color: #ffc800;"></span>
+						{{project.star}}
+					</div>
+					<div class="meta">
+						<span class="iconify" data-inline="false" data-icon="cil:fork" style="font-size: 16px; margin-right: .4em; color: #ffc800;"></span>
+						{{project.fork}}
+					</div>
+					<div>
+						<a class="repo-link" href={{project.repo}} target="_blank">
+							<span class="iconify" data-inline="false" data-icon="bx:bxl-github" style="font-size: 16px; margin-right: .4em; color: #ffc800;"></span>
+						</a>
+					</div>
+				</div>
+			</div>
 			{% endfor %}
 		</div>
-		{% endautoescape %}
-	</div>
+	</main>
 	{% include 'base/footer.html' %}
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+	<script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	</script>
 	<script>
-	  feather.replace()
+		feather.replace()
+		function setHref(num, name) {
+			const currentUrl = new URL(window.location.href);
+			const params = currentUrl.searchParams;
+			const curParams = JSON.parse(params.get(name) || "[]");
+			if (!curParams.includes(num)) num !== -1 ? curParams.push(num) : curParams.length = 0
+			else curParams.splice(curParams.indexOf(num), 1)
+			currentUrl.searchParams.set(name, JSON.stringify(curParams));
+			window.location = currentUrl
+		}
+		function toTitleCase(str) {
+			return str.replace(
+				/\w\S*/g,
+				function(txt) {
+					return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+				}
+			);
+		}
+		$(document).ready(function(){
+			const colorMap = {
+				"HTML": "#ff8d74",
+				"JavaScript": "#ffff74",
+				"TypeScript": "#55a3ff",
+				"Python": "#748bff"
+			}
+			$('body').addClass('loaded')
+			if(!navigator.userAgent.toLowerCase().includes('mobile')) {
+				scrollbar = Scrollbar.init($('body')[0], {
+					syncCallbacks: true,
+					damping: 0.05
+				})
+				scrollbar.addListener(onScrollCallback)
+			} else {
+				$('body, html').css({height: 'auto', overflow: 'scroll'})
+				window.addEventListener('scroll', onScrollCallback)
+			}
+		})
+		function onScrollCallback({offset}){
+			var page_top = scrollbar.scrollTop;
+			if (page_top > 300) {
+				$('.go-up').css('opacity', 1)
+			} else {
+				$('.go-up').css('opacity', 0)
+			}
+			$('.cb-nav').css('top', offset.y + 'px')
+			$('.btn-go-up').css('top', `calc(${offset.y + 'px'} + ${window.innerHeight}px - 3em - 20px)`)
+		}
 	</script>
 </body>
 </html>

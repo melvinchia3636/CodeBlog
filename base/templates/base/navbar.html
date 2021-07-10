@@ -7,22 +7,22 @@
 		</div>
 		<ul class="nav homenav-item-container">
 			<li>
-			<a href="{% url 'home' %}" class='homenav-item active'>HOME</a>
+			<a href="{% url 'home' %}" class='homenav-item {% ifequal title "Home" %}active{% endifequal %}'>HOME</a>
 			</li>
 			<li>
-			<a href="#" class='homenav-item'>SHARE</a>
+			<a href="#" class='homenav-item {% ifequal title "Share" %}active{% endifequal %}'>SHARE</a>
 			</li>
 			<li>
-			<a href="{% url 'ideas' %}" class='homenav-item'>IDEAS</a>
+			<a href="{% url 'ideas' %}" class='homenav-item {% ifequal title "Ideas" %}active{% endifequal %}'>IDEAS</a>
 			</li>
 			<li>
-			<a href="{% url 'projects-index' %}" class='homenav-item'>PROJECTS</a>
+			<a href="{% url 'projects-index' %}" class='homenav-item {% ifequal title "Projects" %}active{% endifequal %}'>PROJECTS</a>
 			</li>
 			<li>
-			<a href='#' class='homenav-item'>ABOUT</a>
+			<a href='#' class='homenav-item {% ifequal title "About" %}active{% endifequal %}'>ABOUT</a>
 			</li>
 		</ul>
-		<a href='{% url "login" %}' class='login-link'>SIGN IN</a>
+		<a href='{% url "login" %}' class='login-link {% ifequal title "Signin" %}active{% endifequal %}'>SIGN IN</a>
 	</nav>
 	
 {% endblock %}
