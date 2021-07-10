@@ -195,3 +195,10 @@
 
 ### update 3/5/2021
 - added loading animation to book catalogue
+
+### update 22/5/2021
+- completely redesigned hompage
+- UI renovation v4 started
+- deployed the website to https://www.thecodeblog.net
+- goodbye heroku :)
+- major bug fixed
