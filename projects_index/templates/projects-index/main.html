@@ -129,6 +129,7 @@
 		<div class="projects-container">
 			{% for project in data %}
 			<div class="project-card">
+				<a class="card-cover" onClick="checkDetails({{project.id}})"></a>
 				<div class="project-title">
 					<img src="{{project.icon}}">
 					<h2>{{project.name}}</h2>
@@ -156,6 +157,9 @@
 				</div>
 			</div>
 			{% endfor %}
+		</div>
+		<div class="details-background">
+			<div class="details-container"></div>
 		</div>
 	</main>
 	{% include 'base/footer.html' %}
@@ -192,13 +196,21 @@
 			if(!navigator.userAgent.toLowerCase().includes('mobile')) {
 				scrollbar = Scrollbar.init($('body')[0], {
 					syncCallbacks: true,
-					damping: 0.05
+					damping: 0.1
 				})
 				scrollbar.addListener(onScrollCallback)
 			} else {
 				$('body, html').css({height: 'auto', overflow: 'scroll'})
 				window.addEventListener('scroll', onScrollCallback)
 			}
+			$('.card-cover').hover(function() {
+				$(this).parent().toggleClass('hover')
+			})
+			$('.details-background').click(e => {
+				if (e.target.className.includes('details-background')) {
+					$('.details-background').removeClass('active')
+				}
+			})
 		})
 		function onScrollCallback({offset}){
 			var page_top = scrollbar.scrollTop;
@@ -208,7 +220,40 @@
 				$('.go-up').css('opacity', 0)
 			}
 			$('.cb-nav').css('top', offset.y + 'px')
+			$('.details-background').css('top', offset.y + 'px')
 			$('.btn-go-up').css('top', `calc(${offset.y + 'px'} + ${window.innerHeight}px - 3em - 20px)`)
+		}
+		function checkDetails(id) {
+			$.ajax({
+				url: "./get-details/"+id,
+				success: res => {
+					console.log(res)
+					$('.details-container').empty()
+					$('.details-background').addClass('active')
+					$('.details-container').append(`
+						<img src="../media/projects/root.png">
+						<div class="project-details">
+							<p class="categories">${res.cat}</p>
+							<h1 class="title">${res.name}</h1>
+							<div class="title-seperator"></div>
+							<p class="subtitle">${res.desc}</p>
+							<h2 class="small-title">Project started</h2>
+							<p class="content">${res.created_at}</p>
+							<h2 class="small-title">License</h2>
+							<p class="content">${res.license ? res.license : "No License"}</p>
+							<h2 class="small-title">Lines of code</h2>
+							<p class="content">${res.loc.includes('k') ? 'approx' : ""} ${res.loc} lines</p>
+							<h2 class="small-title">Size</h2>
+							<p class="content">${res.size}</p>
+						</div>
+					` )
+					projs_container_scrollbar = Scrollbar.init($('.project-details')[0], {
+						syncCallbacks: true,
+						damping: 0.1,
+						alwaysShowTracks: true,
+					})
+				}
+			})
 		}
 	</script>
 </body>

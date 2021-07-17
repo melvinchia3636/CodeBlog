@@ -6,10 +6,10 @@ add_project = lambda: [Project.objects.create(name=i['name'].replace('-', ' ').t
 
 #add_project()
 
-for i in requests.get('https://api.github.com/users/melvinchia3636/repos?per_page=100&sort=updated').json():
+for i in requests.get('https://api.github.com/users/melvinchia3636/repos?per_page=100&sort=updated', auth=('melvinchia3636', "redaxe3636")).json():
 	try:
 		data = Project.objects.get(name=i['name'].replace('-', ' ').title())
-		data.repo = i["html_url"]
+		data.license = i["license"]['name'] if i['license'] else None
 		data.save()
 	except:
 		pass

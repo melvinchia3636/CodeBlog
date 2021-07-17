@@ -173,7 +173,7 @@
 				if(!navigator.userAgent.toLowerCase().includes('mobile')) {
 					scrollbar = Scrollbar.init($('body')[0], {
 						syncCallbacks: true,
-						damping: 0.05
+						damping: 0.1
 					})
 					$('.btn-see-more').click(function(){
 						scrollbar.scrollIntoView(document.querySelector('.section-wrapper'), {
