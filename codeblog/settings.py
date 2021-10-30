@@ -18,6 +18,7 @@ SECRET_KEY = 'k!02^u8l7x)8oqnukv4-(+$n7j6eg*9n&i!$m^3#s6&qud#npw'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
+CORS_ORIGIN_ALLOW_ALL = True
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 # Application definition
@@ -32,12 +33,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_sass',
     'colorfield',
+    'corsheaders',
     
-    'home.apps.HomeConfig',
-    'ideas.apps.IdeasConfig',
     'projects.comment_viewer.apps.CommentViewerConfig',
     'base.apps.BaseConfig',
-    'signin_register.apps.SigninRegisterConfig',
 
     'projects_index.apps.ProjectsIndexConfig',
     'projects.covid19stat.apps.Covid19StatConfig',
@@ -50,6 +49,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

@@ -3,26 +3,25 @@
 	<nav class='cb-nav {{ theme }} fixed-top'>
 		<div class='navbrand-wrapper'>
 			<button class='collapse-btn'><span class='collapse-icon' data-feather='menu'></span></button>
-			<a class='navbar-brand' href="{% url 'home' %}">&#60;/&#62; CODEBLOG</a>
+			<a class='navbar-brand'>&#60;/&#62; CODEBLOG</a>
 		</div>
 		<ul class="nav homenav-item-container">
 			<li>
-			<a href="{% url 'home' %}" class='homenav-item {% ifequal title "Home" %}active{% endifequal %}'>HOME</a>
+			<a class='homenav-item {% ifequal title "Home" %}active{% endifequal %}'>HOME</a>
 			</li>
 			<li>
 			<a href="#" class='homenav-item {% ifequal title "Share" %}active{% endifequal %}'>SHARE</a>
 			</li>
 			<li>
-			<a href="{% url 'ideas' %}" class='homenav-item {% ifequal title "Ideas" %}active{% endifequal %}'>IDEAS</a>
+			<a class='homenav-item {% ifequal title "Ideas" %}active{% endifequal %}'>IDEAS</a>
 			</li>
 			<li>
-			<a href="{% url 'projects-index' %}" class='homenav-item {% ifequal title "Projects" %}active{% endifequal %}'>PROJECTS</a>
+			<a class='homenav-item {% ifequal title "Projects" %}active{% endifequal %}'>PROJECTS</a>
 			</li>
 			<li>
 			<a href='#' class='homenav-item {% ifequal title "About" %}active{% endifequal %}'>ABOUT</a>
 			</li>
 		</ul>
-		<a href='{% url "login" %}' class='login-link {% ifequal title "Signin" %}active{% endifequal %}'>SIGN IN</a>
 	</nav>
 	
 {% endblock %}
