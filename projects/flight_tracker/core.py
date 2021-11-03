@@ -1,13 +1,11 @@
 import requests
-from fake_useragent import UserAgent
 from bs4 import BeautifulSoup
 from bs4.element import NavigableString
 import os
 import json
 import time
 
-ua = UserAgent()
-headers = {'User-Agent': ua.random}
+headers = {'User-Agent': "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_5_5 rv:3.0) Gecko/20110328 Firefox/37.0"}
 
 def get_countries():
 	sorted_country = {}
@@ -33,7 +31,7 @@ def get_airports(country):
 	return sorted_airport_list, count
 
 def get_airport_data(iata):
-	headers = {'User-Agent': ua.chrome} 
+	headers = {'User-Agent': "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_5_5 rv:3.0) Gecko/20110328 Firefox/37.0"} 
 	raw = requests.get('https://api.flightradar24.com/common/v1/airport.json?code='+iata, headers=headers).json()['result']['response']['airport']['pluginData']
 	schedule_data = raw['schedule']  
 	arrival_data = [
@@ -107,7 +105,7 @@ def get_airport_data(iata):
 	return result
 	
 def next_page(iata, page, AorD):
-	headers = {'User-Agent': ua.chrome}
+	headers = {'User-Agent': "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_5_5 rv:3.0) Gecko/20110328 Firefox/37.0"}
 	orgiOrDest = {'arrivals': 'origin', 'departures': 'destination'}
 	raw = requests.get('https://api.flightradar24.com/common/v1/airport.json?page={}&code={}'.format(page, iata), headers=headers).json()['result']['response']['airport']['pluginData']
 	schedule_data = raw['schedule'] 
@@ -131,8 +129,7 @@ def next_page(iata, page, AorD):
 	return data
 
 def get_review(iata, page=1, sortBy='date'):
-	ua = UserAgent()
-	headers = {'user-agent': ua.random, 'x-requested-with': 'XMLHttpRequest'}
+	headers = {'user-agent': "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_5_5 rv:3.0) Gecko/20110328 Firefox/37.0", 'x-requested-with': 'XMLHttpRequest'}
 	raw_data = requests.get('https://www.flightradar24.com/data/airports/{}/reviews?page={}&orderBy={}'.format(iata, page, sortBy), headers=headers).json()
 	data = [
 		{

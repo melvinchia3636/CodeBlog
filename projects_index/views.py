@@ -11,4 +11,4 @@ class DateTimeEncoder(json.JSONEncoder):
             return super().default(z)
 
 def fetch(request):
-	return HttpResponse(json.dumps([[16+i, f"{e.category.short_name}-{e.proj_id}", e.name, e.category.name, e.color, e.image.url] for i, e in enumerate(Project.objects.all()[:5])]), content_type='application/json')
+	return HttpResponse(json.dumps([[16+i, f"{e.category.short_name}-{e.proj_id}", e.name, e.category.name, e.color, e.image.url] for i, e in enumerate(Project.objects.all()[:(None if request.GET.get("item") == "all" else 5)])]), content_type='application/json')
