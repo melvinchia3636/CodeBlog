@@ -202,3 +202,11 @@
 - deployed the website to https://www.thecodeblog.net
 - goodbye heroku :)
 - major bug fixed
+
+### update 8/11/2021
+- CodeBlog v7.0 almost completed
+- Sorry for such a huge log gap
+- content copywriting almost completed.
+- seperated frontend from backend
+- React JS and Tailwind CSS are being used in frontend part
+- Projects are getting added from time to time
