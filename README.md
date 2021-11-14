@@ -210,3 +210,7 @@
 - seperated frontend from backend
 - React JS and Tailwind CSS are being used in frontend part
 - Projects are getting added from time to time
+
+# update 14/11/2021
+- started working on project case study
+- homepage copywriting content improvements
